@@ -1,0 +1,12 @@
+[
+	{
+		"name" : "Tomorrow by Together",
+		"debutYear" : 2019,
+		"memberNo" : 5
+	}, 
+	{
+		"name" : "Bangtan Seonyandan",
+		"debutYear" : 2013,
+		"memberNo" : 7
+	}
+]
