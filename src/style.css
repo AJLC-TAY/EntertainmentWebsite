@@ -1,3 +1,6 @@
+/*
+This container creates an equal margin to the sides of each web page
+*/
 .container{
     width: 80%;
     margin: auto;
