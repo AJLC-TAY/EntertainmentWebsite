@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../src/style.css">
-    <title>Artists</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Artists | Big Hit Music </title>
   </head>
 <div class="container">
   <body>
@@ -16,74 +16,30 @@
         <img src="" alt="logo">
 
         <ul>
-            <li><a href="../src/index.html"><b>Home</b></a></li>
-            <li><a href="../src/songs.html"><b>Music</b></a></li>
-            <li><a href="../src/artists.html"><b>Artists</b></a></li>
-            <li><a href="../src/about.html"><b>About</b></a></li>
+            <li><a href="index.html"><b>Home</b></a></li>
+            <li><a href="songs.html"><b>Music</b></a></li>
+            <li><a href="../artists.html"><b>Artists</b></a></li>
+            <li><a href="about.html"><b>About</b></a></li>
         </ul>
         <div class="search-container">
           <input type="text" placeholder="Search.." name="search">
-          <button type="submit">Submit</button>
+          <button id="search-btn" type="submit">Submit</button>
         </div>
         </div>
       </nav>
     </header>
     <hr>
 
-    <h1> BigHit Artists </h1>
-    <!--BTS-->
-    <div class="artistContainer" >
-    <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-      <img src="../src/images/BTS.jpg" alt="BTS">
-    </a>
-    <br>
-    <p><em><strong>Bangtan Boys</strong></em></p>
+    <div id="artist-list">
+      <h1> BigHit Artists </h1>
     </div>
-    <br>
 
-    <!--8eight-->
-    <div class="artistContainer">
-    <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-      <img src="../src/images/8eight.jpg" alt="8eight">
-    </a>
-    <br>
-    <p><em><strong>8eight</strong></em></p>
-    </div>
-    <br>
-
-    <!--2am-->
-    <div class="artistContainer">
-    <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-      <img src="../src/images/2am.jpg" alt="2am">
-    </a>
-    <br>
-    <p><em><strong>2am</strong></em</p>
-    </div>
-    <br>
-
-    <!--TXT-->
-    <div class="artistContainer">
-    <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-      <img src="../src/images/txt.jpg" alt="txt">
-    </a>
-    <br>
-    <p><em><strong>TXT</strong></em></p>
-    </div>
-    <br>
-
-    <!--Lee Hyun-->
-    <div class="artistContainer">
-    <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-      <img src="../src/images/lee.png" alt="Lee Hyun">
-    </a>
-    <br>
-    <p><em><strong>Lee Hyun</strong></em></p>
-    </div>
-    
   <footer>
     <hr>
-    <p align="center">Copyright&#169; 2020 AlphaGroup. All rights reserved. </p>
+    <p align="center">Copyright &#169; 2020 Alpha Group. All rights reserved. </p>
   </footer>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script type="text/javascript" src="jscript.js"></script>
   </body>
 </div>
 </html>

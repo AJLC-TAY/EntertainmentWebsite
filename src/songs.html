@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../src/style.css">
-    <title>Music</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <title>Songs | Big Hit Music</title>
+
   </head>
 <div class="container">
   <body>
@@ -13,26 +14,61 @@
         <nav id="navbar">
           <div class="container">
 
-          <img src="" alt="logo">
+              <img src="" alt="logo">
 
-          <ul>
-              <li><a href="../src/index.html"><b>Home</b></a></li>
-              <li><a href="../src/songs.html"><b>Music</b></a></li>
-              <li><a href="../src/artists.html"><b>Artists</b></a></li>
-              <li><a href="../src/about.html"><b>About</b></a></li>
-          </ul>
-          <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Submit</button>
-          </div>
+              <ul>
+                  <li><a href="index.html"><b>Home</b></a></li>
+                  <li><a href="../songs.html"><b>Music</b></a></li>
+                  <li><a href="artists.html"><b>Artists</b></a></li>
+                  <li><a href="about.html"><b>About</b></a></li>
+              </ul>
+              <div class="search-container">
+                <input id="search-fld" type="text" placeholder="Search.." name="search">
+                <button id="search-btn" type="submit">Submit</button>
+              </div>
           </div>
         </nav>
       </header>
       <hr>
+
+      <!-- Alvin start -->
+
+      <style>
+          #filters button:focus {
+              outline: none;
+              background: #2d2a2a;
+              color: azure;
+          }
+
+          #filters button:hover {
+              background: gray;
+          }
+
+          #filters button {
+              border: 1px solid transparent;
+              margin-left: 5px;
+              border-radius: 15px;
+              width: auto;
+              float: left;
+              justify-content: center;
+          }
+      </style>
+
+      <div id="filters">
+          <p>Artists:</p>
+
+      </div>
+      <div class="container">
+          <ul id="song-list"></ul>
+      </div>
+
       <footer>
         <hr>
         <p align="center">Copyright&#169; 2020 AlphaGroup. All rights reserved. </p>
       </footer>
+      <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+      <script type="text/javascript" src="jscript.js"></script>
   </body>
+
 </div>
 </html>

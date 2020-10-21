@@ -33,3 +33,26 @@ This container creates an equal margin to the sides of each web page
     -ms-filter: none;
     filter: none;
   }
+
+    .video-con {
+        display: flex;
+        margin: 5px auto;
+    }
+    /*
+#filters button:hover {
+    outline: none;
+    color: red;
+}
+
+#filters button {
+    border: 1px solid black;
+    margin-left: 5px;
+    border-radius: 15px;
+    width: auto;
+    float: left;
+    justify-content: center;
+}
+*/
+
+
+
