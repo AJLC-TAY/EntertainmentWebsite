@@ -1,0 +1,37 @@
+[
+	{
+		"name" : "Tomorrow by Together",
+		"nickname" : "TXT",
+		"debutYear" : 2019,
+		"memberNo" : 5,
+		"img" : "images/txt.jpg"
+	}, 
+	{
+		"name" : "Bangtan Seonyandan",
+		"nickname" : "BTS",
+		"debutYear" : 2013,
+		"memberNo" : 7,
+		"img" : "images/BTS.jpg"
+	},
+	{
+        "name" : "8eight",
+        "nickname" : "8eight",
+        "debutYear" : 0,
+        "memberNo" : 0,
+        "img" : "images/8eight.jpg"
+    },
+    {
+        "name" : "2am",
+        "nickname" : "2am",
+        "debutYear" : 0,
+        "memberNo" : 0,
+        "img" : "images/2am.jpg"
+    },
+    {
+        "name" : "Lee Hyun",
+        "nickname" : "Lee Hyun",
+        "debutYear" : 0,
+        "memberNo" : 0,
+        "img" : "images/lee.png"
+    }
+]
