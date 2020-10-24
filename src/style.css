@@ -1,3 +1,7 @@
+* {
+    font-family: Montserrat, sans-serif;
+}
+
 /*
 This container creates an equal margin to the sides of each web page
 */
@@ -38,21 +42,47 @@ This container creates an equal margin to the sides of each web page
         display: flex;
         margin: 5px auto;
     }
-    /*
-#filters button:hover {
+
+    .song-img-con img {
+        width: 100%; height: auto;
+    }
+
+#filters .filter-but:focus {
     outline: none;
-    color: red;
+    background: #2d2a2a;
+    color: azure;
+}
+
+#filters button:hover {
+    background: gray;
 }
 
 #filters button {
-    border: 1px solid black;
+    border: 1px solid transparent;
     margin-left: 5px;
     border-radius: 15px;
     width: auto;
     float: left;
     justify-content: center;
 }
-*/
 
 
+.filter-but {
+    border: 1px solid transparent;
+    margin-left: 5px;
+    border-radius: 15px;
+    width: auto;
+    float: left;
+    justify-content: center;
+}
+
+.spotify-song-con {
+    display: flex; margin: 10px auto; width: 600px; height: 300px;
+}
+
+.spotify-song-con img {
+    width: 240px;
+    height: 160px;
+    margin: auto 20px
+}
 
