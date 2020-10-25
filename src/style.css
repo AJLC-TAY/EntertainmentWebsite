@@ -25,9 +25,9 @@ This container creates an equal margin to the sides of each web page
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
+    /* -ms-filter: grayscale(100%); */
     filter: grayscale(100%);
-    filter: gray;
+    /* filter: gray;*/
   }
 
 
@@ -80,9 +80,23 @@ This container creates an equal margin to the sides of each web page
     display: flex; margin: 10px auto; width: 600px; height: 300px;
 }
 
-.spotify-song-con img {
-    width: 240px;
+.spotify-song-con .img-con {
+    width: 200px;
     height: 160px;
     margin: auto 20px
+}
+
+.spotify-song-con .img-con:hover {
+    -webkit-filter: grayscale(100%);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.spotify-song-con div {
+    align-items: center;
+    display: block;
 }
 

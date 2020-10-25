@@ -52,7 +52,7 @@ const APIController = (function () {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/x-www-form-urlencoded',
-                'Authorization' : 'Basic ' + token
+                'Authorization' : 'Basic ' + SP_TOKEN
             },
             body: 'grant_type=client_credentials'
         });
@@ -71,14 +71,14 @@ const APIController = (function () {
     // }
 
     // Fetches the Top Tracks of an artist by its ID, in a country
-    const _getTopTracks = async (artistId, market, token) => {
+    const _getTopTracks = async (artistId, market) => {
 
         const result = await fetch (`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=${market}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type' : 'application/json',
-                'Authorization' : 'Bearer ' + token,
+                'Authorization' : 'Bearer ' + await _getToken(),
             }
         });
 
@@ -121,7 +121,7 @@ const UIController = (function() {
         filterButtons: '#filters',
 
         // spotify
-        artistList: '#list',
+        artistList02: '#list',
         topTrackList: '#top-track-list'
 
     }
@@ -136,9 +136,7 @@ const UIController = (function() {
             `
                 <div class="video-con">
                     <div class="song-img-con">
-                        <img src="${img.url}" id="imgContainer" 
-                            alt="Music video" title="${title}" 
-                            style="width: 100%; height: auto;">
+                        <img src="${img.url}" alt="Music video" title="${title}">
                     </div>
 
                     <div>
@@ -185,7 +183,7 @@ const UIController = (function() {
         let name = artist.nickname;
 
         const html = `
-            <button class="filter-but" type="button">
+            <button id="${name}" class="filter-but" type="button">
                 <p style="margin: 2px 4px;">${name}</p>
             </button>
         `;
@@ -226,9 +224,9 @@ const UIController = (function() {
 
 
         let html = `
-            <div class="spotify-song-con" style="display: flex; margin: 10px auto; width: 600px; height: 300px;">
-                <img src="${img.url}" alt="Album image" style="width: ${img.width}; height: ${img.height}; margin: auto 20px" >
-                <div style="align-items: center; display: block;">
+            <div class="spotify-song-con">
+                <img src="${img.url}" alt="Album image"  >
+                <div>
                     <h3>${trackName}</h3>
                     <p>${artistName} <br>
                         <small>Album name: ${albumName} <br>
@@ -239,12 +237,16 @@ const UIController = (function() {
             </div>
         `;
 
-        document.querySelector(DOMElements.topTrackList).insertAdjacentHTML('beforeend', html);
+        try {
+            document.querySelector(DOMElements.topTrackList).insertAdjacentHTML('beforeend', html);
+        } catch (e) {
+            console.log('Error toptracks');
+        }
     }
 
     const _createArtist = async (artist) => {
         const html = `<li> "${artist}" </li> `;
-        document.querySelector(DOMElements.artist).insertAdjacentElement('beforeend', html);
+        document.querySelector(DOMElements.artist).insertAdjacentHTML('beforeend', html);
     }
 
 
@@ -256,7 +258,8 @@ const UIController = (function() {
                 artistList: document.querySelector(DOMElements.artistList),
                 searchField: document.querySelector(DOMElements.searchField),
                 searchButton: document.querySelector(DOMElements.searchButton),
-                filterButtons: document.querySelector(DOMElements.filterButtons)
+                filterButtons: document.querySelector(DOMElements.filterButtons),
+                topTrackList: document.querySelector(DOMElements.topTrackList)
             }
         },
 
@@ -303,7 +306,9 @@ const APPController = (function (UICtrl, APICtrl) {
 
     const loadArtists = async () => {
         const artists = await APICtrl.fetchArtistData();
+
         console.log(artists);
+       // console.log(artists);
 
         artists.forEach(artist => {
             // music page
@@ -311,16 +316,20 @@ const APPController = (function (UICtrl, APICtrl) {
             // artist page
             UICtrl.createArtistDetail(artist);
 
+
             let artistDet = Object();
             artistDet.name = artist.name;
             artistDet.nickName = artist.nickname;
             artistDet.yId = artist.yt;
             artistDet.sId = artist.sp;
 
-            artistsDetail.push(artistDet);
         });
 
-        console.log(artistsDetail);
+        // const TOKEN = APICtrl.getToken();
+        const TXT = '0ghlgldX5Dd6720Q3qFyQB';
+        const TOP_TRACKS = (await APICtrl.getTopTracks(TXT, 'PH')).tracks;
+        TOP_TRACKS.forEach(track => UICtrl.createTopTrack(track));
+
     }
 
     const filterClicked = async () => {

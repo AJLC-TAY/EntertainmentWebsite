@@ -15,33 +15,33 @@
 		"memberNo" : 7,
 		"img" : "images/BTS.jpg",
 		"yt" : "UCLkAepWjdylmXSltofFvsYQ",
-        "sp" : "3Nrfpe0tUJi4K4DXYWgMUX"
+       		"sp" : "3Nrfpe0tUJi4K4DXYWgMUX"
 	},
 	{
-        "name" : "8eight",
-        "nickname" : "8eight",
-        "debutYear" : 0,
-        "memberNo" : 0,
-        "img" : "images/8eight.jpg",
-        "yt" : "UCCM56e4DJ4fB_dLF1kFq2jA",
-        "sp" : "5fp3IPvTlnkqI5NvRnwldJ"
-    },
-    {
-        "name" : "2am",
-        "nickname" : "2am",
-        "debutYear" : 0,
-        "memberNo" : 0,
-        "img" : "images/2am.jpg",
-        "yt" : "UC69q_Edsjk-e_3fG0ntqu2A",
-        "sp" : "5SnaL8SsjGMHQNyqpa8Zos"
-    },
-    {
-        "name" : "Lee Hyun",
-        "nickname" : "Lee Hyun",
-        "debutYear" : 0,
-        "memberNo" : 0,
-        "img" : "images/lee.png",
-        "yt" : "UCqZpHa-8gyrAM30lfAJxORg",
-        "sp" : "6MLmtxHkGVuPhYIcMUm1AQ"
-    }
+        	"name" : "8eight",
+        	"nickname" : "8eight",
+       		"debutYear" : 0,
+        	"memberNo" : 0,
+        	"img" : "images/8eight.jpg",
+        	"yt" : "UCCM56e4DJ4fB_dLF1kFq2jA",
+        	"sp" : "5fp3IPvTlnkqI5NvRnwldJ"
+    	},
+    	{
+        	"name" : "2am",
+        	"nickname" : "2am",
+        	"debutYear" : 0,
+        	"memberNo" : 0,
+        	"img" : "images/2am.jpg",
+        	"yt" : "UC69q_Edsjk-e_3fG0ntqu2A",
+        	"sp" : "5SnaL8SsjGMHQNyqpa8Zos"
+   	},
+    	{
+       		"name" : "Lee Hyun",
+        	"nickname" : "Lee Hyun",
+        	"debutYear" : 0,
+        	"memberNo" : 0,
+        	"img" : "images/lee.png",
+        	"yt" : "UCqZpHa-8gyrAM30lfAJxORg",
+        	"sp" : "6MLmtxHkGVuPhYIcMUm1AQ"
+    	}
 ]
