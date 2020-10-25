@@ -6,7 +6,7 @@
 This container creates an equal margin to the sides of each web page
 */
 .container{
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
     background-color: white;
@@ -77,26 +77,61 @@ This container creates an equal margin to the sides of each web page
 }
 
 .spotify-song-con {
-    display: flex; margin: 10px auto; width: 600px; height: 300px;
-}
-
-.spotify-song-con .img-con {
-    width: 200px;
-    height: 160px;
-    margin: auto 20px
-}
-
-.spotify-song-con .img-con:hover {
-    -webkit-filter: grayscale(100%);
-}
-
-img {
-    width: 100%;
+    margin: 15px auto;
+    width: 400px;
     height: auto;
 }
 
-.spotify-song-con div {
+
+#top-track-list {
+    width: 100%;
+    box-sizing: border-box;
+    padding:  0;
+    list-style: none;
+}
+.spotify-song-con img:hover {
+    -webkit-filter: grayscale(50%);
+}
+
+.track-info {
+    display: flex;
+}
+
+.track-info img {
+    width: 180px;
+    height: 180px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.song-img-con + .song-desc-con {
+
     align-items: center;
     display: block;
 }
 
+.see-vid {
+    background-color: #393939;
+    box-shadow: 0 1px 2px #000000;
+    color: #ffffff;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+}
+
+.see-vid:hover {
+    background-color: black;
+}
+
+span {
+    color: gray;
+    size: 13px;
+}
+
+.list-con {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+}
