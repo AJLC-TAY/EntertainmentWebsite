@@ -11,7 +11,7 @@ const APIController = (function () {
     const SP_TOKEN = btoa(SP_CLIENT_ID + ":" + SP_CLIENT_SEC);
 
     // No of elements
-    const MAX_RESULTS = '1';
+    const MAX_RESULTS = '3';
 
     /** Private methods for Youtube API */
 
@@ -142,7 +142,7 @@ const UIController = (function() {
             `
                 <div class="video-con">
                     <img src="${img.url}" alt="Music video" title="${title}">
-                   
+
                     <div class="desc-con">
                         <h4>${title}</h4>
                         <p> Artist name: <br>
@@ -169,7 +169,7 @@ const UIController = (function() {
                         <img src="${img}" alt="${nickName}">
                         </a>
                         <br>
-                        <p><em><strong>${name}</strong></em></p>       
+                        <p><em><strong>${name}</strong></em></p>
                         <p>
                             Debut Year: ${artist.debutYear}<br>
                             No of Artists: ${artist.memberNo}
@@ -219,16 +219,16 @@ const UIController = (function() {
                 <div class="track-info" >
                      <img src="${img.url}" alt="Album image"  >
                      <div class="song-desc-con">
-                     
+
                         <p>${artistName} <br>
-                           
+
                             <span> <small>Album name: ${albumName} <br>
                             Released on: ${releasedate}
                             </small> </span>
                         </p>
                        <button id="${trackName}" class="see-vid">See Music Videos</button>
                     </div>
-                </div>   
+                </div>
             </div>
         `;
 
@@ -418,3 +418,23 @@ const APPController = (function (UICtrl, APICtrl) {
 })(UIController, APIController);
 
 APPController.init();
+
+//Slideshow animation
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000);
+}

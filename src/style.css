@@ -43,7 +43,7 @@ This container creates an equal margin to the sides of each web page
         margin: 5px auto;
     }
 
-<<<<<<< HEAD
+
     #navbar {
       width: 100%;
       background-color: white;
@@ -52,9 +52,10 @@ This container creates an equal margin to the sides of each web page
       align-items: center;
     }
 
-    #navbar img {
+    #navbar img[src="images/logo site.png"] {
       width: 150px;
       height: auto;
+      float: left;
     }
 
     #navbar li {
@@ -62,8 +63,10 @@ This container creates an equal margin to the sides of each web page
       margin-left: 7%;
       display: inline-block;
       text-align: center;
+      padding-top: 0.5in;
     }
 
+<<<<<<< HEAD
     #navbar a{
     width: 100px;
     height: auto;
@@ -73,39 +76,44 @@ This container creates an equal margin to the sides of each web page
     text-align: center;
     font-size: 18px;
 
-    }
-
-
-    /*
-#filters button:hover {
 =======
-    .song-img-con img {
-        width: 100%; height: auto;
+    #navbar a {
+        width: 100px;
+        height: auto;
+        float: right;
+        color:black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 18px;
+>>>>>>> 833797fc820f21581fa334c4b4350025133be658
     }
 
-#filters .filter-but:focus {
->>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
+#navbar a:hover {
+    border-bottom-width: 3px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+}
+.search-container{
+  float: right;
+  display: inline;
+  padding-top: 0.5in;
+}
+
+input {
+    border-radius: 25px;
+    height: 25px;
+}
+
+input:focus {
     outline: none;
-    background: #2d2a2a;
-    color: azure;
 }
 
-#filters button:hover {
-    background: gray;
+#search-btn {
+    border-radius: 25px;
+    color: white;
+    background-color: #1f1f1f;
+    height: 30px;
 }
-
-#filters button {
-    border: 1px solid transparent;
-    margin-left: 5px;
-    border-radius: 15px;
-    width: auto;
-    float: left;
-    justify-content: center;
-}
-<<<<<<< HEAD
-*/
-=======
-
 
 .filter-but {
     border: 1px solid transparent;
@@ -114,6 +122,11 @@ This container creates an equal margin to the sides of each web page
     width: auto;
     float: left;
     justify-content: center;
+}
+
+.filter-but:hover {
+    color: white;
+    background-color: #1f1f1f;
 }
 
 .spotify-song-con {
@@ -175,4 +188,51 @@ span {
     justify-content: flex-start;
     overflow: hidden;
 }
->>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
+
+/*Slideshow Conatiner*/
+.slideshow-container{
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides.fade img{
+  height: 50%;
+  width: 100%;
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
