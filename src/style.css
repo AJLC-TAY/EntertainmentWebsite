@@ -251,3 +251,33 @@ span {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/*About*/
+#aboutTheSite {
+float: left;
+}
+
+#aboutTheSite img {
+  float: left;
+  width: 40%;
+  height: auto;
+  margin-right: 1%;
+}
+
+#aboutTheSite p {
+  margin-top: 10%;
+}
+#peopleBehind {
+  float: left;
+}
+
+#peopleBehind img {
+  float: right;
+  width: 40%;
+  height: auto;
+  margin-left: 1%;
+}
+
+#peopleBehind p {
+  margin-top: 9%;
+}
