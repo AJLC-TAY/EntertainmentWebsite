@@ -133,7 +133,7 @@ const UIController = (function() {
     }
 
     /** Private methods */
-    const _createSongDetail = async (song) => {
+    const _createVideoDetail = async (song) => {
         let title = song.snippet.title;
         let published = song.snippet.publishedAt;
         let videoID = song.id.videoId;
@@ -183,7 +183,7 @@ const UIController = (function() {
         } catch (e) {}
     }
 
-    const _createArtistList = async (artist) => {
+    const _createFilterButtons = async (artist) => {
         let name = artist.nickname;
 
         const html = `
@@ -214,7 +214,7 @@ const UIController = (function() {
         let img = track.album.images[1];
 
         let html = `
-            <div class="spotify-song-con">
+            <div id="${artistName}" class="spotify-song-con">
                 <h3>${trackName}</h3>
                 <div class="track-info" >
                      <img src="${img.url}" alt="Album image"  >
@@ -257,7 +257,7 @@ const UIController = (function() {
     }
 
 
-    async function _clearBody() {
+    const  _clearBody = async () => {
         document.querySelector(DOMElements.resultItemsCon).innerHTML = `
          <div>
               <h3>Videos</h3>
@@ -265,6 +265,15 @@ const UIController = (function() {
               <ul id="song-list"></ul>
           </div>
         `;
+    }
+
+    // const _filterTopTracks = async (id) => {
+    //     var songList = document.querySelector(DOMElements.topTrackList);
+    //     songList.removeChild()
+    // }
+
+    const _clearTopTrackList = async () => {
+        document.querySelector(DOMElements.topTrackList).innerHTML = ``;
     }
 
     return {
@@ -300,12 +309,12 @@ const UIController = (function() {
             return _createArtistDetail(artist);
         },
 
-        createArtistList(artist) {
-            return _createArtistList(artist);
+        createFilterButtons(artist) {
+            return _createFilterButtons(artist);
         },
 
-        createSongDetail(song) {
-           return _createSongDetail(song);
+        createVideoDetail(song) {
+           return _createVideoDetail(song);
         },
 
         clearSongList() {
@@ -327,14 +336,16 @@ const UIController = (function() {
         enterTrackToSearch(keyword) {
             return _enterTrackToSearch(keyword);
         },
-        // ,
-        // getStoredToken() {
-        //     return {
-        //         token: document.querySelector(DOMElements.hfToken).value
-        //     }
-        // }
+
         clearBody() {
             return _clearBody();
+        },
+        filterTopTracks(id) {
+            return _filterTopTracks(id);
+
+        },
+        clearTopTrackList() {
+            return _clearTopTrackList();
         }
     }
 })();
@@ -342,16 +353,21 @@ const UIController = (function() {
 const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
+    var topTracks = [];
     const SP_NL_RESULT = 3;
 
+    /*
+     * Gets the artist information and loads the artist names for the filter buttons
+     */
     const loadArtists = async () => {
         const artists = await APICtrl.fetchArtistData();
 
-        for (const artist of artists) {
-            // music page
-            await UICtrl.createArtistList(artist);
-            // artist page
-            await UICtrl.createArtistDetail(artist);
+        artists.forEach(artist => {
+            // Creates the filter seeMVButtons for the music page
+            UICtrl.createFilterButtons(artist);
+
+            // Creates the artist information in the artist page
+            UICtrl.createArtistDetail(artist);
 
             let artistDet = Object();
             artistDet.name = artist.name;
@@ -360,25 +376,52 @@ const APPController = (function (UICtrl, APICtrl) {
             artistDet.sId = artist.sp;
 
             artistsDetail.push(artistDet);
-            await loadTopTracks();
-        }
+        });
 
-        let buttons = UICtrl.getSeeVidButtons().seeVideosButton;
-        for (const btn of buttons) {
+        await loadTopTracks();
+
+
+        // Add event listener for every button inside the song detail to search for its music video
+        let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
+        for (const btn of seeMVButtons) {
              btn.onclick = async () => {
                  await UICtrl.enterTrackToSearch(btn.id);
                  await searchYT();
              }
         }
-    }
 
-    const loadTopTracks = async () => {
-        // loading of top tracks to the song list
-        for (const artistDet of artistsDetail) {
-            let topTracks =  (await APICtrl.getTopTracks(artistDet.sId, 'PH')).tracks;
-            topTracks.forEach(track => UICtrl.createTopTrack(track));
+        var filterButtons = DOMElements.filterButtons.children;
+        for (const fbtn of filterButtons) {
+            fbtn.onclick = async () => {
+                const artistNickname = fbtn.id; // the id of the button is the nickname of the artist
+
+                // clear the songs inside the top track list
+                await UICtrl.clearTopTrackList();
+
+                // get the spotify id of the artist, as provided by the button
+                const artistInfo = artistsDetail.find(item => item.nickName === artistNickname);
+                const spID = artistInfo.sId;
+
+                // if the container id of the song detail matches the id of the button then add to the list
+                let filtered = topTracks.filter(item => item.artists[0].id === spID);
+                filtered.forEach(song => UICtrl.createTopTrack(song));
+            }
         }
 
+
+    }
+
+    /*
+     * Fetches the top tracks of every artist from the Spotify API
+     */
+    const loadTopTracks = async () => {
+        // loading of top tracks to the song list
+        for (const artist of artistsDetail) {
+            let tracks = (await APICtrl.getTopTracks(artist.sId, 'PH')).tracks;
+            topTracks = topTracks.concat(tracks);
+        }
+
+        topTracks.forEach(track => UICtrl.createTopTrack(track));
     }
 
     const checkRadioButtons = async () => {
@@ -391,21 +434,28 @@ const APPController = (function (UICtrl, APICtrl) {
     }
 
 
+    /*
+     * Even listener when the search button is clicked
+     */
     DOMElements.searchButton.addEventListener('click', async (e) => {
         //prevent page reset
         e.preventDefault();
         searchYT();
     });
 
+    /*
+     * Method that gets the value of the search field then finds related videos
+     * in the channel of Big Hit using the Youtube API
+     */
     const searchYT = async () => {
         await UICtrl.clearSongList();
 
         const keyword = DOMElements.searchField.value;
         try {
             const songs = await APICtrl.fetchVideos(keyword);
-            songs.forEach(song => UICtrl.createSongDetail(song));
+            songs.forEach(song => UICtrl.createVideoDetail(song));
         } catch (e) {
-            UICtrl.displayNoSongsResults();
+            await UICtrl.displayNoSongsResults();
         }
     }
 
@@ -418,23 +468,23 @@ const APPController = (function (UICtrl, APICtrl) {
 })(UIController, APIController);
 
 APPController.init();
-
-//Slideshow animation
-
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000);
-}
+//
+// //Slideshow animation
+//
+// var slideIndex = 0;
+// showSlides();
+//
+// function showSlides() {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   slideIndex++;
+//
+//   }
+//   slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+//   setTimeout(showSlides, 5000);
+// }
