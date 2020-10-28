@@ -46,23 +46,22 @@
       </header>
       <hr>
 
+      <input checked id="choice1"
+             name="searchParam" type="radio" value="songs">
+      <label for="choice1">Songs</label>
+
+      <input type="radio" id="choice2"
+             name="searchParam" value="videos">
+      <label for="choice2">Videos</label>
+      <p>Artists: </p>
       <div id="filters">
-
-              <input checked id="choice1"
-                     name="searchParam" type="radio" value="songs">
-              <label for="choice1">Songs</label>
-
-              <input type="radio" id="choice2"
-                     name="searchParam" value="videos">
-              <label for="choice2">Videos</label>
-          <p>Artists: </p>
 
       </div>
 
       <br>
 
       <div id="result-items-con">
-          <div>
+          <div class="all-video-con" style="display: none;">
               <h3>Videos</h3>
               <hr>
               <ul id="song-list"></ul>

@@ -26,8 +26,12 @@ const APIController = (function () {
 
     // gets the artists data
     const _fetchArtistData = async () => {
-        const result = await fetch('http://bighitmusic.com/Artist.txt');
-        console.log(result);
+        const result = await fetch('http://bighitmusic.com/Artist.txt', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Headers": "X-Requested-With"
+            }
+        });
         return await result.json();
     }
 
@@ -267,11 +271,6 @@ const UIController = (function() {
         `;
     }
 
-    // const _filterTopTracks = async (id) => {
-    //     var songList = document.querySelector(DOMElements.topTrackList);
-    //     songList.removeChild()
-    // }
-
     const _clearTopTrackList = async () => {
         document.querySelector(DOMElements.topTrackList).innerHTML = ``;
     }
@@ -353,7 +352,7 @@ const UIController = (function() {
 const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
-    var topTracks = [];
+    let topTracks = [];
     const SP_NL_RESULT = 3;
 
     /*
@@ -362,7 +361,13 @@ const APPController = (function (UICtrl, APICtrl) {
     const loadArtists = async () => {
         const artists = await APICtrl.fetchArtistData();
 
+        // Create all filter button
+        let allbutton = {};
+        allbutton.nickname = 'All';
+        await UICtrl.createFilterButtons(allbutton);
+
         artists.forEach(artist => {
+
             // Creates the filter seeMVButtons for the music page
             UICtrl.createFilterButtons(artist);
 
@@ -378,10 +383,11 @@ const APPController = (function (UICtrl, APICtrl) {
             artistsDetail.push(artistDet);
         });
 
+
         await loadTopTracks();
 
 
-        // Add event listener for every button inside the song detail to search for its music video
+        // Add event listener for every button inside the song detail container to search for its music video
         let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
         for (const btn of seeMVButtons) {
              btn.onclick = async () => {
@@ -395,20 +401,23 @@ const APPController = (function (UICtrl, APICtrl) {
             fbtn.onclick = async () => {
                 const artistNickname = fbtn.id; // the id of the button is the nickname of the artist
 
-                // clear the songs inside the top track list
-                await UICtrl.clearTopTrackList();
+                if (artistNickname === 'All') {
+                    // clear the songs inside the top track list
+                    await UICtrl.clearTopTrackList();
+                    topTracks.forEach(song => UICtrl.createTopTrack(song));
+                } else {
+                    await UICtrl.clearTopTrackList();
 
-                // get the spotify id of the artist, as provided by the button
-                const artistInfo = artistsDetail.find(item => item.nickName === artistNickname);
-                const spID = artistInfo.sId;
+                    // get the spotify id of the artist, as provided by the button
+                    const artistInfo = artistsDetail.find(item => item.nickName === artistNickname);
+                    const spID = artistInfo.sId;
 
-                // if the container id of the song detail matches the id of the button then add to the list
-                let filtered = topTracks.filter(item => item.artists[0].id === spID);
-                filtered.forEach(song => UICtrl.createTopTrack(song));
+                    // if the container id of the song detail matches the id of the button then add to the list
+                    const filtered = topTracks.filter(item => item.artists[0].id === spID);
+                    filtered.forEach(song => UICtrl.createTopTrack(song));
+                }
             }
         }
-
-
     }
 
     /*
@@ -420,7 +429,13 @@ const APPController = (function (UICtrl, APICtrl) {
             let tracks = (await APICtrl.getTopTracks(artist.sId, 'PH')).tracks;
             topTracks = topTracks.concat(tracks);
         }
-
+        topTracks.sort((a, b) => {
+            var x = a.name.toLowerCase();
+            var y = b.name.toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        });
         topTracks.forEach(track => UICtrl.createTopTrack(track));
     }
 
@@ -469,11 +484,12 @@ const APPController = (function (UICtrl, APICtrl) {
 
 APPController.init();
 
-//Slideshow animation
+// Slideshow animation
 
 var slideIndex = 0;
-showSlides();
-
+try {
+    showSlides();
+} catch (e){}
 function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
