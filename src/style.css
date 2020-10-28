@@ -187,9 +187,9 @@ span {
   margin: auto;
 }
 
-.mySlides {
-  height: auto;
-  width: 50%;
+.mySlides.fade img{
+  height: 50%;
+  width: 100%;
 }
 
 .text {
