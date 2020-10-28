@@ -49,14 +49,11 @@ This container creates an equal margin to the sides of each web page
       background-color: white;
       display: inline-block;
       color:black;
-    	font-family: Tahoma, Geneva, sans-serif;
-    	font-size:16px;
-	    line-height:1.6em;
-      float: left;
+      align-items: center;
     }
 
     #navbar img[src="images/logo site.png"] {
-      width: 150px;
+      width: 100px;
       height: auto;
       float: left;
     }
