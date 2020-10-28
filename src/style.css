@@ -55,9 +55,10 @@ This container creates an equal margin to the sides of each web page
       float: left;
     }
 
-    #navbar img {
+    #navbar img[src="images/logo site.png"] {
       width: 150px;
       height: auto;
+      float: left;
     }
 
     #navbar li {
@@ -65,6 +66,7 @@ This container creates an equal margin to the sides of each web page
       margin-left: 7%;
       display: inline-block;
       text-align: center;
+      padding-top: 0.5in;
     }
 
     #navbar a{
