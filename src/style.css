@@ -38,6 +38,41 @@ This container creates an equal margin to the sides of each web page
         display: flex;
         margin: 5px auto;
     }
+
+    #navbar {
+      width: 100%;
+      background-color: white;
+      display: inline-block;
+      color:black;
+    	font-family: Tahoma, Geneva, sans-serif;
+    	font-size:16px;
+	    line-height:1.6em;
+      float: left;
+    }
+
+    #navbar img {
+      width: 150px;
+      height: auto;
+    }
+
+    #navbar li {
+      float: left;
+      margin-left: 7%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    #navbar a{
+    width: 100px;
+    height: auto;
+    float: right;
+    color:black;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    }
+
+
     /*
 #filters button:hover {
     outline: none;
@@ -53,6 +88,3 @@ This container creates an equal margin to the sides of each web page
     justify-content: center;
 }
 */
-
-
-
