@@ -11,7 +11,7 @@ const APIController = (function () {
     const SP_TOKEN = btoa(SP_CLIENT_ID + ":" + SP_CLIENT_SEC);
 
     // No of elements
-    const MAX_RESULTS = '1';
+    const MAX_RESULTS = '3';
 
     /** Private methods for Youtube API */
 
