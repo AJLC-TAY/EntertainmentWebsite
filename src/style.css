@@ -43,7 +43,7 @@ This container creates an equal margin to the sides of each web page
         margin: 5px auto;
     }
 
-<<<<<<< HEAD
+
     #navbar {
       width: 100%;
       background-color: white;
@@ -69,47 +69,37 @@ This container creates an equal margin to the sides of each web page
       padding-top: 0.5in;
     }
 
-    #navbar a{
-    width: 100px;
-    height: auto;
-    float: right;
-    color:black;
-    text-decoration: none;
-    text-align: center;
-    font-size: 18px;
+    #navbar a {
+        width: 100px;
+        height: auto;
+        float: right;
+        color:black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 18px;
     }
 
+#navbar a:hover {
+    border-bottom-width: 3px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+}
 
-    /*
-#filters button:hover {
-=======
-    .song-img-con img {
-        width: 100%; height: auto;
-    }
+input {
+    border-radius: 25px;
+    height: 25px;
+}
 
-#filters .filter-but:focus {
->>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
+input:focus {
     outline: none;
-    background: #2d2a2a;
-    color: azure;
 }
 
-#filters button:hover {
-    background: gray;
+#search-btn {
+    border-radius: 25px;
+    color: white;
+    background-color: #1f1f1f;
+    height: 30px;
 }
-
-#filters button {
-    border: 1px solid transparent;
-    margin-left: 5px;
-    border-radius: 15px;
-    width: auto;
-    float: left;
-    justify-content: center;
-}
-<<<<<<< HEAD
-*/
-=======
-
 
 .filter-but {
     border: 1px solid transparent;
@@ -118,6 +108,11 @@ This container creates an equal margin to the sides of each web page
     width: auto;
     float: left;
     justify-content: center;
+}
+
+.filter-but:hover {
+    color: white;
+    background-color: #1f1f1f;
 }
 
 .spotify-song-con {
@@ -179,4 +174,3 @@ span {
     justify-content: flex-start;
     overflow: hidden;
 }
->>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
