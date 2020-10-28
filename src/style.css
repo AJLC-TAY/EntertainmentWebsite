@@ -1,8 +1,12 @@
+* {
+    font-family: Montserrat, sans-serif;
+}
+
 /*
 This container creates an equal margin to the sides of each web page
 */
 .container{
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
     background-color: white;
@@ -21,9 +25,9 @@ This container creates an equal margin to the sides of each web page
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
+    /* -ms-filter: grayscale(100%); */
     filter: grayscale(100%);
-    filter: gray;
+    /* filter: gray;*/
   }
 
 
@@ -38,21 +42,139 @@ This container creates an equal margin to the sides of each web page
         display: flex;
         margin: 5px auto;
     }
+
+<<<<<<< HEAD
+    #navbar {
+      width: 100%;
+      background-color: white;
+      display: inline-block;
+      color:black;
+    	font-family: Tahoma, Geneva, sans-serif;
+    	font-size:16px;
+	    line-height:1.6em;
+      float: left;
+    }
+
+    #navbar img {
+      width: 150px;
+      height: auto;
+    }
+
+    #navbar li {
+      float: left;
+      margin-left: 7%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    #navbar a{
+    width: 100px;
+    height: auto;
+    float: right;
+    color:black;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    }
+
+
     /*
 #filters button:hover {
+=======
+    .song-img-con img {
+        width: 100%; height: auto;
+    }
+
+#filters .filter-but:focus {
+>>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
     outline: none;
-    color: red;
+    background: #2d2a2a;
+    color: azure;
+}
+
+#filters button:hover {
+    background: gray;
 }
 
 #filters button {
-    border: 1px solid black;
+    border: 1px solid transparent;
     margin-left: 5px;
     border-radius: 15px;
     width: auto;
     float: left;
     justify-content: center;
 }
+<<<<<<< HEAD
 */
+=======
 
 
+.filter-but {
+    border: 1px solid transparent;
+    margin-left: 5px;
+    border-radius: 15px;
+    width: auto;
+    float: left;
+    justify-content: center;
+}
 
+.spotify-song-con {
+    margin: 15px auto;
+    width: 400px;
+    height: auto;
+}
+
+
+#top-track-list {
+    width: 100%;
+    box-sizing: border-box;
+    padding:  0;
+    list-style: none;
+}
+.spotify-song-con img:hover {
+    -webkit-filter: grayscale(50%);
+}
+
+.track-info {
+    display: flex;
+}
+
+.track-info img {
+    width: 180px;
+    height: 180px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.song-img-con + .song-desc-con {
+
+    align-items: center;
+    display: block;
+}
+
+.see-vid {
+    background-color: #393939;
+    box-shadow: 0 1px 2px #000000;
+    color: #ffffff;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+}
+
+.see-vid:hover {
+    background-color: black;
+}
+
+span {
+    color: gray;
+    size: 13px;
+}
+
+.list-con {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+>>>>>>> 4e6b488235ee9759def7291e736e8ccd888e0c85
