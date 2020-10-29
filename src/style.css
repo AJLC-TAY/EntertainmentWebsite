@@ -328,8 +328,12 @@ span {
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
-  width: 100%;
+  width: 98.4%;
   text-align: center;
+  background-color: black;
+  opacity: 75%;
+  font-family: Montserrat, sans-serif, bold;
+  font-size: .5in;
 }
 
 .numbertext {
