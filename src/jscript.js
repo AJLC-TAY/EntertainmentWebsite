@@ -65,15 +65,6 @@ const APIController = (function () {
         return data.access_token;
     }
 
-    // const _getArtist = async (id, token) => {
-    //     const result = await fetch(`https://api.spotify.com/v1/${id}`, {
-    //         method: 'GET',
-    //         headers: { 'Authorization' : 'Bearer ' + token}
-    //     });
-    //
-    //     return (await result.json()).artist;
-    // }
-
     // Fetches the Top Tracks of an artist by its ID, in a country
     const _getTopTracks = async (artistId, market) => {
 
@@ -103,9 +94,6 @@ const APIController = (function () {
         getToken() {
             return _getToken();
         },
-        // getArtist(artistId, token) {
-        //     return _getArtist(artistId, token);
-        // },
         getTopTracks(artistId, market, token) {
             return _getTopTracks(artistId, market, token);
         }
@@ -129,11 +117,9 @@ const UIController = (function() {
         seeVideosButton: ".see-vid",
         songRadioBtn: "#choice1",
         videoRadioBtn: "#choice2",
+        playAlbumButtons: ".album-btn",
 
         resultItemsCon: '#result-items-con'
-
-
-
     }
 
     /** Private methods */
@@ -210,8 +196,9 @@ const UIController = (function() {
 
     const _createTopTrack = async (track) => {
         let artistName = track.album.artists[0].name;
-        let trackId = track.id;
-        let artistId = track.album.artists[0].id;
+        // let trackId = track.id;
+        // let artistId = track.album.artists[0].id;
+        let albumuri = track.album.uri;
         var trackName = track.name;
         let albumName = track.album.name;
         let releasedate = track.album.release_date;
@@ -225,12 +212,13 @@ const UIController = (function() {
                      <div class="song-desc-con">
 
                         <p>${artistName} <br>
-
                             <span> <small>Album name: ${albumName} <br>
                             Released on: ${releasedate}
                             </small> </span>
                         </p>
+                       
                        <button id="${trackName}" class="see-vid">See Music Videos</button>
+                       <button id="${albumuri}" class="album-btn"><u>Play album</u></button>
                     </div>
                 </div>
             </div>
@@ -242,6 +230,16 @@ const UIController = (function() {
         } catch (e) {
             console.log('Error toptracks');
         }
+    }
+
+    const _playAlbumEmbed = async (albumid) => {
+        document.querySelector('.spotify-player').innerHTML = ``;
+        let html = `
+            <iframe id="spot-player" src="https://open.spotify.com/embed/album/${albumid}"
+                       frameborder="0" allowtransparency="true"
+                      allow="encrypted-media"></iframe>
+        `;
+        document.querySelector('.spotify-player').insertAdjacentHTML('beforeend', html);
     }
 
     const _enterTrackToSearch = async (keyword) => {
@@ -259,7 +257,6 @@ const UIController = (function() {
     const _clearSongList = async () => {
         document.querySelector(DOMElements.songList).innerHTML = ``;
     }
-
 
     const  _clearBody = async () => {
         document.querySelector(DOMElements.resultItemsCon).innerHTML = `
@@ -339,12 +336,15 @@ const UIController = (function() {
         clearBody() {
             return _clearBody();
         },
-        filterTopTracks(id) {
-            return _filterTopTracks(id);
-
-        },
         clearTopTrackList() {
             return _clearTopTrackList();
+        },
+        getPlayAlbumBtn() {
+            return  { playAlbumButtons: document.querySelectorAll(DOMElements.playAlbumButtons) }
+        },
+        playAlbumEmbed(albumid) {
+            return _playAlbumEmbed(albumid);
+
         }
     }
 })();
@@ -396,7 +396,17 @@ const APPController = (function (UICtrl, APICtrl) {
              }
         }
 
-        var filterButtons = DOMElements.filterButtons.children;
+        await loadPlayAlbumButtons();
+
+        // let playAlbumButtons = UICtrl.getPlayAlbumBtn().playAlbumButtons;
+        //
+        // for (const btn of playAlbumButtons) {
+        //     btn.onclick = async () => {
+        //         await UICtrl.playAlbumEmbed(btn.id.substring(14));
+        //     }
+        // }
+
+        let filterButtons = DOMElements.filterButtons.children;
         for (const fbtn of filterButtons) {
             fbtn.onclick = async () => {
                 const artistNickname = fbtn.id; // the id of the button is the nickname of the artist
@@ -405,6 +415,7 @@ const APPController = (function (UICtrl, APICtrl) {
                     // clear the songs inside the top track list
                     await UICtrl.clearTopTrackList();
                     topTracks.forEach(song => UICtrl.createTopTrack(song));
+                    await loadPlayAlbumButtons();
                 } else {
                     await UICtrl.clearTopTrackList();
 
@@ -415,7 +426,18 @@ const APPController = (function (UICtrl, APICtrl) {
                     // if the container id of the song detail matches the id of the button then add to the list
                     const filtered = topTracks.filter(item => item.artists[0].id === spID);
                     filtered.forEach(song => UICtrl.createTopTrack(song));
+                    await loadPlayAlbumButtons();
                 }
+            }
+        }
+    }
+
+    const loadPlayAlbumButtons = async () => {
+        let playAlbumButtons = UICtrl.getPlayAlbumBtn().playAlbumButtons;
+
+        for (const btn of playAlbumButtons) {
+            btn.onclick = async () => {
+                await UICtrl.playAlbumEmbed(btn.id.substring(14));
             }
         }
     }
@@ -437,16 +459,29 @@ const APPController = (function (UICtrl, APICtrl) {
             return 0;
         });
         topTracks.forEach(track => UICtrl.createTopTrack(track));
+
     }
 
-    const checkRadioButtons = async () => {
-        var songRadioBtn = DOMElements.songRadioBtn;
-        if (songRadioBtn.checked) {
-            return 'songs';
-        } else {
-            return 'videos';
-        }
-    }
+    // const checkRadioButtons = async () => {
+    //     var songRadioBtn = DOMElements.songRadioBtn;
+    //     if (songRadioBtn.checked) {
+    //         return 'songs';
+    //     } else {
+    //         return 'videos';
+    //     }
+    // }
+
+    DOMElements.songRadioBtn.addEventListener('click', () => {
+        document.querySelector('.all-video-con').style.display = 'none';
+        document.querySelector('.all-song-con').style.display = 'block';
+        document.querySelector('#spot-player').style.display = 'block';
+    });
+
+    DOMElements.videoRadioBtn.addEventListener('click', () => {
+        document.querySelector('.all-song-con').style.display = 'none';
+        document.querySelector('.all-video-con').style.display = 'block';
+        document.querySelector('#spot-player').style.display = 'none';
+    });
 
 
     /*
@@ -485,6 +520,7 @@ const APPController = (function (UICtrl, APICtrl) {
 APPController.init();
 
 // Slideshow animation
+// Gwyneth
 
 var slideIndex = 0;
 try {
