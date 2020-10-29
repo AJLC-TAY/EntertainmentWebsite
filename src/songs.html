@@ -21,7 +21,7 @@
       <meta name="theme-color" content="#ffffff">
       <link rel="stylesheet" type="text/css" href="style.css">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-      <title>Songs | Big Hit Music</title>
+      <title>Music | Big Hit Music</title>
   </head>
 <div class="container">
   <body>
@@ -34,46 +34,62 @@
 
               <ul>
                   <li><a href="index.html"><b>Home</b></a></li>
-                  <li><a href="../songs.html"><b>Music</b></a></li>
+                  <li><a href="../songs.html" class="link-focus"><b>Music</b></a></li>
                   <li><a href="artists.html"><b>Artists</b></a></li>
                   <li><a href="about.html"><b>About</b></a></li>
               </ul>
-              <div class="search-container">
-                <input id="search-fld" type="text" placeholder="Search videos.." name="search">
-                  <button id="search-btn" type="submit">Search</button>
-              </div>
+            <div class="search-container">
+                <input id="search-fld" type="text" placeholder="Type something.." name="search">
+                <button id="search-btn" type="submit"><img class="search-icon" src="images/search-icon.png" alt="search icon"/> </button>
+            </div>
         </nav>
       </header>
-      <hr>
 
-      <input checked id="choice1"
-             name="searchParam" type="radio" value="songs">
-      <label for="choice1">Songs</label>
+      <h1>Videos or Songs List</h1>
 
-      <input type="radio" id="choice2"
-             name="searchParam" value="videos">
-      <label for="choice2">Videos</label>
-      <p>Artists: </p>
-      <div id="filters">
+      <div id="radio-btn-con" class="aligned-con">
+          <div class="radio-btn aligned-con">
+              <input checked id="choice1"
+                     name="searchParam" type="radio" value="songs">
+              <label for="choice1">Songs</label>
+          </div>
 
+          <div class="radio-btn aligned-con">
+              <input type="radio" id="choice2"
+                     name="searchParam" value="videos">
+              <label for="choice2">Videos</label>
+          </div>
       </div>
+
+      <div class="aligned-con">
+          <p>Artists: </p>
+          <div id="filters" class="aligned-con"> </div>
+      </div>
+
 
       <br>
 
-      <div id="result-items-con">
-          <div class="all-video-con" style="display: none;">
-              <h3>Videos</h3>
-              <hr>
-              <ul id="song-list"></ul>
+      <div class="column" >
+          <div id="result-items-con">
+              <div class="all-video-con" style="display: none;">
+                  <h3>Videos</h3>
+                  <hr>
+                  <ul id="song-list"></ul>
+              </div>
+
+              <div class="all-song-con">
+                  <h3>Songs</h3>
+                  <hr>
+                  <ul id="top-track-list" class=" list-con"></ul>
+
+              </div>
           </div>
 
-          <div>
-              <h3>Songs</h3>
-              <hr>
-              <ul id="top-track-list" class=" list-con"></ul>
+          <div class="spotify-player">
 
           </div>
       </div>
+
 
 
 
