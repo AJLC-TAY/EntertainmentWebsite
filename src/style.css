@@ -445,9 +445,14 @@ float: left;
 }
 
 /*Index*/
+
+iframe{
+  height: 2in;
+  width: 3.5in;
+}
 #trending{
   width: auto;
-  height: 1000px;
+  height: 800px;
 }
 .vids {
   display: inline-block;
@@ -462,7 +467,7 @@ float: left;
 
 #news {
   width: auto;
-  height: 1500px;
+  height: 750px;
 }
 
 .newss {
@@ -477,6 +482,6 @@ float: left;
   }
 
 .newss img {
-  width: 250px;
+  width: 300px;
   height: auto;
 }
