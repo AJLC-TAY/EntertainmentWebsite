@@ -122,8 +122,8 @@ This container creates an equal margin to the sides of each web page
 }
 
 .search-icon {
-    width: 27px;
-    height: 27px;
+    width: 35px;
+    height: 35px;
     overflow: visible;
     background-size: cover;
     background-repeat: no-repeat;
@@ -288,7 +288,6 @@ span {
 }
 
 /*Slideshow Conatiner*/
-
 
 .slideshow-container{
   max-width: 1500px;
@@ -459,4 +458,25 @@ float: left;
 
 .vids h3{
   margin-right: 1in;
+}
+
+#news {
+  width: auto;
+  height: 1000px;
+}
+
+.newss {
+  display: inline-block;;
+  float: left;
+  height: auto;
+  width: 25%;
+}
+
+.newss h3{
+    margin-right: 1in;
+  }
+
+.newss img {
+  width: 300px;
+  height: auto;
 }
