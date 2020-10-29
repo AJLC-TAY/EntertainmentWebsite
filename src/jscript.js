@@ -79,6 +79,22 @@ const APIController = (function () {
         return await result.json();
     }
 
+    // Fetches the tracks related to the searched keyword
+    const _fetchSongs = async (keyword) => {
+        let query = encodeURI(keyword);
+        const result = await fetch (`https://api.spotify.com/v1/search?q=${query}&type=track&market=PH`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type' : 'application/json',
+                'Authorization' : 'Bearer ' + await _getToken(),
+            }
+        });
+        return await result.json();
+
+
+    }
+
     // use of closures to access the private methods
     return {
 
@@ -96,6 +112,10 @@ const APIController = (function () {
         },
         getTopTracks(artistId, market, token) {
             return _getTopTracks(artistId, market, token);
+        },
+        fetchSongs(keyword) {
+            return _fetchSongs(keyword);
+
         }
     }
 
@@ -105,7 +125,7 @@ const UIController = (function() {
     const DOMElements = {
         head: 'head',
         style: '#main-style',
-        songList: '#song-list',
+        videoList: '#video-list',
         artistList: '#artist-list',
         searchField: '#search-fld',
         searchButton: '#search-btn',
@@ -115,13 +135,15 @@ const UIController = (function() {
 
         // spotify
         artistList02: '#list',
-        topTrackList: '#top-track-list',
+        songList: '#song-list',
         seeVideosButton: ".see-vid",
         songRadioBtn: "#choice1",
         videoRadioBtn: "#choice2",
         playAlbumButtons: ".album-btn",
 
-        resultItemsCon: '#result-items-con'
+        resultItemsCon: '#result-items-con',
+        videoCon: '.all-video-con',
+        songCon: '.all-song-con'
     }
 
     /** Private methods */
@@ -147,7 +169,7 @@ const UIController = (function() {
 
 
         try {
-            document.querySelector(DOMElements.songList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.videoList).insertAdjacentHTML('beforeend', html);
         } catch (e){}
     }
 
@@ -193,11 +215,11 @@ const UIController = (function() {
     const _displayNoSongResults = async () => {
         let html = `<p>No results found.</p>`;
         try {
-            document.querySelector(DOMElements.songList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.videoList).insertAdjacentHTML('beforeend', html);
         } catch (e) {}
     }
 
-    const _createTopTrack = async (track) => {
+    const _createSongDetail = async (track) => {
         let artistName = track.album.artists[0].name;
         // let trackId = track.id;
         // let artistId = track.album.artists[0].id;
@@ -220,15 +242,15 @@ const UIController = (function() {
                             </small> </span>
                         </p>
                        
-                       <button id="${trackName}" class="see-vid">See Music Videos</button>
-                       <button id="${albumuri}" class="album-btn"><u>Play album</u></button>
+                       <button id="${albumuri}" class="album-btn">Play album</button>
+                       <button id="${trackName}" class="see-vid"><u>See Music Videos</u></button>
                     </div>
                 </div>
             </div>
         `;
 
         try {
-            document.querySelector(DOMElements.topTrackList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.songList).insertAdjacentHTML('beforeend', html);
             //document.getElementById(`${trackName}`).onclick = async () => { await _enterTrackToSearch(trackName) };
         } catch (e) {
             console.log('Error toptracks');
@@ -248,13 +270,8 @@ const UIController = (function() {
     const _enterTrackToSearch = async (keyword) => {
         var search = document.querySelector(DOMElements.searchField);
         search.value = keyword;
-        await _clearBody();
+        await _clearVideoList();
         return keyword;
-    }
-
-    const _createArtist = async (artist) => {
-        const html = `<li> "${artist}" </li> `;
-        document.querySelector(DOMElements.artist).insertAdjacentHTML('beforeend', html);
     }
 
     //Added
@@ -268,39 +285,31 @@ const UIController = (function() {
         document.querySelector('#videoContainer').insertAdjacentHTML('beforeend', html);
     }
 
+    const _clearVideoList = async () => {
+        document.querySelector(DOMElements.videoList).innerHTML = ``;
+    }
+
     const _clearSongList = async () => {
         document.querySelector(DOMElements.songList).innerHTML = ``;
-    }
-
-    const  _clearBody = async () => {
-        document.querySelector(DOMElements.resultItemsCon).innerHTML = `
-         <div>
-              <h3>Videos</h3>
-              <hr>
-              <ul id="song-list"></ul>
-          </div>
-        `;
-    }
-
-    const _clearTopTrackList = async () => {
-        document.querySelector(DOMElements.topTrackList).innerHTML = ``;
     }
 
     return {
 
         inputOutputFields() {
             return {
-                songList: document.querySelector(DOMElements.songList),
+                songList: document.querySelector(DOMElements.videoList),
                 artistList: document.querySelector(DOMElements.artistList),
                 searchField: document.querySelector(DOMElements.searchField),
                 searchButton: document.querySelector(DOMElements.searchButton),
                 filterButtons: document.querySelector(DOMElements.filterButtons),
-                topTrackList: document.querySelector(DOMElements.topTrackList),
+                topTrackList: document.querySelector(DOMElements.songList),
                 searchVidList: document.querySelector(DOMElements.searchVidList),
                 searchSongList: document.querySelector(DOMElements.searchSongList),
                 resultItemsCon: document.querySelector(DOMElements.resultItemsCon),
                 songRadioBtn: document.querySelector(DOMElements.songRadioBtn),
-                videoRadioBtn: document.querySelector(DOMElements.videoRadioBtn)
+                videoRadioBtn: document.querySelector(DOMElements.videoRadioBtn),
+                videoCon: document.querySelector(DOMElements.videoCon),
+                songCon: document.querySelector(DOMElements.songCon)
             }
         },
 
@@ -335,12 +344,8 @@ const UIController = (function() {
             return _displayNoSongResults()
         },
 
-        createArtist(artist) {
-            return _createArtist(artist);
-        },
-
-        createTopTrack(track) {
-            return _createTopTrack(track);
+        createSongDetail(track) {
+            return _createSongDetail(track);
         },
 
         enterTrackToSearch(keyword) {
@@ -351,7 +356,7 @@ const UIController = (function() {
             return _clearBody();
         },
         clearTopTrackList() {
-            return _clearTopTrackList();
+            return _clearSongList();
         },
         getPlayAlbumBtn() {
             return  { playAlbumButtons: document.querySelectorAll(DOMElements.playAlbumButtons) }
@@ -365,6 +370,9 @@ const UIController = (function() {
         },
         getPlayVideo(videoid) {
             return _playVideo(videoid);
+        },
+        clearVideoList() {
+            return _clearVideoList();
         }
     }
 })();
@@ -374,7 +382,18 @@ const APPController = (function (UICtrl, APICtrl) {
     const artistsDetail = Array();
     const videoIDs = Array();
     let topTracks = [];
-    const SP_NL_RESULT = 3;
+
+    const loadSeeMVButtons = async () => {
+        // Add event listener for every button inside the song detail container to search for its music video
+        let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
+        for (const btn of seeMVButtons) {
+            btn.onclick = async () => {
+                await clickVideoRB();
+                await UICtrl.enterTrackToSearch(btn.id);
+                await searchYT();
+            }
+        }
+    }
 
     /*
      * Gets the artist information and loads the artist names for the filter buttons
@@ -406,26 +425,8 @@ const APPController = (function (UICtrl, APICtrl) {
 
 
         await loadTopTracks();
-
-
-        // Add event listener for every button inside the song detail container to search for its music video
-        let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
-        for (const btn of seeMVButtons) {
-             btn.onclick = async () => {
-                 await UICtrl.enterTrackToSearch(btn.id);
-                 await searchYT();
-             }
-        }
-
+        await loadSeeMVButtons();
         await loadPlayAlbumButtons();
-
-        // let playAlbumButtons = UICtrl.getPlayAlbumBtn().playAlbumButtons;
-        //
-        // for (const btn of playAlbumButtons) {
-        //     btn.onclick = async () => {
-        //         await UICtrl.playAlbumEmbed(btn.id.substring(14));
-        //     }
-        // }
 
         let filterButtons = DOMElements.filterButtons.children;
         for (const fbtn of filterButtons) {
@@ -435,7 +436,8 @@ const APPController = (function (UICtrl, APICtrl) {
                 if (artistNickname === 'All') {
                     // clear the songs inside the top track list
                     await UICtrl.clearTopTrackList();
-                    topTracks.forEach(song => UICtrl.createTopTrack(song));
+                    topTracks.forEach(song => UICtrl.createSongDetail(song));
+                    await loadSeeMVButtons();
                     await loadPlayAlbumButtons();
                 } else {
                     await UICtrl.clearTopTrackList();
@@ -446,7 +448,8 @@ const APPController = (function (UICtrl, APICtrl) {
 
                     // if the container id of the song detail matches the id of the button then add to the list
                     const filtered = topTracks.filter(item => item.artists[0].id === spID);
-                    filtered.forEach(song => UICtrl.createTopTrack(song));
+                    filtered.forEach(song => UICtrl.createSongDetail(song));
+                    await loadSeeMVButtons();
                     await loadPlayAlbumButtons();
                 }
             }
@@ -479,7 +482,7 @@ const APPController = (function (UICtrl, APICtrl) {
             if (x > y) {return 1;}
             return 0;
         });
-        topTracks.forEach(track => UICtrl.createTopTrack(track));
+        topTracks.forEach(track => UICtrl.createSongDetail(track));
 
     }
 
@@ -492,27 +495,84 @@ const APPController = (function (UICtrl, APICtrl) {
     //     }
     // }
 
-    DOMElements.songRadioBtn.addEventListener('click', () => {
-        document.querySelector('.all-video-con').style.display = 'none';
-        document.querySelector('.all-song-con').style.display = 'block';
-        document.querySelector('#spot-player').style.display = 'block';
-    });
+        function clickSongRB () {
+            DOMElements.videoRadioBtn.checked = false;
+            DOMElements.songRadioBtn.checked = true;
+            DOMElements.songCon.style.display = 'block';
+            DOMElements.videoCon.style.display = 'none';
+            try {
+                document.querySelector('#spot-player').style.display = 'block';
+            } catch (e) {}
 
-    DOMElements.videoRadioBtn.addEventListener('click', () => {
-        document.querySelector('.all-song-con').style.display = 'none';
-        document.querySelector('.all-video-con').style.display = 'block';
-        document.querySelector('#spot-player').style.display = 'none';
-    });
+            try {
+                document.querySelector('.filter-con').style.display = 'block';
+            } catch (e) {}
+        }
 
+        function clickVideoRB () {
+            DOMElements.videoRadioBtn.checked = true;
+            DOMElements.songRadioBtn.checked = false;
+            DOMElements.songCon.style.display = 'none';
+            DOMElements.videoCon.style.display = 'block';
+            try {
+                document.querySelector('#spot-player').style.display = 'none';
+            } catch (e) {}
+            try {
+                document.querySelector('.filter-con').style.display = 'none';
+            } catch (e) {
+            }
+        }
+
+   // try {
+        DOMElements.songRadioBtn.addEventListener('click', () => {
+            clickSongRB();
+        });
+    //} catch (e) {}
+
+
+    //try {
+        DOMElements.videoRadioBtn.addEventListener('click', () => {
+           clickVideoRB();
+        });
+   // } catch (e) {}
 
     /*
      * Even listener when the search button is clicked
      */
-    DOMElements.searchButton.addEventListener('click', async (e) => {
-        //prevent page reset
-        e.preventDefault();
-        searchYT();
-    });
+    try {
+        DOMElements.searchButton.addEventListener('click', async (e) => {
+            //prevent page reset
+            e.preventDefault();
+            if (DOMElements.songRadioBtn.checked === true) {
+                await UICtrl.clearSongList();
+                await searchSPTFY();
+                await loadPlayAlbumButtons();
+            } else {
+                await UICtrl.clearVideoList();
+                await searchYT();
+            }
+        });
+    } catch (e) {}
+
+
+    const searchSPTFY = async  () => {
+        const keyword = DOMElements.searchField.value;
+        try {
+            const songs = (await APICtrl.fetchSongs(keyword)).tracks;
+            const songItems = songs.items;
+            console.log(songs);
+            songItems.forEach(song => {
+                artistsDetail.forEach(artistdet => {
+                    if (song.album.artists[0].id === artistdet.sId) {
+                        UICtrl.createSongDetail(song);
+                    }
+                })
+            });
+        } catch (e) {
+            console.log('No tracks found.')
+        }
+    }
+
 
     /*
      * Method that gets the value of the search field then finds related videos
