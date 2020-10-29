@@ -46,6 +46,11 @@ This container creates an equal margin to the sides of each web page
         margin: 5px auto;
     }
 
+    #videos {
+        display: flex;
+        margin: 5px auto;
+    }
+
 
     #navbar {
       width: 100%;
