@@ -523,18 +523,18 @@ const APPController = (function (UICtrl, APICtrl) {
             }
         }
 
-   // try {
+    try {
         DOMElements.songRadioBtn.addEventListener('click', () => {
             clickSongRB();
         });
-    //} catch (e) {}
+    } catch (e) {}
 
 
-    //try {
+    try {
         DOMElements.videoRadioBtn.addEventListener('click', () => {
            clickVideoRB();
         });
-   // } catch (e) {}
+    } catch (e) {}
 
     /*
      * Even listener when the search button is clicked
