@@ -190,7 +190,7 @@ const UIController = (function() {
                             No of Artists: ${artist.memberNo}
                         </p>
                     </div>
-                    <br>
+
                 `;
 
         try {
@@ -241,7 +241,7 @@ const UIController = (function() {
                             Released on: ${releasedate}
                             </small> </span>
                         </p>
-                       
+
                        <button id="${albumuri}" class="album-btn">Play album</button>
                        <button id="${trackName}" class="see-vid"><u>See Music Videos</u></button>
                     </div>
