@@ -381,17 +381,37 @@ float: left;
 }
 
 #con img{
-  width: 400px;
+  width: 7in;
   height: auto;
   float:right;
+  display: inline-block;
 }
 
 #GetInTouch p{
   font-size: 40px;
 }
+
+#name{
+  height: 20px;
+  width: 300px;
+
+}
+
+#email{
+  height: 20px;
+  width: 300px;
+
+}
+
+#subject{
+  height: 20px;
+  width: 300px;
+
+}
+
 #msg {
   height: 200px;
-  width: 350px;
+  width: 800px;
 }
 
 #lbl {
@@ -399,20 +419,21 @@ float: left;
 }
 
 #lbl1{
-  margin-right: 4%;
+  margin-right: 3.9%;
 }
 
 #lbl2{
-  margin-right: 4.4%;
+  margin-right: 4%;
 }
 
 #lbl3{
   margin-right: 3.2%;
 }
 
+
 #submitt{
   width: 9%;
   height: 50px;
   font-size: 13px;
-  margin-left: 26%;
+  margin-left: 45%;
 }
