@@ -188,10 +188,10 @@ This container creates an equal margin to the sides of each web page
 
 .column {
     display: inline-flex;
-    width: 1300px;
+    width: 100%;
 }
 #result-items-con {
-    width: 800px;
+    width: 65%;
 }
 
 .spotify-song-con {
@@ -204,7 +204,7 @@ This container creates an equal margin to the sides of each web page
     width: 300px;
     height: 380px;
     position: fixed;
-    top: 30vh;
+    top: 35vh;
     right: 10vw;
 }
 
@@ -214,7 +214,7 @@ This container creates an equal margin to the sides of each web page
 }
 
 
-#top-track-list {
+#song-list {
     width: 100%;
     box-sizing: border-box;
     padding:  0;
@@ -240,32 +240,37 @@ This container creates an equal margin to the sides of each web page
     align-items: center;
     display: block;
 }
-
 .see-vid {
+    border: none;
+    background-color: white;
+}
+
+.see-vid u:hover{
+    font-weight: bold;
+}
+
+.see-vid:focus{
+    outline: none;
+}
+
+.album-btn:focus {
+    outline: none;
+    background-color: black;
+}
+
+.album-btn:hover {
+    background-color: black;
+}
+
+.album-btn {
     background-color: #393939;
     box-shadow: 0 1px 2px #000000;
     color: #ffffff;
     border-radius: 25px;
     border: none;
-    padding: 10px;
-}
-
-.see-vid:hover {
-    background-color: black;
-}
-
-.album-btn {
-    border: none;
-    background-color: white;
-
-}
-
-.album-btn u:hover{
-    font-weight: bold;
-}
-
-.album-btn:focus {
-    outline: none;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 5px;
 }
 
 span {
@@ -279,6 +284,7 @@ span {
     flex-wrap: wrap;
     justify-content: flex-start;
     overflow: hidden;
+    width: 100%;
 }
 
 /*Slideshow Conatiner*/
