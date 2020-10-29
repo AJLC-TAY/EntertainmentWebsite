@@ -2,6 +2,9 @@
     font-family: Montserrat, sans-serif;
 }
 
+h1 {
+    margin-top: 45px;
+}
 /*
 This container creates an equal margin to the sides of each web page
 */
@@ -49,7 +52,7 @@ This container creates an equal margin to the sides of each web page
       background-color: white;
       display: inline-block;
       color:black;
-      align-items: center;
+      align-content: center;
     }
 
     #navbar img[src="images/logo site.png"] {
@@ -61,7 +64,7 @@ This container creates an equal margin to the sides of each web page
 
     #navbar li {
       float: left;
-      margin-left: 7%;
+      margin-left: 3%;
       display: inline-block;
       text-align: center;
       padding-top: 0.5in;
@@ -88,21 +91,57 @@ This container creates an equal margin to the sides of each web page
   padding-top: 0.5in;
 }
 
-input {
-    border-radius: 25px;
-    height: 25px;
+.search-container {
+    width: 304px;
+    height: 47px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 0;
+    margin-top: 0.35in;
+    display: flex;
+    justify-content: space-around;
+}
+
+#search-fld:focus {
+    outline: none;
+}
+
+#search-fld {
+    background-color: #ffffff;
+    border-color: rgba(0,0,0,0);
+    font-size: 15px;
+    padding: 12px;
+    color: #333;
+}
+
+.search-icon {
+    width: 27px;
+    height: 27px;
+    overflow: visible;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#search-btn {
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 #choice1, #choice2 {
     margin: 0 10px 0 0;
 }
 
-#search-btn {
-    border-radius: 25px;
-    color: white;
-    background-color: #1f1f1f;
-    height: 30px;
-}
+/*#search-btn {*/
+/*    border-radius: 25px;*/
+/*    color: white;*/
+/*    background-color: #1f1f1f;*/
+/*    height: 30px;*/
+/*}*/
 
 /* Alvin */
 .aligned-con {
@@ -142,11 +181,31 @@ input {
     outline: none;
 }
 
+.column {
+    display: inline-flex;
+    width: 1300px;
+}
+#result-items-con {
+    width: 800px;
+}
 
 .spotify-song-con {
     margin: 15px auto;
     width: 400px;
     height: auto;
+}
+
+.spotify-player {
+    width: 300px;
+    height: 380px;
+    position: fixed;
+    top: 50vh;
+    right: 10vw;
+}
+
+.spotify-player iframe {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -188,6 +247,20 @@ input {
 
 .see-vid:hover {
     background-color: black;
+}
+
+.album-btn {
+    border: none;
+    background-color: white;
+
+}
+
+.album-btn u:hover{
+    font-weight: bold;
+}
+
+.album-btn:focus {
+    outline: none;
 }
 
 span {
@@ -288,7 +361,6 @@ float: left;
 }
 #peopleBehind {
   float: left;
-  margin-bottom: 3%;
 }
 
 #peopleBehind img {
@@ -300,42 +372,8 @@ float: left;
 
 #peopleBehind p {
   margin-top: 9%;
-  margin-bottom: 15%;
 }
 
-#con img{
-  width: 400px;
-  height: auto;
-  float:right;
-}
+#GetInTouch {
 
-#GetInTouch p{
-  font-size: 40px;
-}
-#msg {
-  height: 200px;
-  width: 350px;
-}
-
-#lbl {
-  margin-right: 2%;
-}
-
-#lbl1{
-  margin-right: 4%;
-}
-
-#lbl2{
-  margin-right: 4.4%;
-}
-
-#lbl3{
-  margin-right: 3.2%;
-}
-
-#submitt{
-  width: 9%;
-  height: 50px;
-  font-size: 13px;
-  margin-left: 26%;
 }

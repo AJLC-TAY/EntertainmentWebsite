@@ -21,7 +21,7 @@
       <meta name="theme-color" content="#ffffff">
       <link rel="stylesheet" type="text/css" href="style.css">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-      <title>Songs | Big Hit Music</title>
+      <title>Music | Big Hit Music</title>
   </head>
 <div class="container">
   <body>
@@ -38,10 +38,10 @@
                   <li><a href="artists.html"><b>Artists</b></a></li>
                   <li><a href="about.html"><b>About</b></a></li>
               </ul>
-              <div class="search-container">
-                <input id="search-fld" type="text" placeholder="Search videos.." name="search">
-                  <button id="search-btn" type="submit">Search</button>
-              </div>
+            <div class="search-container">
+                <input id="search-fld" type="text" placeholder="Type something.." name="search">
+                <button id="search-btn" type="submit"><img class="search-icon" src="images/search-icon.png" alt="search icon"/> </button>
+            </div>
         </nav>
       </header>
 
@@ -69,20 +69,27 @@
 
       <br>
 
-      <div id="result-items-con">
-          <div class="all-video-con" style="display: none;">
-              <h3>Videos</h3>
-              <hr>
-              <ul id="song-list"></ul>
+      <div class="column" >
+          <div id="result-items-con">
+              <div class="all-video-con">
+                  <h3>Videos</h3>
+                  <hr>
+                  <ul id="song-list"></ul>
+              </div>
+
+              <div class="all-song-con">
+                  <h3>Songs</h3>
+                  <hr>
+                  <ul id="top-track-list" class=" list-con"></ul>
+
+              </div>
           </div>
 
-          <div>
-              <h3>Songs</h3>
-              <hr>
-              <ul id="top-track-list" class=" list-con"></ul>
+          <div class="spotify-player">
 
           </div>
       </div>
+
 
 
 
