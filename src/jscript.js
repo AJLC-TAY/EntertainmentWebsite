@@ -1,7 +1,7 @@
 const APIController = (function () {
     window.onload = loadClientAPI;
     // YOUTUBE REQUIREMENTS
-    const YT_API_KEY = 'AIzaSyBmbwKSePliPBSyHyeA6BRuoxgfLES4YeQ';
+    const YT_API_KEY = 'AIzaSyDGdhwvUVmISQJlo8oforHn9LmFL-wJZ7M';
     const YT_CLIENT_ID = '471584331255-p66pq86kuef1ocv3jcectp3t9kb1f9bl.apps.googleusercontent.com';
     const BIGHIT_CHANNELID = 'UC3IZKseVpdzPSBaWxBxundA';
 
@@ -110,6 +110,8 @@ const UIController = (function() {
         searchField: '#search-fld',
         searchButton: '#search-btn',
         filterButtons: '#filters',
+        playVideosButtons: '.video-btn',
+
 
         // spotify
         artistList02: '#list',
@@ -131,8 +133,9 @@ const UIController = (function() {
         let html =
             `
                 <div class="video-con">
-                    <img src="${img.url}" alt="Music video" title="${title}">
-
+                    <button id="${videoID}" class="video-btn">
+                        <img src="${img.url}" alt="Music video" title="${title}" style="width: 200px" >
+                    </button>
                     <div class="desc-con">
                         <h4>${title}</h4>
                         <p> Artist name: <br>
@@ -254,6 +257,17 @@ const UIController = (function() {
         document.querySelector(DOMElements.artist).insertAdjacentHTML('beforeend', html);
     }
 
+    //Added
+    const _playVideo = async (videoid) => {
+        document.querySelector('#videoContainer').innerHTML = ``;
+        let html = `
+             <iframe id="video-player" src="https://www.youtube.com/embed/${videoid}" style="width: 900px" height="600px"
+                       frameborder="0" allowtransparency="true"
+                      allow="encrypted-media"></iframe>
+        `;
+        document.querySelector('#videoContainer').insertAdjacentHTML('beforeend', html);
+    }
+
     const _clearSongList = async () => {
         document.querySelector(DOMElements.songList).innerHTML = ``;
     }
@@ -345,6 +359,12 @@ const UIController = (function() {
         playAlbumEmbed(albumid) {
             return _playAlbumEmbed(albumid);
 
+        },
+        getPlayVideosButtons() {
+            return {  playVideosButtons: document.querySelectorAll(DOMElements.playVideosButtons)}
+        },
+        getPlayVideo(videoid) {
+            return _playVideo(videoid);
         }
     }
 })();
@@ -352,6 +372,7 @@ const UIController = (function() {
 const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
+    const videoIDs = Array();
     let topTracks = [];
     const SP_NL_RESULT = 3;
 
@@ -504,6 +525,13 @@ const APPController = (function (UICtrl, APICtrl) {
         try {
             const songs = await APICtrl.fetchVideos(keyword);
             songs.forEach(song => UICtrl.createVideoDetail(song));
+
+            let videoButtons = UICtrl.getPlayVideosButtons().playVideosButtons;
+            for (const btn of videoButtons) {
+                btn.onclick = async () => {
+                    await UICtrl.getPlayVideo(btn.id);
+                }
+            }
         } catch (e) {
             await UICtrl.displayNoSongsResults();
         }
