@@ -480,3 +480,105 @@ float: left;
   width: 250px;
   height: auto;
 }
+
+/*MOBILE VERSION*/
+@media only screen and (max-device-width: 480px){
+  /*
+  This container creates an equal margin to the sides of each web page
+  */
+  .container{
+      width: 90%;
+      margin: auto;
+      overflow: hidden;
+      background-color: white;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    /*
+    Navigation Style
+    */
+    #navbar {
+      width: 100%;
+      background-color: white;
+      display: inline-block;
+      color:black;
+      align-content: center;
+    }
+
+    #navbar img[src="images/logo site.png"] {
+      width: 100px;
+      height: auto;
+      float: left;
+      padding-top: 0.5in;
+      margin-right: 6%;
+    }
+
+    #navbar li {
+      float: left;
+      margin-left: 3%;
+      display: inline-block;
+      text-align: center;
+      padding-top: 0.5in;
+    }
+
+    #navbar a {
+        width: 40px;
+        height: 30px;
+        float: right;
+        color:black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    #navbar a:hover, #navbar a:focus, a.link-focus{
+        border-bottom-width: 3px;
+        border-bottom-color: black;
+        border-bottom-style: solid;
+  }
+
+  /*Index*/
+  #trending{
+    width: auto;
+    height: 1000px;
+    padding-left: 4%;
+  }
+  .vids {
+    display: table;
+    margin: 0 auto;
+    height: auto;
+    width: 5%;
+  }
+
+  .vids h3{
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+
+  #news {
+    width: auto;
+    height: 1000px;
+  }
+
+  .newss {
+    display: table;
+    margin: 0 auto;
+    height: auto;
+    width: 5%;
+  }
+
+  .newss h3{
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 3%;
+    text-size: 5px;
+    }
+
+  .newss img {
+    width: 150px;
+    height: auto;
+  }
+
+
+}
