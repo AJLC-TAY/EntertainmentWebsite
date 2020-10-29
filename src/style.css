@@ -122,8 +122,8 @@ This container creates an equal margin to the sides of each web page
 }
 
 .search-icon {
-    width: 27px;
-    height: 27px;
+    width: 35px;
+    height: 35px;
     overflow: visible;
     background-size: cover;
     background-repeat: no-repeat;
@@ -282,7 +282,6 @@ span {
 }
 
 /*Slideshow Conatiner*/
-
 
 .slideshow-container{
   max-width: 1500px;
