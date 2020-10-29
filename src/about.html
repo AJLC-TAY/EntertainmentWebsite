@@ -29,7 +29,6 @@
 
       <!--Navigation Bar-->
       <nav id="navbar">
-        <div class="container">
 
         <img src="images/logo site.png" alt="logo">
 
@@ -41,8 +40,7 @@
         </ul>
         <div class="search-container">
           <input id="search-fld" type="text" placeholder="Search videos.." name="search">
-          
-        </div>
+          <button id="search-btn" type="submit">Search</button>
         </div>
       </nav>
     </header>
@@ -62,22 +60,37 @@
     <div id="peopleBehind">
       <!--Image-->
       <img src="images/temp.png" alt="group photo">
-      <p>Hi! We are the Alpha Team, five passionate individuals inspiring others with our creative use of technology and attention to detail. We are dedicated to providing our users with a web design that is easy to use and a fun user experience that they have never had before.</p>
+      <!--Descript about the Team-->
+      <p>Hi! We are the Alpha Team, five passionate individuals inspiring others with our creative use of technology and attention to detail. We are dedicated to providing our users with a web design that is easy to use and a fun user experience that they have never had before.
+      <!-- How the Group was formed-->
+      <br>
+      <br>
+      We are merely Kpop fans and admire Big Hit Entertainment. As a group of students studying Information Technology, we have desired to maximize Big Hit songs and advocacies. By creating a site that provides information and services like displaying their music and news about them.We want to help broaden their audience to spread their advocacies and love for music.
+      </p>
+      <!-- Our location -->
+      <div id="loc">
+      <h3>Location</h3>
+      <em>2601 La Trinidad, Benguet, Philippines</em>
+      <hr>
     </div>
+    </div>
+
+
+
+
     <hr>
     <div id="GetInTouch">
-      <H3>Get in touch with us</H3>
+      <p><strong>Get in touch with us</strong></p>
       <form action="/action_page.php">
-        <label for="fname">Name</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="lname">Email</label>
-        <input type="text" id="email" name="email"><br><br>
-        <label for="lname">Subject</label>
-        <input type="text" id="subject" name="subject"><br><br>
-        <label for="lname">Message</label>
-        <input type="text" id="message" name="message"><br><br>
-        <input type="submit" value="HIGH FIVE">
+        <label id="lbl1" for="fname">Name</label> <input type="text" id="name" name="name">
+        <br><br><label id="lbl2" for="lname">Email</label> <input type="text" id="email" name="email">
+        <br><br><label id="lbl3" for="lname">Subject</label> <input type="text" id="subject" name="subject">
+        <br><br><label id="lbl" for="lname">Message</label> <input id="msg" type="text" id="message" name="message"><br><br>
+        <input id="submitt" type="submit" value="HIGH FIVE">
       </form>
+      <div id="con">
+      <img src="images/contactUs.png" alt="contactUs">
+      </div>
     </div>
     <footer>
       <hr>
