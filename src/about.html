@@ -29,7 +29,6 @@
 
       <!--Navigation Bar-->
       <nav id="navbar">
-        <div class="container">
 
         <img src="images/logo site.png" alt="logo">
 
@@ -42,7 +41,6 @@
         <div class="search-container">
           <input id="search-fld" type="text" placeholder="Search videos.." name="search">
           <button id="search-btn" type="submit">Search</button>
-        </div>
         </div>
       </nav>
     </header>
@@ -63,21 +61,23 @@
       <!--Image-->
       <img src="images/temp.png" alt="group photo">
       <p>Hi! We are the Alpha Team, five passionate individuals inspiring others with our creative use of technology and attention to detail. We are dedicated to providing our users with a web design that is easy to use and a fun user experience that they have never had before.</p>
+
+      <hr>
     </div>
-    <hr>
+
+
     <div id="GetInTouch">
-      <H3>Get in touch with us</H3>
+      <p><strong>Get in touch with us</strong></p>
       <form action="/action_page.php">
-        <label for="fname">Name</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="lname">Email</label>
-        <input type="text" id="email" name="email"><br><br>
-        <label for="lname">Subject</label>
-        <input type="text" id="subject" name="subject"><br><br>
-        <label for="lname">Message</label>
-        <input type="text" id="message" name="message"><br><br>
-        <input type="submit" value="HIGH FIVE">
+        <label id="lbl1" for="fname">Name</label> <input type="text" id="name" name="name">
+        <br><br><label id="lbl2" for="lname">Email</label> <input type="text" id="email" name="email">
+        <br><br><label id="lbl3" for="lname">Subject</label> <input type="text" id="subject" name="subject">
+        <br><br><label id="lbl" for="lname">Message</label> <input id="msg" type="text" id="message" name="message"><br><br>
+        <input id="submitt" type="submit" value="HIGH FIVE">
       </form>
+      <div id="con">
+      <img src="images/contactUs.png" alt="contactUs">
+      </div>
     </div>
     <footer>
       <hr>

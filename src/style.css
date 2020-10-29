@@ -288,6 +288,7 @@ float: left;
 }
 #peopleBehind {
   float: left;
+  margin-bottom: 3%;
 }
 
 #peopleBehind img {
@@ -299,8 +300,42 @@ float: left;
 
 #peopleBehind p {
   margin-top: 9%;
+  margin-bottom: 15%;
 }
 
-#GetInTouch {
+#con img{
+  width: 400px;
+  height: auto;
+  float:right;
+}
 
+#GetInTouch p{
+  font-size: 40px;
+}
+#msg {
+  height: 200px;
+  width: 350px;
+}
+
+#lbl {
+  margin-right: 2%;
+}
+
+#lbl1{
+  margin-right: 4%;
+}
+
+#lbl2{
+  margin-right: 4.4%;
+}
+
+#lbl3{
+  margin-right: 3.2%;
+}
+
+#submitt{
+  width: 9%;
+  height: 50px;
+  font-size: 13px;
+  margin-left: 26%;
 }
