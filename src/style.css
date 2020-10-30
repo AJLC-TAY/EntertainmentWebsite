@@ -508,6 +508,14 @@ iframe{
 }
 
 /*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+/*MOBILE VERSION*/
+
 @media only screen and (max-device-width: 480px){
   /*
   This container creates an equal margin to the sides of each web page
@@ -567,7 +575,7 @@ iframe{
   #trending{
     width: auto;
     height: 1000px;
-    padding-left: 4%;
+    padding-right: 2%;
   }
   .vids {
     display: table;
@@ -606,5 +614,91 @@ iframe{
     height: auto;
   }
 
+  /*About*/
+  #aboutTheSite {
+  display: inline;
+  }
+
+  #aboutTheSite img {
+    width: 15%;
+    height: auto;
+  }
+
+  #aboutTheSite p {
+
+  }
+  #peopleBehind {
+
+  }
+
+  #peopleBehind img {
+
+    width: 15%;
+    height: auto;
+  }
+
+  #peopleBehind p {
+    margin-top: 3%;
+    text-align: justify;
+  }
+
+  #peopleBehind loc{
+    margin: 0;
+    padding: 0;
+  }
+
+  #con img{
+    width: 7in;
+    height: auto;
+    float:right;
+    display: inline-block;
+  }
+
+  #GetInTouch p{
+    font-size: 40px;
+  }
+
+  #name{
+    height: 20px;
+    width: 300px;
+
+  }
+
+  #email{
+    height: 20px;
+    width: 300px;
+
+  }
+
+  #subject{
+    height: 20px;
+    width: 300px;
+
+  }
+
+  #msg {
+    height: 200px;
+    width: 600px;
+  }
+
+  #lbl1{
+    margin-right: 3.9%;
+  }
+
+  #lbl2{
+    margin-right: 4%;
+  }
+
+  #lbl3{
+    margin-right: 3.2%;
+  }
+
+
+  #submitt{
+    width: 9%;
+    height: 50px;
+    font-size: 13px;
+    margin-left: 45%;
+  }
 
 }
