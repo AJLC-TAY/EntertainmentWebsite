@@ -73,7 +73,7 @@ const APIController = (function () {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type' : 'application/json',
-                'Authorization' : 'Bearer ' + await _getToken(),
+                'Authorization' : 'Bearer ' + await _getToken()
             }
         });
         return await result.json();
@@ -160,9 +160,8 @@ const UIController = (function() {
                     </button>
                     <div class="desc-con">
                         <h4>${title}</h4>
-                        <p> Artist name: <br>
                         <small>${published}</small><br>
-                        </p>
+                       
                     </div>
                 </div>
                 `;
@@ -485,15 +484,6 @@ const APPController = (function (UICtrl, APICtrl) {
         topTracks.forEach(track => UICtrl.createSongDetail(track));
 
     }
-
-    // const checkRadioButtons = async () => {
-    //     var songRadioBtn = DOMElements.songRadioBtn;
-    //     if (songRadioBtn.checked) {
-    //         return 'songs';
-    //     } else {
-    //         return 'videos';
-    //     }
-    // }
 
         function clickSongRB () {
             DOMElements.videoRadioBtn.checked = false;
