@@ -161,7 +161,7 @@ const UIController = (function() {
                     <div class="desc-con">
                         <h4>${title}</h4>
                         <small>${published}</small><br>
-                       
+
                     </div>
                 </div>
                 `;

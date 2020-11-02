@@ -189,10 +189,10 @@ This container creates an equal margin to the sides of each web page
     display: inline-flex;
     width: 100%;
 }
-
-#result-items-con {
-    width: 65%;
+#result-items-con{
+  width: 100%;
 }
+
 
 /* Spotify Design */
 .spotify-song-con {
@@ -216,7 +216,7 @@ This container creates an equal margin to the sides of each web page
 
 
 #song-list {
-    width: 100%;
+    width: 65%;
     box-sizing: border-box;
     padding:  0;
     list-style: none;
@@ -285,7 +285,7 @@ span {
     flex-wrap: wrap;
     justify-content: flex-start;
     overflow: hidden;
-    width: 100%;
+    width: 65%;
 }
 
 .video-con {
@@ -294,10 +294,14 @@ span {
 }
 
 #videos {
-    display: flex;
     margin: 5px auto;
+    width: 100%;
 }
 
+#video-player{
+  height: 6in;
+  align-items: center;
+}
 
 /*Slideshow Conatiner*/
 
@@ -511,7 +515,7 @@ iframe{
 /*MOBILE VERSION*/
 /*MOBILE VERSION*/
 
-@media only screen and (max-width: 768px) and (min-width: 360px)  {
+@media only screen and (max-device-width: 768px) and (min-device-width: 360px)  {
   /* This container creates an equal margin to the sides of each web page */
   .container{
       width: 90%;
@@ -520,6 +524,9 @@ iframe{
       background-color: white;
       padding-left: 5%;
       padding-right: 5%;
+    }
+    h1{
+      text-align: center;
     }
     /*
     Navigation Style
@@ -657,8 +664,23 @@ iframe{
         /*display: flex;*/
         /*margin: 5px auto;*/
     }
+    footer {
+            margin-bottom: 180px;
+        }
+  /*Artist*/
 
+  .artistContainer{
+    height: auto;
+    width: 80%;
+    display: block;
+    float: none;
+    margin: auto;
 
+  }
+  #artist-list{
+    text-align: center;
+    height: 1500px
+  }
   /*Index*/
   #trending{
     width: auto;
@@ -713,10 +735,11 @@ iframe{
   }
 
   #aboutTheSite p {
-
+    margin-top: 3%;
+    text-align: justify;
   }
   #peopleBehind {
-
+    display: inline;
   }
 
   #peopleBehind img {
@@ -736,7 +759,7 @@ iframe{
   }
 
   #con img{
-    width: 7in;
+    width: 4in;
     height: auto;
     float:right;
     display: inline-block;
@@ -766,15 +789,15 @@ iframe{
 
   #msg {
     height: 200px;
-    width: 600px;
+    width: 400px;
   }
 
   #lbl1{
-    margin-right: 3.9%;
+    margin-right: 6%;
   }
 
   #lbl2{
-    margin-right: 4%;
+    margin-right: 7%;
   }
 
   #lbl3{
@@ -783,10 +806,13 @@ iframe{
 
 
   #submitt{
-    width: 9%;
+    width: 40%;
     height: 50px;
     font-size: 13px;
-    margin-left: 45%;
+    float: right;
+  }
+  #GetInTouch{
+    height: 750px;
   }
 
 }
