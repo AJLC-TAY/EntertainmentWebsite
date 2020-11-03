@@ -48,53 +48,61 @@ This container creates an equal margin to the sides of each web page
     /* filter: gray;*/
   }
 
-.artistContainer p {
-
+.artistContainer:hover img {
+-webkit-filter: none;
+-moz-filter: none;
+-ms-filter: none;
+filter: none;
 }
-  .artistContainer:hover img {
-    -webkit-filter: none;
-    -moz-filter: none;
-    -ms-filter: none;
-    filter: none;
-  }
 
-    #navbar {
-      width: 100%;
-      background-color: white;
-      display: inline-block;
-      color:black;
-      align-content: center;
-    }
 
-    #navbar img[src="images/logo site.png"] {
-      width: 100px;
-      height: auto;
-      float: left;
-      padding-top: 0.5in;
-    }
+nav {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    min-height: 15vh;
+    color: black;
+    align-items: center;
+}
 
-    #navbar li {
-      float: left;
-      margin-left: 3%;
-      display: inline-block;
-      text-align: center;
-      padding-top: 0.5in;
-    }
+nav img {
+    width: 100px;
+    height: auto;
+}
 
-    #navbar a {
-        width: 100px;
-        height: 30px;
-        float: right;
-        color:black;
-        text-decoration: none;
-        text-align: center;
-        font-size: 18px;
-    }
+.nav-links {
+    display: flex;
+    width: auto;
+    height: auto;
+}
 
-#navbar a:hover, #navbar a:focus, a.link-focus{
-    border-bottom-width: 3px;
-    border-bottom-color: black;
-    border-bottom-style: solid;
+nav li {
+    list-style: none;
+    height: auto;
+    margin: auto 10px;
+    width: 80px;
+}
+
+nav ul {
+    margin-left: 500px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul a {
+    width: auto;
+    height: 100px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+
+li a:hover, li a:focus, li a.link-focus{
+    font-weight: bolder;
+    font-size: 16px;
 }
 
 /* Search */
@@ -193,7 +201,6 @@ This container creates an equal margin to the sides of each web page
   width: 100%;
 }
 
-
 /* Spotify Design */
 .spotify-song-con {
     margin: 15px auto;
@@ -206,7 +213,7 @@ This container creates an equal margin to the sides of each web page
     height: 300px;
     position: fixed;
     top: 45vh;
-    right: 2vw;
+    right: 5vw;
 }
 
 .spotify-player iframe {
@@ -285,7 +292,7 @@ span {
     flex-wrap: wrap;
     justify-content: flex-start;
     overflow: hidden;
-    width: 65%;
+    width: 100%;
 }
 
 .video-con {
@@ -515,57 +522,62 @@ iframe{
 /*MOBILE VERSION*/
 /*MOBILE VERSION*/
 
-@media only screen and (max-device-width: 768px) and (min-device-width: 360px)  {
+@media only screen and (max-width: 1024px) and (min-width: 360px) {
   /* This container creates an equal margin to the sides of each web page */
   .container{
       width: 90%;
       margin: auto;
       overflow: hidden;
       background-color: white;
-      padding-left: 0%;
-      padding-right: 0%;
+      padding-left: 0;
+      padding-right: 0;
     }
     h1{
       text-align: center;
     }
-    /*
-    Navigation Style
-    */
+    /* Navigation Style */
     body{
       overflow-x: hidden;
     }
 
-    #navbar{
-
+    nav {
+        position: fixed;
+        z-index: 4;
+        top: 0;
+        display: flex;
     }
 
-    .logo img[src="images/logo site.png"] {
-      width: 100px;
-      height: auto;
-      float: left;
-      padding-top: 0.5in;
-      margin-right: 6%;
+
+    nav ul {
+        margin-left: 0;
     }
+
+/*    nav ul a {
+        width: auto;
+        height: 100px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 15px;
+    }*/
 
     .nav-links {
-      position: absolute;
-      right: 0px;
-      height: 92vh;
-      top: 8vh;
-      background-color: #e8e8e8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 30%;
-      height: 45%;
-      padding-left: 5%;
-      padding-right: 6%;
-      margin-top: 0.5in;
-      color: white;
-      transform: translateX(120%);
-      transition: transform 0.5s ease-in;
-      z-index: 1;
-
+        position: absolute;
+        right: 0;
+        height: 92vh;
+        top: 8vh;
+        background-color: white;
+        opacity: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+        padding-left: 5%;
+        padding-right: 6%;
+        color: white;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 1;
     }
     .nav-links li {
       opacity: 0;
@@ -573,22 +585,15 @@ iframe{
     }
 
     .burger{
-      display: inline-block;
+      display: block;
       cursor: pointer;
       float: right;
-      margin-top: 0.5in;
-
     }
+
     .nav-active{
       transform: translateX(0%);
     }
 
-    .burger div{
-      width: 25px;
-      height: 3px;
-      margin: 5px;
-      background-color: black;
-    }
 
     .burger div{
       width: 25px;
@@ -600,7 +605,7 @@ iframe{
     @keyframes navLinkFade {
       from{
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateX(-50px);
       }
       to{
         opacity: 1;
@@ -608,16 +613,31 @@ iframe{
       }
     }
 
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
 
-  .text{
-    font-size: .25in;
-    width: 94.4%;
-  }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+
+      .text{
+        font-size: .25in;
+        width: 94.4%;
+      }
 
 
 
     #result-items-con {
         width: 100%;
+    }
+
+    .slideshow-container {
+        margin-top: 100px;
     }
 
 

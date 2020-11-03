@@ -616,9 +616,9 @@ const navSlide = () => {
       } else {
         link.style.animation = `navLinkFade .5s ease forwards ${index / 5 + .2}s`;
       }
-
-
     });
+
+    burger.classList.toggle('toggle');
   });
 }
 
