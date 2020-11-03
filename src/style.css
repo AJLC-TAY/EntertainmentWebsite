@@ -532,7 +532,7 @@ iframe{
     Navigation Style
     */
     body{
-
+      overflow-x: hidden;
     }
 
     #navbar{
@@ -557,17 +557,18 @@ iframe{
       flex-direction: column;
       align-items: center;
       width: 30%;
-      height: 50%;
+      height: 45%;
       padding-left: 5%;
       padding-right: 6%;
       margin-top: 0.5in;
       color: white;
-      transform: translateX(110%);
+      transform: translateX(120%);
       transition: transform 0.5s ease-in;
       z-index: 1;
 
     }
     .nav-links li {
+      opacity: 0;
 
     }
 
@@ -596,16 +597,16 @@ iframe{
       background-color: black;
     }
 
-    @@keyframes navLinkFade {
-    from{
-      opacity: 0;
-      transform: translateX(50px);
+    @keyframes navLinkFade {
+      from{
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to{
+        opacity: 1;
+        transform: translateX(0px);
+      }
     }
-    to{
-      opacity: 1;
-      transform: translateX(0px);
-    }
-  }
 
 
   .text{
