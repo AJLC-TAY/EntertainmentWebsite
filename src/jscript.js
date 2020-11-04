@@ -1,3 +1,10 @@
+/**
+ * Controller responsible for fetching data from Spotify, Youtube
+ * and other relevant data for the making of DOM elements of the
+ * website.
+ *
+ * Author: Cutay, Alvin John L.
+ */
 const APIController = (function () {
     window.onload = loadClientAPI;
     // YOUTUBE REQUIREMENTS
@@ -15,7 +22,7 @@ const APIController = (function () {
 
     /** Private methods for Youtube API */
 
-    //loads the Youtube API
+    /* Loads the Youtube API */
     function loadClientAPI() {
         gapi.client.setApiKey(YT_API_KEY);
         gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
@@ -24,7 +31,7 @@ const APIController = (function () {
         gapi.client.init({'clientId': YT_CLIENT_ID});
     }
 
-    // gets the artists data
+    /* Gets the artists data */
     const _fetchArtistData = async () => {
         const result = await fetch('http://bighitmusic.com/Artist.txt', {
             headers: {
@@ -36,7 +43,7 @@ const APIController = (function () {
     }
 
 
-    // fetches the videos by the explicit keyword
+    /* Fetches the videos by the explicit keyword */
     const _fetchVideos = async (keyword) => {
         var response = await gapi.client.youtube.search.list({
             "part": "snippet",
@@ -50,7 +57,7 @@ const APIController = (function () {
 
     /** Private methods for Spotify API */
 
-    // Fetches the token of the Spotify API
+    /* Fetches the token of the Spotify API */
     const _getToken = async () => {
         const result = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
@@ -65,7 +72,7 @@ const APIController = (function () {
         return data.access_token;
     }
 
-    // Fetches the Top Tracks of an artist by its ID, in a country
+    /* Fetches the Top Tracks of an artist by its ID, in a country */
     const _getTopTracks = async (artistId, market) => {
 
         const result = await fetch (`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=${market}`, {
@@ -79,7 +86,7 @@ const APIController = (function () {
         return await result.json();
     }
 
-    // Fetches the tracks related to the searched keyword
+    /* Fetches the tracks related to the searched keyword */
     const _fetchSongs = async (keyword) => {
         let query = encodeURI(keyword);
         const result = await fetch (`https://api.spotify.com/v1/search?q=${query}&type=track&market=PH`, {
@@ -91,37 +98,34 @@ const APIController = (function () {
             }
         });
         return await result.json();
-
-
     }
 
     // use of closures to access the private methods
     return {
-
         // public method
         fetchArtistData() {
             return _fetchArtistData();
         },
-
         fetchVideos(keyword) {
             return _fetchVideos(keyword);
-        },
-
-        getToken() {
-            return _getToken();
         },
         getTopTracks(artistId, market, token) {
             return _getTopTracks(artistId, market, token);
         },
         fetchSongs(keyword) {
             return _fetchSongs(keyword);
-
         }
     }
-
 })();
 
+
+/**
+ * Controller responsible for the creation of DOM elements.
+ * Authors: Cutay, Alvin John L. & Del-ong, Kilrone B.
+ * */
 const UIController = (function() {
+    /* Constant that holds all classes and IDs of the necessary
+    elements for the making of DOM elements.*/
     const DOMElements = {
         head: 'head',
         style: '#main-style',
@@ -147,6 +151,9 @@ const UIController = (function() {
     }
 
     /** Private methods */
+    /* Creates the video detail inside the Music page
+    *  Author: Del-ong, Kilrone B.
+    * */
     const _createVideoDetail = async (song) => {
         let title = song.snippet.title;
         let published = song.snippet.publishedAt;
@@ -161,17 +168,18 @@ const UIController = (function() {
                     <div class="desc-con">
                         <h4>${title}</h4>
                         <small>${published}</small><br>
-
                     </div>
                 </div>
                 `;
-
-
         try {
             document.querySelector(DOMElements.videoList).insertAdjacentHTML('beforeend', html);
         } catch (e){}
     }
 
+    /*
+    * Creates the artist detail that would be seen in the Artist page
+    * Author: Cutay, Alvin John L.
+    * */
     const _createArtistDetail = async (artist) => {
         let img = artist.img;
         let name = artist.name;
@@ -197,6 +205,10 @@ const UIController = (function() {
         } catch (e) {}
     }
 
+    /*
+    * Creates filter buttons
+    * Author: Cutay, Alvin John L.
+    * */
     const _createFilterButtons = async (artist) => {
         let name = artist.nickname;
 
@@ -211,6 +223,10 @@ const UIController = (function() {
         } catch (e) {}
     }
 
+    /*
+   * Creates the message to inform users that no results has been found.
+   * Author: Cutay, Alvin John L.
+   * */
     const _displayNoSongResults = async () => {
         let html = `<p>No results found.</p>`;
         try {
@@ -218,10 +234,12 @@ const UIController = (function() {
         } catch (e) {}
     }
 
+    /*
+   * Creates the song detail to be placed in the website.
+   * Author: Cutay, Alvin John L.
+   * */
     const _createSongDetail = async (track) => {
         let artistName = track.album.artists[0].name;
-        // let trackId = track.id;
-        // let artistId = track.album.artists[0].id;
         let albumuri = track.album.uri;
         var trackName = track.name;
         let albumName = track.album.name;
@@ -256,6 +274,10 @@ const UIController = (function() {
         }
     }
 
+    /*
+      * Shows the embed spotify player to play the songs under the same album ID.
+      * Author: Cutay, Alvin John L.
+      * */
     const _playAlbumEmbed = async (albumid) => {
         document.querySelector('.spotify-player').innerHTML = ``;
         let html = `
@@ -273,7 +295,11 @@ const UIController = (function() {
         return keyword;
     }
 
-    //Added
+
+    /*
+      *
+      * Author: Del-ong, Kilrone B.
+      * */
     const _playVideo = async (videoid) => {
         document.querySelector('#videoContainer').innerHTML = ``;
         let html = `
@@ -376,10 +402,13 @@ const UIController = (function() {
     }
 })();
 
+/**
+ *
+ * Authors: Cutay, Alvin John L., & Del-ong, Kilrone B.
+ * */
 const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
-    const videoIDs = Array();
     let topTracks = [];
 
     const loadSeeMVButtons = async () => {
@@ -598,8 +627,9 @@ const APPController = (function (UICtrl, APICtrl) {
 APPController.init();
 
 
-// Author: Calica, Gwyneth M.
-// Hamburger icon
+/*
+ * Author: Calica, Gwyneth M.
+ */
 const navSlide = () => {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav-links');
