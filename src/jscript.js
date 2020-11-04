@@ -3,7 +3,7 @@
  * and other relevant data for the making of DOM elements of the
  * website.
  *
- * Author: Cutay, Alvin John L.
+ * Author: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  */
 const APIController = (function () {
     window.onload = loadClientAPI;
