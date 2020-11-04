@@ -427,7 +427,7 @@ background: #f4f4f2;
   border: 1px solid black;
 }
 .peopleBehind img{
-  width: 40%;
+  width: 80%;
   height: auto;
   margin-left: 1%;
 }
@@ -864,94 +864,128 @@ iframe{
   }
 
   /*About*/
-  #aboutTheSite {
-  display: inline;
+  .wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+    border: 2px dotted black;
+    border-radius: 5px;
   }
-
-  #aboutTheSite img {
-    width: 15%;
-    height: auto;
+  .wrapper>*{
+    padding: 5px;
+    margin:20px;
+    flex:1 100%;
+    border-radius: 5px;
   }
-
-  #aboutTheSite p {
-    margin-top: 3%;
+  .aboutTheSite {
+  background: #f4f4f2;
+  }
+  .aboutTheSite h2{
+    text-align: center;
+  }
+  .aboutTheSite p{
     text-align: justify;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
   }
-  #peopleBehind {
-    display: inline;
+  .peopleBehind {
+    background: #e8e8e8;
+    border: 1px solid black;
   }
-
-  #peopleBehind img {
-
-    width: 15%;
+  .peopleBehind img{
+    width: 40%;
     height: auto;
+    margin-left: 1%;
   }
-
-  #peopleBehind p {
-    margin-top: 3%;
+  .peopleBehind h2{
+    text-align: center;
+  }
+  .peopleBehind p {
     text-align: justify;
-  }
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
 
-  #peopleBehind loc{
+  }
+  .loc{
     margin: 0;
-    padding: 0;
+    padding: 0px 10px 10px 10px;
+    background: #e8e8e8;
+    border: 1px solid black;
   }
 
   #con img{
-    width: 4in;
+    width: 50%;
     height: auto;
     float:right;
     display: inline-block;
   }
 
   #GetInTouch p{
-    font-size: 40px;
+    font-size: 50px;
   }
 
   #name{
     height: 20px;
-    width: 300px;
-
+    width: 45%;
+    border-radius: 5px;
+  }
+  #name:focus{
+    background: #e1e1e1;
   }
 
   #email{
     height: 20px;
-    width: 300px;
-
+    width: 45%;
+    border-radius: 5px;
+  }
+  #email:focus{
+    background: #e1e1e1;
   }
 
   #subject{
     height: 20px;
-    width: 300px;
-
+  width: 45%;
+    border-radius: 5px;
   }
-
+  #subject:focus{
+    background: #e1e1e1;
+  }
   #msg {
     height: 200px;
-    width: 400px;
+    width: 45%;
+    border-radius: 5px;
+  }
+  #msg:focus{
+    background: #e1e1e1;
   }
 
   #lbl1{
-    margin-right: 6%;
+    margin-right: 3.9%;
   }
 
   #lbl2{
-    margin-right: 7%;
+    margin-right: 4%;
   }
 
   #lbl3{
     margin-right: 3.2%;
   }
 
+  #lbl4{
+    padding-bottom: 15px;
+  }
+
 
   #submitt{
-    width: 40%;
+    width: 12%;
     height: 50px;
     font-size: 13px;
-    float: right;
+    margin-left: 45%;
+    cursor: pointer;
   }
-  #GetInTouch{
-    height: 750px;
-  }
+
+
 
 }
