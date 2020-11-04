@@ -308,9 +308,21 @@ span {
     width: 100%;
 }
 
+#videoContainer {
+  margin-left: 1in;
+  margin-right: 1in;
+  text-align: center;
+
+
+}
+
 #video-player{
+  width: 12in;
   height: 6in;
-  align-items: center;
+
+  text-align: center;
+
+
 }
 
 /*Slideshow Conatiner*/

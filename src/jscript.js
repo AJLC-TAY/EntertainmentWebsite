@@ -277,7 +277,7 @@ const UIController = (function() {
     const _playVideo = async (videoid) => {
         document.querySelector('#videoContainer').innerHTML = ``;
         let html = `
-             <iframe id="video-player" src="https://www.youtube.com/embed/${videoid}" style="width: 900px" height="600px"
+             <iframe id="video-player" src="https://www.youtube.com/embed/${videoid}" 
                        frameborder="0" allowtransparency="true"
                       allow="encrypted-media"></iframe>
         `;
