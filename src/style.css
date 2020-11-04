@@ -461,7 +461,7 @@ background: #f4f4f2;
 
 #name{
   height: 20px;
-  width: 45%;
+  width: 35%;
   border-radius: 5px;
 }
 #name:focus{
@@ -470,7 +470,7 @@ background: #f4f4f2;
 
 #email{
   height: 20px;
-  width: 45%;
+  width: 35%;
   border-radius: 5px;
 }
 #email:focus{
@@ -479,7 +479,7 @@ background: #f4f4f2;
 
 #subject{
   height: 20px;
-width: 45%;
+width: 35%;
   border-radius: 5px;
 }
 #subject:focus{
@@ -515,7 +515,7 @@ width: 45%;
   width: 12%;
   height: 50px;
   font-size: 13px;
-  margin-left: 45%;
+  margin: auto;
   cursor: pointer;
 }
 
@@ -600,6 +600,7 @@ iframe{
         z-index: 4;
         top: 0;
         display: flex;
+        height: 100px;
     }
 
     nav ul {
@@ -792,10 +793,16 @@ iframe{
       margin-left: 5%;
       margin-right: 6%;
     }
-    
-    .video-player {
-      width: 200px;
-      height: auto;
+    #videoContainer {
+      margin-left: 0in;
+      margin-right: 0in;
+      text-align: center;
+
+    }
+
+    #video-player {
+      width: 4.5in;
+      height: 2.5in;
     }
 
 
@@ -894,7 +901,7 @@ iframe{
     border: 1px solid black;
   }
   .peopleBehind img{
-    width: 40%;
+    width: 90%;
     height: auto;
     margin-left: 1%;
   }
@@ -979,7 +986,7 @@ iframe{
 
 
   #submitt{
-    width: 12%;
+    width: 15%;
     height: 50px;
     font-size: 13px;
     margin-left: 45%;
