@@ -1,3 +1,4 @@
+/*Author: Natividad, Hudson Kit P.*/
 * {
     font-family: Montserrat, sans-serif;
 }
@@ -8,6 +9,7 @@ h1 {
 /*
 This container creates an equal margin to the sides of each web page
 */
+/*Author: Natividad, Hudson Kit P.*/
 .container{
     width: 90%;
     margin: auto;
@@ -17,7 +19,7 @@ This container creates an equal margin to the sides of each web page
     padding-right: 5%;
   }
   /*Artist HTML*/
-
+  /*Author: Calica, Gwyneth M.*/
   #artist-list{
     width: auto;
     height: 1000px;
@@ -106,8 +108,6 @@ li a:hover, li a:focus, li a.link-focus{
 }
 
 /* Search */
-
-
 .search-container {
     float: right;
     padding: 0;
@@ -326,7 +326,7 @@ span {
 }
 
 /*Slideshow Conatiner*/
-
+/*Author: Calica, Gwyneth M.*/
 .slideshow-container{
   max-width: 1500px;
   position: relative;
@@ -397,7 +397,8 @@ span {
 }
 
 /*About*/
-/*Author: Palma, Leslie Joy J.*/
+/*Author: Palma, Leslie Joy J.
+          Natividad, Hudson Kit P.*/
 .wrapper{
   display: flex;
   flex-flow: row wrap;
@@ -522,7 +523,8 @@ width: 35%;
 
 
 /*Index*/
-
+/*Author: Calica, Gwyneth M.
+          Natividad, Hudson Kit P.*/
 iframe{
   height: 2in;
   width: 3.5in;
@@ -578,6 +580,8 @@ iframe{
 
 @media only screen and (max-width: 1024px) {
     /* This container creates an equal margin to the sides of each web page */
+    /*Author: Calica, Gwyneth M.
+              Natividad, Hudson Kit P.*/
     .container {
         width: 90%;
         margin: auto;
@@ -592,6 +596,8 @@ iframe{
     }
 
     /* Navigation Style */
+    /*Author: Calica, Gwyneth M.
+              Natividad, Hudson Kit P.*/
     body {
         overflow-x: hidden;
     }
@@ -607,7 +613,8 @@ iframe{
     nav ul {
         margin-left: 0;
     }
-
+    /*Hamburger Icon*/
+    /*Author: Calica, Gwyneth M.*/
     .nav-links {
         position: absolute;
         right: 0;
@@ -798,6 +805,8 @@ iframe{
       margin-left: 5%;
       margin-right: 6%;
     }
+
+    /*Author: Calica, Gwyneth M.*/
     #videoContainer {
       margin-left: 0in;
       margin-right: 0in;
@@ -819,7 +828,7 @@ iframe{
             margin-bottom: 180px;
         }
   /*Artist*/
-
+  /*Author: Calica, Gwyneth M.*/
   .artistContainer{
     height: auto;
     width: 80%;
@@ -833,6 +842,8 @@ iframe{
     height: 1500px
   }
   /*Index*/
+  /*Author: Calica, Gwyneth M.
+            Natividad, Hudson Kit P.*/
   #trending{
     width: auto;
     height: 2250px;

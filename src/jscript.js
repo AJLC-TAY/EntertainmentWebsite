@@ -598,7 +598,7 @@ const APPController = (function (UICtrl, APICtrl) {
 APPController.init();
 
 
-// Gwyneth
+// Author: Calica, Gwyneth M.
 // Hamburger icon
 const navSlide = () => {
   const burger = document.querySelector('.burger');
