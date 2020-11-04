@@ -1,7 +1,7 @@
 const APIController = (function () {
     window.onload = loadClientAPI;
     // YOUTUBE REQUIREMENTS
-    const YT_API_KEY = 'AIzaSyBmbwKSePliPBSyHyeA6BRuoxgfLES4YeQ';
+    const YT_API_KEY = 'AIzaSyDGdhwvUVmISQJlo8oforHn9LmFL-wJZ7M';
     const YT_CLIENT_ID = '471584331255-p66pq86kuef1ocv3jcectp3t9kb1f9bl.apps.googleusercontent.com';
     const BIGHIT_CHANNELID = 'UC3IZKseVpdzPSBaWxBxundA';
 
@@ -277,7 +277,7 @@ const UIController = (function() {
     const _playVideo = async (videoid) => {
         document.querySelector('#videoContainer').innerHTML = ``;
         let html = `
-             <iframe id="video-player" src="https://www.youtube.com/embed/${videoid}" 
+             <iframe id="video-player" src="https://www.youtube.com/embed/${videoid}"
                        frameborder="0" allowtransparency="true"
                       allow="encrypted-media"></iframe>
         `;

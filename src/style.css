@@ -788,6 +788,16 @@ iframe{
         /*display: flex;*/
         /*margin: 5px auto;*/
     }
+    .desc-con {
+      margin-left: 5%;
+      margin-right: 6%;
+    }
+    
+    .video-player {
+      width: 200px;
+      height: auto;
+    }
+
 
     #videos {
         /*display: flex;*/
