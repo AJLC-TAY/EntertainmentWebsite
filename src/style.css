@@ -707,6 +707,10 @@ iframe{
         width: 100%;
     }
 
+    #song-list {
+        width: 350px;
+    }
+
 
 
     /* Search */
