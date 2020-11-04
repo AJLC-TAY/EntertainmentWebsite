@@ -121,7 +121,7 @@ const APIController = (function () {
 
 /**
  * Controller responsible for the creation of DOM elements.
- * Authors: Cutay, Alvin John L. & Del-ong, Kilrone B.
+ * Authors: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  * */
 const UIController = (function() {
     /* Constant that holds all classes and IDs of the necessary
@@ -152,7 +152,7 @@ const UIController = (function() {
 
     /** Private methods */
     /* Creates the video detail inside the Music page
-    *  Author: Del-ong, Kilrone B.
+    *  Author: Del-ong, Kilrone Yance B.
     * */
     const _createVideoDetail = async (song) => {
         let title = song.snippet.title;
@@ -297,8 +297,8 @@ const UIController = (function() {
 
 
     /*
-      *
-      * Author: Del-ong, Kilrone B.
+      * Creates the YouTube video player that is used to play the searched videos
+      * Author: Del-ong, Kilrone Yance B.
       * */
     const _playVideo = async (videoid) => {
         document.querySelector('#videoContainer').innerHTML = ``;
@@ -403,8 +403,8 @@ const UIController = (function() {
 })();
 
 /**
- *
- * Authors: Cutay, Alvin John L., & Del-ong, Kilrone B.
+ * Controller responsible for controlling both the APIController and UIController
+ * Authors: Cutay, Alvin John L., & Del-ong, Kilrone Yance B.
  * */
 const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
