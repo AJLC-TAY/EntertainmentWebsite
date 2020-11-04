@@ -385,39 +385,55 @@ span {
 }
 
 /*About*/
-#aboutTheSite {
-float: left;
+.wrapper{
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  border: 2px dotted black;
+  border-radius: 10px;
 }
-
-#aboutTheSite img {
-  float: left;
-  width: 40%;
-  height: auto;
-  margin-right: 1%;
+.wrapper>*{
+  padding: 10px;
+  margin:20px;
+  flex:1 100%;
+  border-radius: 10px;
 }
-
-#aboutTheSite p {
-  margin-top: 10%;
+.aboutTheSite {
+background: #f4f4f2;
 }
-#peopleBehind {
-  float: left;
+.aboutTheSite h2{
+  text-align: center;
 }
-
-#peopleBehind img {
-  float: right;
+.aboutTheSite p{
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+.peopleBehind {
+  background: #e8e8e8;
+  border: 1px solid black;
+}
+.peopleBehind img{
   width: 40%;
   height: auto;
   margin-left: 1%;
 }
-
-#peopleBehind p {
-  margin-top: 3%;
-  text-align: justify;
+.peopleBehind h2{
+  text-align: center;
 }
+.peopleBehind p {
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
 
-#peopleBehind loc{
+}
+.loc{
   margin: 0;
-  padding: 0;
+  padding: 0px 10px 10px 10px;
+  background: #e8e8e8;
+  border: 1px solid black;
 }
 
 #con img{
@@ -428,30 +444,42 @@ float: left;
 }
 
 #GetInTouch p{
-  font-size: 40px;
+  font-size: 50px;
 }
 
 #name{
   height: 20px;
-  width: 300px;
-
+  width: 45%;
+  border-radius: 5px;
+}
+#name:focus{
+  background: #e1e1e1;
 }
 
 #email{
   height: 20px;
-  width: 300px;
-
+  width: 45%;
+  border-radius: 5px;
+}
+#email:focus{
+  background: #e1e1e1;
 }
 
 #subject{
   height: 20px;
-  width: 300px;
-
+width: 45%;
+  border-radius: 5px;
 }
-
+#subject:focus{
+  background: #e1e1e1;
+}
 #msg {
   height: 200px;
-  width: 600px;
+  width: 45%;
+  border-radius: 5px;
+}
+#msg:focus{
+  background: #e1e1e1;
 }
 
 #lbl1{
@@ -466,13 +494,19 @@ float: left;
   margin-right: 3.2%;
 }
 
+#lbl4{
+  padding-bottom: 15px;
+}
+
 
 #submitt{
-  width: 9%;
+  width: 12%;
   height: 50px;
   font-size: 13px;
   margin-left: 45%;
+  cursor: pointer;
 }
+
 
 /*Index*/
 
@@ -516,6 +550,18 @@ iframe{
   height: auto;
 }
 
+.box{
+  position: relative;
+  max-width: 100%;
+  background-color: yellow;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+}
+.aboutLogoPicture{
+  max-width: 35%;
+  flex: 0 0 300px;
+}
 
 @media only screen and (max-width: 1024px) {
     /* This container creates an equal margin to the sides of each web page */
