@@ -469,7 +469,7 @@ background: #f4f4f2;
 
 #subject{
   height: 20px;
-width: 35%;
+  width: 35%;
   border-radius: 5px;
 }
 #subject:focus{
@@ -477,8 +477,10 @@ width: 35%;
 }
 #msg {
   height: 200px;
-  width: 45%;
+  width: 43%;
+  float:left;
   border-radius: 5px;
+  margin-left: 5px;
 }
 #msg:focus{
   background: #e1e1e1;
@@ -497,7 +499,8 @@ width: 35%;
 }
 
 #lbl4{
-  padding-bottom: 15px;
+  padding-bottom: 12px;
+
 }
 
 
@@ -507,48 +510,69 @@ width: 35%;
   font-size: 13px;
   margin: auto;
   cursor: pointer;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: right;
 }
 
 
 /* Index */
-/* Author: Calica, Gwyneth M., & Natividad, Hudson Kit P. */
+/* Author: Natividad, Hudson Kit P. */
 iframe{
   height: 2in;
-  width: 3.5in;
+  width: 3in;
+  margin: 0;
+  padding: 0;
 }
 #trending{
   width: auto;
-  height: 800px;
+  height: 900px;
+  padding: 0;
+  margin-top: 0.5in;
 }
 .vids {
-  display: inline-block;
-  float: left;
+  display:block;
   height: auto;
-  width: 25%;
+  float: left;
+  width: 23%;
+  margin-bottom: 0;
+  margin-top: 8px;
+  padding-bottom: 0;
+  margin-left: 22px;
 }
 
 .vids h3{
-  margin-right: 1in;
+  margin-left: 13px;
 }
 
 #news {
   width: auto;
-  height: 750px;
+  height: 900px;
+  margin: 0;
+  padding: 0;
 }
 
+#news hr {
+    margin: 0;
+    padding: 0;
+}
 .newss {
   display: inline-block;;
   float: left;
   height: auto;
-  width: 25%;
+  width: 23%;
+  padding: 0;
+  margin-top: 0.2in;
+  margin-left: 23px;
 }
 
 .newss h3{
     margin-right: 1in;
+    font-size: 12px;
   }
 
 .newss img {
-  width: 300px;
+  width: 3in;
   height: auto;
 }
 
