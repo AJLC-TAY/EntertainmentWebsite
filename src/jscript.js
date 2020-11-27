@@ -123,11 +123,7 @@ const APIController = (function () {
  * Controller responsible for the creation of DOM elements.
  * Authors: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  * */
-const UIController = /**
- *
- * @type {{enterTrackToSearch(*=): Promise<*>, createFilterButtons(*=): Promise<void>, createSongDetail(*=): Promise<void>, getPlayAlbumBtn(): {playAlbumButtons: NodeListOf<Element>}, getRadioBtns(): {videoRadioBtn: Element | null, songRadioBtn: Element | null}, createVideoDetail(*=): Promise<void>, inputOutputFields(): {searchButton: Element | null, resultItemsCon: Element | null, searchField: Element | null, videoRadioBtn: Element | null, videoCon: Element | null, songList: Element | null, topTrackList: Element | null, artistList: Element | null, searchVidList: any | null, searchSongList: any | null, videoList: Element | null, songCon: Element | null, filterButtons: Element | null, songRadioBtn: Element | null}, createArtistDetail(*=): Promise<void>, clearTopTrackList(): Promise<void>, getPlayVideo(*=): Promise<void>, displayNoSongsResults(): Promise<void>, clearVideoList(): Promise<void>, getSeeVidButtons(): {seeVideosButton: NodeListOf<Element>}, clearBody(): *, playAlbumEmbed(*=): Promise<void>, getPlayVideosButtons(): {playVideosButtons: NodeListOf<Element>}, clearSongList(): Promise<void>}}
- */
-(function() {
+const UIController = (function() {
     /* Constant that holds all classes and IDs of the necessary
     elements for the making of DOM elements.*/
     const DOMElements = {
