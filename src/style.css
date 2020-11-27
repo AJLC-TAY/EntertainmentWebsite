@@ -517,7 +517,6 @@ background: #f4f4f2;
 
 
 /* Index */
-/* Author: Natividad, Hudson Kit P. */
 iframe{
   height: 2in;
   width: 3in;
@@ -589,6 +588,45 @@ iframe{
   flex: 0 0 300px;
 }
 
+/*LOGIN CSS*/
+#loginForm{
+   display: block;
+   text-align: center;
+    margin-top: 10%;
+    margin-bottom: 25%;
+    
+}
+
+#loginForm img {
+    width: 200px;
+    height: auto;
+}
+
+#btn{
+    font-size: 10px;
+}
+#buttonLogin {
+    width: 130px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+#signUp {
+    width: 7%;
+}
+
+/*SIGN UP CSS*/
+
+#signUpForm {
+    display: block;
+   text-align: center;
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+
+#signUpForm img {
+    width: 200px;
+    height: auto;
+}
 @media only screen and (max-width: 1024px) {
     /* This container creates an equal margin to the sides of each web page */
     /* Author: Calica, Gwyneth M., & Natividad, Hudson Kit P. */
