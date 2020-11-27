@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
+    <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="fixed song list">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_2020_10_02_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_2020_10_02_AM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_4_2020_11_42_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_4_2020_11_42_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavascriptTest/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavascriptTest/res/Artists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavascriptTest/res/up_arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavascriptTest/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavascriptTest/tests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/jscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/songs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/3rd Year/WEBDEV/Midterm/2194014" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -41,7 +54,9 @@
       <workItem from="1604309471945" duration="12037000" />
       <workItem from="1604368708722" duration="9440000" />
       <workItem from="1604498064744" duration="4944000" />
-      <workItem from="1604506004290" duration="825000" />
+      <workItem from="1605008552702" duration="314000" />
+      <workItem from="1606374328874" duration="1005000" />
+      <workItem from="1606446211906" duration="7551000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -85,14 +100,7 @@
       <option name="project" value="LOCAL" />
       <updated>1604499514746</updated>
     </task>
-    <task id="LOCAL-00007" summary="Added some comments to the jscript.js file">
-      <created>1604506536517</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1604506536517</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,15 +112,17 @@
     <MESSAGE value="fixed media and made spotify responsive but not final" />
     <MESSAGE value="Added features in responsive navigation bar" />
     <MESSAGE value="fixed song list" />
-    <MESSAGE value="Added some comments to the jscript.js file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some comments to the jscript.js file" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed song list" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1604506535250">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1604724278110">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604499513631" />
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1604506535250" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604724278110" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605008868489">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605008868489" />
     <state x="147" y="65" key="MergeDialog" timestamp="1604369109303">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -121,14 +131,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1603988856280" />
-    <state x="361" y="152" key="Vcs.Push.Dialog.v2" timestamp="1604506543729">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604499516209" />
-    <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1604506543729" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604504534473">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604499516209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604504534473" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604499516209" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606446369347">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606446369347" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606454058718">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606454058718" />
   </component>
 </project>

@@ -123,7 +123,11 @@ const APIController = (function () {
  * Controller responsible for the creation of DOM elements.
  * Authors: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  * */
-const UIController = (function() {
+const UIController = /**
+ *
+ * @type {{enterTrackToSearch(*=): Promise<*>, createFilterButtons(*=): Promise<void>, createSongDetail(*=): Promise<void>, getPlayAlbumBtn(): {playAlbumButtons: NodeListOf<Element>}, getRadioBtns(): {videoRadioBtn: Element | null, songRadioBtn: Element | null}, createVideoDetail(*=): Promise<void>, inputOutputFields(): {searchButton: Element | null, resultItemsCon: Element | null, searchField: Element | null, videoRadioBtn: Element | null, videoCon: Element | null, songList: Element | null, topTrackList: Element | null, artistList: Element | null, searchVidList: any | null, searchSongList: any | null, videoList: Element | null, songCon: Element | null, filterButtons: Element | null, songRadioBtn: Element | null}, createArtistDetail(*=): Promise<void>, clearTopTrackList(): Promise<void>, getPlayVideo(*=): Promise<void>, displayNoSongsResults(): Promise<void>, clearVideoList(): Promise<void>, getSeeVidButtons(): {seeVideosButton: NodeListOf<Element>}, clearBody(): *, playAlbumEmbed(*=): Promise<void>, getPlayVideosButtons(): {playVideosButtons: NodeListOf<Element>}, clearSongList(): Promise<void>}}
+ */
+(function() {
     /* Constant that holds all classes and IDs of the necessary
     elements for the making of DOM elements.*/
     const DOMElements = {
@@ -135,7 +139,6 @@ const UIController = (function() {
         searchButton: '#search-btn',
         filterButtons: '#filters',
         playVideosButtons: '.video-btn',
-
 
         // spotify
         artistList02: '#list',
@@ -150,6 +153,57 @@ const UIController = (function() {
         songCon: '.all-song-con'
     }
 
+
+    /**
+     * Returns the specified created DOM element
+     * @param element Identifier of element to create
+     * @returns {HTMLElement} Generated element
+     */
+    function createElement(element) {
+        return document.createElement(`${element}`);
+    }
+
+    /**
+     * Returns the specified created DOM element with the implicit class
+     * @param element Identifier of element to create
+     * @param eclass Class name of the element
+     * @returns {HTMLElement} Generated element
+     */
+    function createElementWithClass(element, eclass) {
+        let el = document.createElement(`${element}`);
+        el.className = eclass;
+        return el;
+    }
+
+    /**
+     * Returns the created image containing the specified attributes
+     * @param src Location of the image
+     * @param alt Alternative value of the image
+     * @param title Title of the image
+     * @returns {HTMLElement} Generated image
+     */
+    function createImage(src, alt, title) {
+        let img = createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.title = title;
+        return img;
+    }
+
+    /**
+     * Returns the created button with the specified ID, class, and inner text
+     * @param id Identification of the button
+     * @param bclass Class name of the button
+     * @param innerTxt Text displayed inside the button
+     * @returns {HTMLElement} Generated button
+     */
+    function createButton(id, bclass, innerTxt) {
+        let btn = createElementWithClass('button', bclass);
+        btn.id = id;
+        btn.innerText = innerTxt;
+        return btn;
+    }
+
     /** Private methods */
     /* Creates the video detail inside the Music page
     *  Author: Del-ong, Kilrone Yance B.
@@ -159,20 +213,24 @@ const UIController = (function() {
         let published = song.snippet.publishedAt;
         let videoID = song.id.videoId;
         let img = song.snippet.thumbnails.high;
-        let html =
-            `
-                <div class="video-con">
-                    <button id="${videoID}" class="video-btn">
-                        <img src="${img.url}" alt="Music video" title="${title}" style="width: 200px" >
-                    </button>
-                    <div class="desc-con">
-                        <h4>${title}</h4>
-                        <small>${published}</small><br>
-                    </div>
-                </div>
-                `;
+        let videoCon = createElementWithClass('div', 'video-con');
+        let videoBtn = createElementWithClass('button', 'video-btn');
+        videoBtn.id = `${videoID}`;
+        let thumbnail = createImage(`${img.url}`, 'Music Video', `${title}`);
+        let descCon = createElementWithClass('div', 'desc-con');
+        let h4 = createElement('h4');
+        h4.innerText = `${title}`;
+        let small = createElement('small');
+        small.innerText = `${published}`;
+
+        videoBtn.insertAdjacentElement('beforeend', thumbnail);
+        videoCon.insertAdjacentElement('beforeend', videoBtn);
+        descCon.insertAdjacentElement('beforeend', h4);
+        descCon.insertAdjacentElement('beforeend', small);
+        videoCon.insertAdjacentElement('beforeend', descCon);
+
         try {
-            document.querySelector(DOMElements.videoList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.videoList).insertAdjacentElement('beforeend', videoCon);
         } catch (e){}
     }
 
@@ -184,26 +242,24 @@ const UIController = (function() {
         let img = artist.img;
         let name = artist.name;
         let nickName = artist.nickname;
-        const html =
-            `
-                    <div class="artistContainer">
-                        <a href="https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/">
-                        <img src="${img}" alt="${nickName}">
-                        </a>
-                        <br>
-                        <p><em><strong>${name}</strong></em></p>
-                        <p>
-                            Debut Year: ${artist.debutYear}<br>
-                            No of Artists: ${artist.memberNo}
-                        </p>
-                    </div>
+        let artistCon = createElementWithClass('div', 'artistContainer');
+        let link = createElement('a');
+        link.src = 'https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/';
+        let artistImage = `<img src="${img}" alt="${nickName}" title="${nickName} image">`
+        let artistName = createElement('p');
+        artistName.innerHTML = `<strong>${name}</strong>`;
+        let artistDesc = createElement('p');
+        artistDesc.innerHTML = `Debut Year: ${artist.debutYear}<br> No of Artists: ${artist.memberNo}`;
 
-                `;
-
+        link.innerHTML = artistImage;
+        artistCon.insertAdjacentElement('beforeend', link);
+        artistCon.insertAdjacentElement('beforeend', createElement('br'));
+        artistCon.insertAdjacentElement('beforeend', artistName);
+        artistCon.insertAdjacentElement('beforeend', artistDesc);
         try {
-            document.querySelector(DOMElements.artistList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.artistList).insertAdjacentElement('beforeend', artistCon);
         } catch (e) {}
-    }
+     }
 
     /*
     * Creates filter buttons
@@ -212,14 +268,17 @@ const UIController = (function() {
     const _createFilterButtons = async (artist) => {
         let name = artist.nickname;
 
-        const html = `
-            <button id="${name}" class="filter-but" type="button">
-                <p style="margin: 2px 4px;">${name}</p>
-            </button>
-        `;
+        let button = createElementWithClass('button', 'filter-but');
+        button.type = 'button';
+        button.id = `${name}`;
+        let p = createElement('p');
+        p.innerText = `${name}`;
+        p.style = "margin: 2px 4px;";
+
+        button.insertAdjacentElement('beforeend', p);
 
         try {
-            document.querySelector(DOMElements.filterButtons).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.filterButtons).insertAdjacentElement('beforeend', button);
         } catch (e) {}
     }
 
@@ -246,28 +305,36 @@ const UIController = (function() {
         let releasedate = track.album.release_date;
         let img = track.album.images[1];
 
-        let html = `
-            <div id="${artistName}" class="spotify-song-con">
-                <h3>${trackName}</h3>
-                <div class="track-info" >
-                     <img src="${img.url}" alt="Album image"  >
-                     <div class="song-desc-con">
+        let spotifySongCon = createElementWithClass('div', 'spotify-song-con');
+        spotifySongCon.id = `${artistName}`;
 
-                        <p>${artistName} <br>
-                            <span> <small>Album name: ${albumName} <br>
-                            Released on: ${releasedate}
-                            </small> </span>
-                        </p>
+        let h3 = createElement('h3');
+        h3.innerText = `${trackName}`;
 
-                       <button id="${albumuri}" class="album-btn">Play album</button>
-                       <button id="${trackName}" class="see-vid"><u>See Music Videos</u></button>
-                    </div>
-                </div>
-            </div>
-        `;
+        let trackInfo = createElementWithClass('div', 'track-info');
+        let albumImg = createImage(`${img.url}`, "Album image", `${albumName} album image`);
+        let songDescCon = createElementWithClass('div', 'song-desc-con');
+        let p = createElement('p');
+        p.innerHTML = `${artistName}<br>
+                        <span> <small>Album name: ${albumName}
+                        <br>Released on: ${releasedate}</small> </span>`;
+        let albumBtn = createButton(`${albumuri}`, 'album-btn', 'Play album');
+        let seeVidLink = createElementWithClass('button', 'see-vid');
+        seeVidLink.id = `${trackName}`;
+        seeVidLink.innerHTML = `<u>See Music Videos</u>`;
+
+        songDescCon.insertAdjacentElement('beforeend', p);
+        songDescCon.insertAdjacentElement('beforeend', albumBtn);
+        songDescCon.insertAdjacentElement('beforeend', seeVidLink);
+
+        trackInfo.insertAdjacentElement('beforeend', albumImg);
+        trackInfo.insertAdjacentElement('beforeend', songDescCon);
+        spotifySongCon.insertAdjacentElement('beforeend', h3);
+        spotifySongCon.insertAdjacentElement('beforeend', trackInfo);
+
 
         try {
-            document.querySelector(DOMElements.songList).insertAdjacentHTML('beforeend', html);
+            document.querySelector(DOMElements.songList).insertAdjacentElement('beforeend', spotifySongCon);
             //document.getElementById(`${trackName}`).onclick = async () => { await _enterTrackToSearch(trackName) };
         } catch (e) {
             console.log('Error toptracks');
@@ -334,7 +401,8 @@ const UIController = (function() {
                 songRadioBtn: document.querySelector(DOMElements.songRadioBtn),
                 videoRadioBtn: document.querySelector(DOMElements.videoRadioBtn),
                 videoCon: document.querySelector(DOMElements.videoCon),
-                songCon: document.querySelector(DOMElements.songCon)
+                songCon: document.querySelector(DOMElements.songCon),
+                videoList: document.querySelector(DOMElements.videoList)
             }
         },
 
@@ -456,31 +524,35 @@ const APPController = (function (UICtrl, APICtrl) {
         await loadSeeMVButtons();
         await loadPlayAlbumButtons();
 
-        let filterButtons = DOMElements.filterButtons.children;
-        for (const fbtn of filterButtons) {
-            fbtn.onclick = async () => {
-                const artistNickname = fbtn.id; // the id of the button is the nickname of the artist
 
-                if (artistNickname === 'All') {
-                    // clear the songs inside the top track list
-                    await UICtrl.clearTopTrackList();
-                    topTracks.forEach(song => UICtrl.createSongDetail(song));
-                    await loadSeeMVButtons();
-                    await loadPlayAlbumButtons();
-                } else {
-                    await UICtrl.clearTopTrackList();
+        try {
+            let filterButtons = DOMElements.filterButtons.children;
+            for (const fbtn of filterButtons) {
+                fbtn.onclick = async () => {
+                    const artistNickname = fbtn.id; // the id of the button is the nickname of the artist
 
-                    // get the spotify id of the artist, as provided by the button
-                    const artistInfo = artistsDetail.find(item => item.nickName === artistNickname);
-                    const spID = artistInfo.sId;
+                    if (artistNickname === 'All') {
+                        // clear the songs inside the top track list
+                        await UICtrl.clearTopTrackList();
+                        topTracks.forEach(song => UICtrl.createSongDetail(song));
+                        await loadSeeMVButtons();
+                        await loadPlayAlbumButtons();
+                    } else {
+                        await UICtrl.clearTopTrackList();
 
-                    // if the container id of the song detail matches the id of the button then add to the list
-                    const filtered = topTracks.filter(item => item.artists[0].id === spID);
-                    filtered.forEach(song => UICtrl.createSongDetail(song));
-                    await loadSeeMVButtons();
-                    await loadPlayAlbumButtons();
+                        // get the spotify id of the artist, as provided by the button
+                        const artistInfo = artistsDetail.find(item => item.nickName === artistNickname);
+                        const spID = artistInfo.sId;
+
+                        // if the container id of the song detail matches the id of the button then add to the list
+                        const filtered = topTracks.filter(item => item.artists[0].id === spID);
+                        filtered.forEach(song => UICtrl.createSongDetail(song));
+                        await loadSeeMVButtons();
+                        await loadPlayAlbumButtons();
+                    }
                 }
             }
+        } catch (e) {
         }
     }
 
@@ -565,6 +637,7 @@ const APPController = (function (UICtrl, APICtrl) {
             if (DOMElements.songRadioBtn.checked === true) {
                 await UICtrl.clearSongList();
                 await searchSPTFY();
+                await loadSeeMVButtons();
                 await loadPlayAlbumButtons();
             } else {
                 await UICtrl.clearVideoList();
@@ -587,6 +660,8 @@ const APPController = (function (UICtrl, APICtrl) {
                     }
                 })
             });
+
+
         } catch (e) {
             console.log('No tracks found.')
         }
