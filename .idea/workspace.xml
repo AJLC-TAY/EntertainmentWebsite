@@ -4,26 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="fixed song list">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_2020_10_02_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_2020_10_02_AM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_4_2020_11_42_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_4_2020_11_42_PM__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/includes/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/includes/dataclass.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/includes/loadartist.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jsonfiles/artist.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jsonfiles/toptracks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EntertainmentWebsite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EntertainmentWebsite.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavascriptTest/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavascriptTest/res/Artists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavascriptTest/res/up_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavascriptTest/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavascriptTest/tests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Artist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Artist.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/jscript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/songs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,13 +41,51 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/3rd Year/WEBDEV/Midterm/2194014" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.14250207" />
+    <property name="project.structure.side.proportion" value="0.23791103" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src\jsonfiles" />
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src\includes" />
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\images" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="EntertainmentWebsite" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,7 +102,12 @@
       <workItem from="1604498064744" duration="4944000" />
       <workItem from="1605008552702" duration="314000" />
       <workItem from="1606374328874" duration="1005000" />
-      <workItem from="1606446211906" duration="7551000" />
+      <workItem from="1606446211906" duration="8283000" />
+      <workItem from="1606536091511" duration="232000" />
+      <workItem from="1606536330885" duration="625000" />
+      <workItem from="1606568097935" duration="1327000" />
+      <workItem from="1606570045461" duration="15395000" />
+      <workItem from="1606621463447" duration="19399000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -103,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604499514746</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Converted backtick html elements into DOM generation methods">
+      <created>1606454194345</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606454194345</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Converted backtick html elements into DOM generation methods">
+      <created>1606454287810</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606454287810</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,17 +177,26 @@
     <MESSAGE value="fixed media and made spotify responsive but not final" />
     <MESSAGE value="Added features in responsive navigation bar" />
     <MESSAGE value="fixed song list" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed song list" />
+    <MESSAGE value="Converted backtick html elements into DOM generation methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Converted backtick html elements into DOM generation methods" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1604724278110">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1606626776302">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604724278110" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605008868489">
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606626776302" />
+    <state x="916" y="226" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606641989543">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605008868489" />
+    <state x="916" y="226" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1606641989543" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606454285235">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606454285235" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606536327103">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606536327103" />
     <state x="147" y="65" key="MergeDialog" timestamp="1604369109303">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -134,14 +205,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1603988856280" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604499516209">
+    <state x="384" y="271" key="NewPhpClassDialog" timestamp="1606573261100">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604499516209" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606446369347">
+    <state x="384" y="271" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1606573261100" />
+    <state x="235" y="353" key="NewPhpFileDialog" timestamp="1606573269457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606446369347" />
+    <state x="235" y="353" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606573269457" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1606626318677">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606626318677" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606454290226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606454290226" />
+    <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606570439226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1606570439226" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606569200128">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606569200128" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606454058718">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

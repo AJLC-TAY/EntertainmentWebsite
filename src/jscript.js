@@ -86,6 +86,19 @@ const APIController = (function () {
         return await result.json();
     }
 
+    /* Fetches tracks of a specified album */
+    const _getTracksOfAlbum = async (albumId) => {
+        const result = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {
+           method: 'GET',
+           headers: {
+               'Accept': 'application/json',
+               'Content-Type' : 'application/json',
+               'Authorization' : 'Bearer ' + await _getToken()
+           }
+        });
+        return await result.json();
+    }
+
     /* Fetches the tracks related to the searched keyword */
     const _fetchSongs = async (keyword) => {
         let query = encodeURI(keyword);
@@ -111,6 +124,9 @@ const APIController = (function () {
         },
         getTopTracks(artistId, market, token) {
             return _getTopTracks(artistId, market, token);
+        },
+        getTracksOfAlbum(artistId) {
+            return _getTracksOfAlbum((artistId));
         },
         fetchSongs(keyword) {
             return _fetchSongs(keyword);
@@ -241,6 +257,7 @@ const UIController = (function() {
         let artistCon = createElementWithClass('div', 'artistContainer');
         let link = createElement('a');
         link.src = 'https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/';
+        link.target = '_blank';
         let artistImage = `<img src="${img}" alt="${nickName}" title="${nickName} image">`
         let artistName = createElement('p');
         artistName.innerHTML = `<strong>${name}</strong>`;
@@ -270,7 +287,6 @@ const UIController = (function() {
         let p = createElement('p');
         p.innerText = `${name}`;
         p.style = "margin: 2px 4px;";
-
         button.insertAdjacentElement('beforeend', p);
 
         try {
@@ -327,7 +343,6 @@ const UIController = (function() {
         trackInfo.insertAdjacentElement('beforeend', songDescCon);
         spotifySongCon.insertAdjacentElement('beforeend', h3);
         spotifySongCon.insertAdjacentElement('beforeend', trackInfo);
-
 
         try {
             document.querySelector(DOMElements.songList).insertAdjacentElement('beforeend', spotifySongCon);
@@ -474,7 +489,6 @@ const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
     let topTracks = [];
-
     const loadSeeMVButtons = async () => {
         // Add event listener for every button inside the song detail container to search for its music video
         let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
@@ -580,35 +594,53 @@ const APPController = (function (UICtrl, APICtrl) {
         });
         topTracks.forEach(track => UICtrl.createSongDetail(track));
 
+        // // print the url of images for the albums
+        // let jsonStringTracks = "{";
+        // topTracks.forEach(track => {
+        //         let artistName = track.album.artists[0].name;
+        //         let albumuri = track.album.uri;
+        //         let albumid = albumuri.substr(14);
+        //         var trackName = track.name;
+        //         let albumName = track.album.name;
+        //         let releasedate = track.album.release_date;
+        //         let img = track.album.images[1].url;
+        //
+        //         let stringjson = `{"name":"${artistName}","albumid":"${albumid}","trackName":"${trackName}","albumName":"${albumName}",
+        //     "releasdate":"${releasedate}","img":"${img}"},`
+        //         jsonStringTracks += stringjson;
+        //     }
+        // );
+        // jsonStringTracks += "}";
+        // console.log(jsonStringTracks);
     }
 
-        function clickSongRB () {
-            DOMElements.videoRadioBtn.checked = false;
-            DOMElements.songRadioBtn.checked = true;
-            DOMElements.songCon.style.display = 'block';
-            DOMElements.videoCon.style.display = 'none';
-            try {
-                document.querySelector('#spot-player').style.display = 'block';
-            } catch (e) {}
+    function clickSongRB () {
+        DOMElements.videoRadioBtn.checked = false;
+        DOMElements.songRadioBtn.checked = true;
+        DOMElements.songCon.style.display = 'block';
+        DOMElements.videoCon.style.display = 'none';
+        try {
+            document.querySelector('#spot-player').style.display = 'block';
+        } catch (e) {}
 
-            try {
-                document.querySelector('.filter-con').style.display = 'block';
-            } catch (e) {}
-        }
+        try {
+            document.querySelector('.filter-con').style.display = 'block';
+        } catch (e) {}
+    }
 
-        function clickVideoRB () {
-            DOMElements.videoRadioBtn.checked = true;
-            DOMElements.songRadioBtn.checked = false;
-            DOMElements.songCon.style.display = 'none';
-            DOMElements.videoCon.style.display = 'block';
-            try {
-                document.querySelector('#spot-player').style.display = 'none';
-            } catch (e) {}
-            try {
-                document.querySelector('.filter-con').style.display = 'none';
-            } catch (e) {
-            }
+    function clickVideoRB () {
+        DOMElements.videoRadioBtn.checked = true;
+        DOMElements.songRadioBtn.checked = false;
+        DOMElements.songCon.style.display = 'none';
+        DOMElements.videoCon.style.display = 'block';
+        try {
+            document.querySelector('#spot-player').style.display = 'none';
+        } catch (e) {}
+        try {
+            document.querySelector('.filter-con').style.display = 'none';
+        } catch (e) {
         }
+    }
 
     try {
         DOMElements.songRadioBtn.addEventListener('click', () => {
