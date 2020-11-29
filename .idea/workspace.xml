@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/includes/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/includes/dataclass.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/includes/loadartist.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jsonfiles/artist.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jsonfiles/toptracks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EntertainmentWebsite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EntertainmentWebsite.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loadtrackstoDB.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Artist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Artist.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/jscript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -50,33 +45,20 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\jsonfiles" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\includes" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\images" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test" />
       <module name="EntertainmentWebsite" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,7 +89,9 @@
       <workItem from="1606536330885" duration="625000" />
       <workItem from="1606568097935" duration="1327000" />
       <workItem from="1606570045461" duration="15395000" />
-      <workItem from="1606621463447" duration="19399000" />
+      <workItem from="1606621463447" duration="19706000" />
+      <workItem from="1606650412876" duration="155000" />
+      <workItem from="1606651449450" duration="10288000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -165,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606454287810</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="created class in php and added data into database; video and tracks are not included">
+      <created>1606642271300</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606642271300</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +169,8 @@
     <MESSAGE value="Added features in responsive navigation bar" />
     <MESSAGE value="fixed song list" />
     <MESSAGE value="Converted backtick html elements into DOM generation methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Converted backtick html elements into DOM generation methods" />
+    <MESSAGE value="created class in php and added data into database; video and tracks are not included" />
+    <option name="LAST_COMMIT_MESSAGE" value="created class in php and added data into database; video and tracks are not included" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1606626776302">
@@ -189,10 +181,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="916" y="226" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1606641989543" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606454285235">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606642269124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606454285235" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606642269124" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606536327103">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -217,18 +209,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606626318677" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606454290226">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606642276905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606454290226" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606642276905" />
     <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606570439226">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1606570439226" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606569200128">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606642152987">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606569200128" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606642152987" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606454058718">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

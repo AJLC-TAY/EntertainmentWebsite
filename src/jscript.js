@@ -86,19 +86,6 @@ const APIController = (function () {
         return await result.json();
     }
 
-    /* Fetches tracks of a specified album */
-    const _getTracksOfAlbum = async (albumId) => {
-        const result = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {
-           method: 'GET',
-           headers: {
-               'Accept': 'application/json',
-               'Content-Type' : 'application/json',
-               'Authorization' : 'Bearer ' + await _getToken()
-           }
-        });
-        return await result.json();
-    }
-
     /* Fetches the tracks related to the searched keyword */
     const _fetchSongs = async (keyword) => {
         let query = encodeURI(keyword);
@@ -124,9 +111,6 @@ const APIController = (function () {
         },
         getTopTracks(artistId, market, token) {
             return _getTopTracks(artistId, market, token);
-        },
-        getTracksOfAlbum(artistId) {
-            return _getTracksOfAlbum((artistId));
         },
         fetchSongs(keyword) {
             return _fetchSongs(keyword);
