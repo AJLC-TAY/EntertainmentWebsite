@@ -1,0 +1,28 @@
+{
+  "name": "express20",
+  "version": "1.0.0",
+  "description": "Project website",
+  "main": "app.js",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "init": "^0.1.2",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJLC-TAY/EntertainmentWebsite.git"
+  },
+  "author": "Alpha Group",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJLC-TAY/EntertainmentWebsite/issues"
+  },
+  "homepage": "https://github.com/AJLC-TAY/EntertainmentWebsite#readme"
+}

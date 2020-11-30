@@ -42,7 +42,6 @@ const APIController = (function () {
         return await result.json();
     }
 
-
     /* Fetches the videos by the explicit keyword */
     const _fetchVideos = async (keyword) => {
         var response = await gapi.client.youtube.search.list({
@@ -513,11 +512,9 @@ const APPController = (function (UICtrl, APICtrl) {
             artistsDetail.push(artistDet);
         });
 
-
         await loadTopTracks();
         await loadSeeMVButtons();
         await loadPlayAlbumButtons();
-
 
         try {
             let filterButtons = DOMElements.filterButtons.children;
@@ -577,7 +574,6 @@ const APPController = (function (UICtrl, APICtrl) {
             return 0;
         });
         topTracks.forEach(track => UICtrl.createSongDetail(track));
-
         // // print the url of images for the albums
         // let jsonStringTracks = "{";
         // topTracks.forEach(track => {
@@ -712,7 +708,6 @@ const APPController = (function (UICtrl, APICtrl) {
 })(UIController, APIController);
 
 APPController.init();
-
 
 /*
  * Author: Calica, Gwyneth M.
