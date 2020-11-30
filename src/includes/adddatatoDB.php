@@ -1,10 +1,7 @@
 <?php
-//    include("database.php");
-
-    $database = new mysqli("p:localhost", "root", "", "bighitent", 3308);
+    include("database.php");
 
     function loadArtistToDB() {
-        $database = new mysqli("p:localhost", "root", "", "bighitent", 3308);
         $data = file_get_contents('../jsonfiles/artist.json');
         $json = json_decode($data,true)['artists'];
         foreach ($json as $value) {
@@ -24,7 +21,6 @@
     }
 
     function loadTopTracks() {
-        $database = new mysqli("p:localhost", "root", "", "bighitent", 3308);
         $data = file_get_contents('../jsonfiles/toptracks.json');
         $json = json_decode($data,true)['toptracks'];
         foreach ($json as $value) {

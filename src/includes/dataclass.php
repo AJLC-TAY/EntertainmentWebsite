@@ -1,16 +1,20 @@
 <?php
-    class Album {
+    class Album implements JsonSerializable {
         private $albumid;
         private $albumname;
-        private $artistid;
+        private $artistname;
         private $releaseddate;
         private $albumimg;
 
-        public function __construct($albumname, $artistid, $releaseddate, $albumimg) {
+        public function __construct($albumname, $artistname, $releaseddate, $albumimg) {
             $this->albumname = $albumname;
-            $this->artistid = $artistid;
+            $this->artistname = $artistname;
             $this->releaseddate = $releaseddate;
             $this->albumimg = "data:image;base64,".base64_encode($albumimg);
+        }
+
+        public function set_albumid($id) {
+            $this->albumid = $id;
         }
 
         public function get_albumid() {
@@ -21,8 +25,8 @@
             return $this->albumname;
         }
 
-        public function get_artistid() {
-            return $this->artistid;
+        public function get_artistname() {
+            return $this->artistname;
         }
 
         public function get_releaseddate() {
@@ -31,6 +35,16 @@
 
         public function get_albumimg() {
             return $this->albumimg;
+        }
+
+        public function jsonSerialize() {
+            return [
+                  'albumid' => $this->albumid,
+                  'albumname' => $this->albumname,
+                  'artistname' => $this->artistname,
+                  'releaseddate' => $this->releaseddate,
+                  'albumimg' => $this->albumimg
+            ];
         }
     }
 
