@@ -18,10 +18,6 @@
         .albumimage {
             width: 70px; height: auto;
         }
-
-        /*.editdelete-con {*/
-        /*    height: 100px;*/
-        /*}*/
         .editdelete-con button{
             height: 32px;
             padding-top: 3px;
@@ -92,7 +88,7 @@
             $releaseddate = $alb->get_releaseddate();
 
             echo "<tr>
-                    <th name='$albumid' scope='row'>$albumid</th>
+                    <th scope='row'>$albumid</th>
                     <td>
                         <img class='albumimage' src='$albumimg' alt='$albumname image'>
                     </td>
@@ -100,10 +96,18 @@
                     <td>$artistname</td>
                     <td>$releaseddate</td>
                     <td><div class='col editdelete-con'>
-                            <a href='addAlbum.php'><button id='$albumid' class='btn btn-secondary' type='button' name='edit'>Edit</button></a><br>
-                            <button id='$albumid' class='btn btn-danger' onclick='getAlbum(this.id)' type='button' name='delete'>Delete
-                              <!--  <img src='../images/delete_icon.jpg' alt='delete button' title='Delete $albumname' style='width: 15px;height: auto;'> -->
-                            </button>
+                        <form action='updateAlbum.php' method='post' target='_self'>
+                                <input type='hidden' value='$albumid' name='albumid'>
+                                <input type='hidden' value='$albumimg' name='albumimage'>
+                                <input type='hidden' value='$albumname' name='albumname'>
+                                <input type='hidden' value='$artistname' name='artistname'>
+                                <input type='hidden' value='$releaseddate' name='releaseddate'>
+                               
+                                <button id='$albumid' class='btn btn-secondary' type='submit' name='edit'>Edit</button>
+                        </form><br>
+                        <button value='$albumid' class='btn btn-danger' onclick='getAlbum(this.id)' type='button' name='delete'>Delete
+                          <!--  <img src='../images/delete_icon.jpg' alt='delete button' title='Delete $albumname' style='width: 15px;height: auto;'> -->
+                        </button>
                         </div>
                     </td>
                   </tr>";
@@ -112,12 +116,10 @@
         echo "</tbody></table></div>";
 
         include '../includes/jqueryAndBootstrap.php';
-        echo '<script type="text/javascript" src="openAlbum.js"></script>';
-
     ?>
-
+    <script type="text/javascript" src="databaseCon.js"></script>
 </body>
 <?php
-    include 'footer.php';
+    include 'footer.html';
 ?>
 </html>

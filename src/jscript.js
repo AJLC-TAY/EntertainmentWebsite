@@ -85,7 +85,7 @@ const APIController = (function () {
         return await result.json();
     }
 
-    /* Fetches the tracks related to the searched keyword */
+    /* Fetches the admin.tracks related to the searched keyword */
     const _fetchSongs = async (keyword) => {
         let query = encodeURI(keyword);
         const result = await fetch (`https://api.spotify.com/v1/search?q=${query}&type=track&market=PH`, {
@@ -558,10 +558,10 @@ const APPController = (function (UICtrl, APICtrl) {
     }
 
     /*
-     * Fetches the top tracks of every artist from the Spotify API
+     * Fetches the top admin.tracks of every artist from the Spotify API
      */
     const loadTopTracks = async () => {
-        // loading of top tracks to the song list
+        // loading of top admin.tracks to the song list
         for (const artist of artistsDetail) {
             let tracks = (await APICtrl.getTopTracks(artist.sId, 'PH')).tracks;
             topTracks = topTracks.concat(tracks);
@@ -671,7 +671,7 @@ const APPController = (function (UICtrl, APICtrl) {
 
 
         } catch (e) {
-            console.log('No tracks found.')
+            console.log('No admin.tracks found.')
         }
     }
 

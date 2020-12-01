@@ -1,6 +1,6 @@
-const mysql = require('../node_modules/mysql');
-const fetch = require('../node_modules/node-fetch');
-const btoa = require('../node_modules/btoa');
+const mysql = require('node_modules/mysql');
+const fetch = require('node_modules/node-fetch');
+const btoa = require('node_modules/btoa');
 // SPOTIFY REQUIREMENTS
 const SP_CLIENT_ID = '42aee398a9a943fd839ff19072e88470';
 const SP_CLIENT_SEC = 'ce15cd96b46444929eec7b641dea0365';
@@ -26,7 +26,7 @@ const getToken = async () => {
     return data.access_token;
 }
 
-/* Fetches tracks of a specified album */
+/* Fetches admin.tracks of a specified album */
 const getTracksOfAlbum = async (albumId) => {
     const result = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {
         method: 'GET',

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>Add Album | Admin</title>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">-->
+<!--    <title>Add Album | Admin</title>-->
+<!--</head>-->
+<!--<body>-->
 <?php
     include '../includes/database.php';
     include '../includes/bootstrapDatepicker.php';
@@ -15,8 +15,8 @@
     echo "<div><a href='albums.php'><button class='btn btn-link'>< Back</button></a></div>";
 
     // album form using bootstrap plugin
-    echo "<div id='albumForm'  enctype='multipart/form-data' method='post' style='float: left; width: 40vw'>";
-    echo '<form method="post">';
+    echo "<div id='albumForm' style='float: left; width: 40vw'>";
+    echo '<form method="post" enctype="multipart/form-data">';
     echo '<div class="form-group ">
               <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>
               <input class="form-control" id="name" name="name" type="text"/>
@@ -34,7 +34,6 @@
     while($stmt->fetch()) {
         $artists[] = [$artistid, $artistname];
     }
-
     foreach ($artists as $art) {
         echo "<option id='$art[0]'>$art[1]</option>";
     }
@@ -43,14 +42,14 @@
 
     echo '<div class="form-group ">
             <label class="control-label requiredField" for="date">Released Date <span class="asteriskField">*</span></label>';
-    echo "  <input class='form-control' id='date' name='date' placeholder='YYYY-MM-DD' type='text' value='$date'/> </div>";
+    echo "  <input class='form-control' id='date' name='date' placeholder='YYYY-MM-DD' type='text' value='$date'/>
+           </div>";
     echo '<div class="form-group ">
               <label class="control-label" for="image">Upload Image</label>
               <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
           </div>';
     echo '<button class="btn btn-secondary " name="addalbum" type="submit">Add Album</button></form>';
-
-    echo '<script type="text/javascript" src="openAlbum.js"></script>';
+    echo '<script type="text/javascript" src="databaseCon.js"></script>';
 
 //    echo '<form action="" enctype="multipart/form-data" method="post">
 //            <label for="name">Album Name</label>
@@ -82,8 +81,8 @@
 //            <center><button class="btn btn-secondary">Add</button></center>
 //          </form>';
 ?>
-</body>
+<!--</body>-->
 <?php
-    include 'footer.php';
-?>
-</html>
+//    include 'footer.html';
+//?>
+<!--</html>-->
