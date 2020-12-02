@@ -7,6 +7,15 @@
         [name='trackname'] {
             width: 250px;
         }
+
+        .albumimg {
+            width: 180px;
+            height: auto;
+        }
+
+        .album-con {
+            text-align: center;
+        }
     </style>
     </head>
     <body>
@@ -14,16 +23,17 @@
 // admin.tracks
 include '../includes/database.php';
 $albumid = $_POST['albumid'];
-$albumname = $_POST['albumname'];
+$albumname = $_POST['name'];
 $albumimg = $_POST['albumimg'];
 
 echo "<div class='row' style='margin: auto 0;'>";
-echo "<div class='center col-4'>
-            <img src='$albumimg' alt='$albumname image'>
-            <h3>$albumname</h3>
+echo "<div class='center col-2 album-con'>
+            <img class='albumimg' src='$albumimg' alt='$albumname image'>
+            <h5>$albumname</h5>
+            <p>ID: $albumid</p>
       </div>";
 
-echo "<div id='tracklist' class='col-7'>";
+echo "<div id='tracklist' class='col-10'>";
 $query = "SELECT trackid, tracks.name, musicfile FROM tracks WHERE albumid=$albumid";
 $stmt = $database->stmt_init();
 $stmt -> prepare($query);
@@ -47,10 +57,17 @@ echo "<table class='table col'>
                 <tr><td colspan='3'>";
 
                     foreach ($tracks as $track) {
-                        echo "<form class='row' action='updateTrack.php' method='post' enctype='multipart/form-data'>";
+                        echo "<form class='row' action='updateTrack.php' method='post' enctype='multipart/form-data'>
+                              <input type='hidden' name='albumid' value='$albumid'>";
                         echo "<div class='form-group col'>
                                 <input name='trackid' type='hidden' value='$track[0]'/>
                                 <input class='form-control' id='$track[0]' name='trackname' type='text' value='$track[1]'/>
+                              </div>";
+                        echo "<div class='col'>
+                                    <audio controls>
+                                        <source src='$track[2]' type='audio/mpeg'>
+                                            Your browser does not support the audio tag.
+                                    </audio>
                               </div>";
                         echo "<div class='form-group col'>
                                 <input class='form-control' id='$track[0]' name='file' accept='audio/mpeg4-generic' type='file'/>

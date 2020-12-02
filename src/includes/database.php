@@ -1,2 +1,2 @@
 <?php
-    $database = new mysqli("p:localhost", "root", "", "bighitent", 3308);
+    $database = new mysqli("p:localhost", "root", "", "bighitent", 3306);

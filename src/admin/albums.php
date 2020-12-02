@@ -120,6 +120,6 @@
     <script type="text/javascript" src="databaseCon.js"></script>
 </body>
 <?php
-    include 'footer.html';
+    include '../includes/footer.html';
 ?>
 </html>
