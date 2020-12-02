@@ -63,6 +63,10 @@
             $this->membernum = $membernum;
         }
 
+        public function set_artistid($id) {
+            $this->artistid = $id;
+        }
+
         public function get_artistid() {
             return $this->artistid;
         }
@@ -83,4 +87,3 @@
             return $this->membernum;
         }
     }
-
