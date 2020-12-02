@@ -76,7 +76,6 @@ echo "<table class='table col'>
                                 <button type='submit' class='btn btn-secondary' name='update'>Update</button>
                                 <a href='deleteTrack.php' target='_self'><button class='btn btn-danger'>Delete</button></a>
                               </div>";
-
                         echo "</form>";
                     }
 

@@ -13,7 +13,7 @@
 
     // album form using bootstrap plugin
     echo "<div id='albumForm' style='width: 40vw'>";
-    echo '<form action="saveAlbumChanges.php" method="post" enctype="multipart/form-data">';
+    echo '<form method="post" enctype="multipart/form-data">';
     echo '<div class="form-group ">
                   <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>';
     echo "        <input type='hidden' name='albumid' value='$albumid'>
@@ -60,6 +60,7 @@
              <input class='btn btn-danger' type='submit' name='delete' value='Delete Album'>
           </div></form>";
     echo "</div></div>";
+    include 'saveAlbumChanges.php';
 include "../includes/bootstrapDatepicker.php";
 echo '<script type="text/javascript" src="databaseCon.js"></script>';
 include '../includes/footer.html';

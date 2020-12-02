@@ -17,10 +17,8 @@ if(isset($_POST['save'])) {
     $dbase ->fetch();
     $dbase ->close();
 
-     echo "<p>$artistid.$albumid.$albumname.$artist.$releaseddate.$file</p>";
-
     $query = "";
-    if ($filesize <= 10000){
+    if ($filesize <= 70000) {
         if ($filesize > 0) {
             $query = "UPDATE albums SET albumname='$albumname', albums.artistid='$artistid', releaseddate='$releaseddate', albumimg='$file' WHERE albumid='$albumid'";
         } else {
@@ -28,9 +26,8 @@ if(isset($_POST['save'])) {
         }
 
         if ($database->query($query)) {
-            echo "<script>window.location='albums.php'</script>";
+            //echo "<script>window.location='albums.php'</script>";
         }
-
     } else {
         echo "<div class='err'>ERROR: Image size is larger than 70KB</div>";
     }

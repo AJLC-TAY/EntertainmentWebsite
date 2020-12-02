@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/albums.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/albums.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/updateAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateTrack.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateTrack.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/updateTracks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateTracks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/database.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +117,7 @@
       <workItem from="1606835417947" duration="571000" />
       <workItem from="1606848062796" duration="1460000" />
       <workItem from="1606850890587" duration="3073000" />
-      <workItem from="1606878016878" duration="8903000" />
+      <workItem from="1606878016878" duration="10072000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -221,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606835646150</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added savealbumchanges">
+      <created>1606887219226</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606887219226</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +242,8 @@
     <MESSAGE value="node modules" />
     <MESSAGE value="finished show albums table and album input page" />
     <MESSAGE value="added upload album and track" />
-    <option name="LAST_COMMIT_MESSAGE" value="added upload album and track" />
+    <MESSAGE value="added savealbumchanges" />
+    <option name="LAST_COMMIT_MESSAGE" value="added savealbumchanges" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1606626776302">
@@ -258,10 +262,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606733443026" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606835637814">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606887210941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606835637814" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606887210941" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606536327103">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -294,10 +298,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1606570439226" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606766528269">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606887240132">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606766528269" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606887240132" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1606729797941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
