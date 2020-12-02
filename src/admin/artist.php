@@ -3,38 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Artists | Admin</title>
-
-    <style>
-        :root {
-            --red: #750000;
-            --darkred: #410505;
-        }
-        #artistlist {
-            width: 40vw;
-            height: 80vh;
-        }
-        .artistimage {
-            width: 70px; height: auto;
-        }
-        .editdelete-con button{
-            height: 32px;
-            padding-top: 3px;
-            width: 70px;
-            margin-bottom: 12px;
-        }
-        button[name="delete"] {
-            background-color: var(--red);
-            border-color: var(--red);
-        }
-        button[name="delete"]:hover {
-            background-color: var(--darkred);
-            border-color: var(--darkred);
-        }
-
-        table {
-            font-size: 14px;
-        }
-    </style>
   </head>
   <body>
     <?php
@@ -52,7 +20,7 @@
 
         $artists = [];
         while($stmt -> fetch()) {
-            $artist = new Artist($artistid, $artistname, $artistimage, $debutyear, $membernum);
+            $artist = new ArtistDetail($artistid, $artistname, $artistimage, $debutyear, $membernum);
             $artist -> set_artistid($artistid);
             $test = $artist->get_artistname();
             $artists[] = $artist;
@@ -110,12 +78,11 @@
         }
 
         echo "</tbody></table></div>";
-
-        include '../includes/jqueryAndBootstrap.php';
     ?>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="databaseCon.js"></script>
   </body>
     <?php
-    include '../includes/footer.html';
+    include '../includes/footer.php';
     ?>
 </html>

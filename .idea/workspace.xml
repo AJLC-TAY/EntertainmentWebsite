@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/admin/addAlbumDB.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/addTrackDB.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/deleteAlbum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/require/getAlbums.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/require/getArtists.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/require/getalbum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/viewTracks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addTrack.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/albums.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/albums.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/databaseCon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/databaseCon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateTrack.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateTrack.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateTracks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/bootstrapDatepicker.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/artist.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/artist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/includes/dataclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/dataclass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/jqueryAndBootstrap.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +119,7 @@
       <workItem from="1606848062796" duration="1460000" />
       <workItem from="1606850890587" duration="3073000" />
       <workItem from="1606878016878" duration="10251000" />
-      <workItem from="1606889118688" duration="34952000" />
+      <workItem from="1606889118688" duration="35678000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -251,7 +233,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606888465888</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="finished album but with no validation of textfields">
+      <created>1606927166769</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1606927166769</updated>
+    </task>
+    <task id="LOCAL-00018" summary="finished album but with no validation of textfields">
+      <created>1606927234475</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1606927234475</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +266,8 @@
     <MESSAGE value="finished show albums table and album input page" />
     <MESSAGE value="added upload album and track" />
     <MESSAGE value="added savealbumchanges" />
-    <option name="LAST_COMMIT_MESSAGE" value="added savealbumchanges" />
+    <MESSAGE value="finished album but with no validation of textfields" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished album but with no validation of textfields" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1606626776302">
@@ -289,14 +286,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606891239137" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606888464501">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606927232743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606888464501" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606927232743" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606536327103">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606536327103" />
+    <state x="349" y="155" key="IDE.errors.dialog" timestamp="1606927212599">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1606927212599" />
     <state x="147" y="65" key="MergeDialog" timestamp="1604369109303">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -329,10 +330,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1606570439226" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606888475248">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606927246382">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606888475248" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606927246382" />
     <state x="648" y="0" width="626" height="810" key="dock-window-1" timestamp="1606902936011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

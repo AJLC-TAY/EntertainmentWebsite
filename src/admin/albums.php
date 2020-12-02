@@ -1,51 +1,5 @@
 <?php include '../includes/head.html'; ?>
     <title>Albums | Admin</title>
-    <style>
-        :root {
-            --red: #750000;
-            --darkred: #410505;
-            --darkwhite: #b5b5b5;
-        }
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        #albumlist {
-            width: 60vw;
-            height: 80vh;
-            overflow: scroll;
-        }
-        .albumimage {
-            width: 70px; height: auto;
-        }
-        .editdelete-con button{
-            height: 32px;
-            padding-top: 3px;
-            width: 70px;
-            margin:6px 6px;
-            border-radius: 5px;
-        }
-        button[name="delete"] {
-            background-color: var(--red);
-            border-color: var(--red);
-            color: white;
-        }
-        button[name="delete"]:hover {
-            background-color: var(--darkred);
-            border-color: var(--darkred);
-        }
-
-        button[name="edit"] {
-            border-color: transparent;
-        }
-        button[name="edit"]:hover {
-            box-shadow: 0 1px 2px gray;
-        }
-
-        table {
-            font-size: 14px;
-        }
-    </style>
 </head>
 
 <body>
@@ -102,6 +56,7 @@
         // back link
         echo "<div><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a></div>";
     ?>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="databaseCon.js"></script>
 </body>
 <?php
