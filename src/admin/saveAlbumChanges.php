@@ -1,5 +1,4 @@
 <?php
-
 include '../includes/database.php';
 if(isset($_POST['save'])) {
     $albumid = $_POST['albumid'];
@@ -26,13 +25,16 @@ if(isset($_POST['save'])) {
         }
 
         if ($database->query($query)) {
-            //echo "<script>window.location='albums.php'</script>";
+            echo "<script>
+                    alert('Changes successfully saved.');
+                    window.location='updateAlbum.php?id=$albumid'</script>";
         }
     } else {
         echo "<div class='err'>ERROR: Image size is larger than 70KB</div>";
     }
 } else if(isset($_POST['updateTracks'])) {
-    include "updateTracks.php";
+    include "viewTracks.php";
 } else if(isset($_POST['delete'])) {
-
+    $albumid = $_POST['albumid'];
+    header("Location: deleteAlbum.php?id=$albumid");
 }

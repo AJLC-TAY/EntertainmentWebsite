@@ -51,16 +51,10 @@
     class Artist {
         private $artistid;
         private $artistname;
-        private $artistimage;
-        private $debutyear;
-        private $membernum;
 
-        public function __construct($artistid, $artistname, $artistimage, $debutyear, $membernum) {
+        public function __construct($artistid, $artistname) {
             $this->artistid = $artistid;
             $this->artistname = $artistname;
-            $this->artistimage = "data:image;base64,".base64_encode($artistimage);
-            $this->debutyear = $debutyear;
-            $this->membernum = $membernum;
         }
 
         public function get_artistid() {
@@ -69,6 +63,18 @@
 
         public function get_artistname() {
             return $this->artistname;
+        }
+    }
+    class ArtistDetail extends Artist {
+        private $artistimage;
+        private $debutyear;
+        private $membernum;
+
+        public function _construct($artistid, $artistname, $artistimage, $debutyear, $membernum) {
+            parent::__construct($artistid, $artistname);
+            $this->artistimage = "data:image;base64,".base64_encode($artistimage);
+            $this->debutyear = $debutyear;
+            $this->membernum = $membernum;
         }
 
         public function get_artistimage() {

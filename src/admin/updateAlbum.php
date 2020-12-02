@@ -3,45 +3,45 @@
 </head>
 <body>
 <?php
-    $albumid = $_POST['albumid'];
-    $albumname = $_POST['albumname'];
-    $artname = $_POST['artistname'];
-    $albumimg = $_POST['albumimage'];
-    $releaseddate = $_POST['releaseddate'];
+    $albumid = $_GET['id'];
+    require '../includes/database.php';
+    require '../includes/dataclass.php';
+    echo "<div class='path-links'>
+              <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'>Albums</a> / <a href='updateAlbum.php?id=$albumid' target='_self'>Update Album</a></pre>
+    </div>";
+    $query = "SELECT albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid) WHERE albumid='$albumid'";
+    $stmt = $database->stmt_init();
+    $stmt->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($imgbin, $albumname, $artistname, $releaseddate);
+    $stmt->fetch();
+
+    $albumimg = "data:image;base64,".base64_encode($imgbin);
+    $stmt->close();
 
     echo "<div class='container row'>";
 
-    // album form using bootstrap plugin
     echo "<div id='albumForm' style='width: 40vw'>";
-    echo '<form method="post" enctype="multipart/form-data">';
+    echo '<form action="saveAlbumChanges.php" method="post" enctype="multipart/form-data">';
     echo '<div class="form-group ">
                   <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>';
     echo "        <input type='hidden' name='albumid' value='$albumid'>
                    <input class='form-control' id='name' name='name' type='text' value='$albumname'/>
              </div>";
     echo '<div class="form-group ">
-                  <label class="control-label requiredField" for="artists">Select an Artist <span class="asteriskField">*</span></label>
+                  <label class="control-label requiredField" for="artists">Select artist <span class="asteriskField">*</span></label>
                   <select class="select form-control" id="artists" name="artists">';
 
-    require '../includes/database.php';
-    $query = "SELECT artistid, artistname FROM artists";
-    $stmt = $database->stmt_init();
-    $stmt->prepare($query);
-    $stmt->execute();
-    $stmt->bind_result($artistid, $artistname);
-    $artists = [];
-    while($stmt->fetch()) {
-        $artists[] = [$artistid, $artistname];
-    }
+    require "require/getArtists.php";
     foreach ($artists as $art) {
-        if ($art[1] == $artname) {
-            echo "<option id='$art[0]' selected>$art[1]</option>";
+        $artid = $art->get_artistid();
+        $name = $art->get_artistName();
+        if ($name == $artistname) {
+            echo "<option id='$artid' selected>$name</option>";
         } else {
-            echo "<option id='$art[0]'>$art[1]</option>";
+            echo "<option id='$artid'>$name</option>";
         }
     }
-    $stmt->close();
-
     echo '</select></div>';
 
     echo '<div class="form-group ">
@@ -56,14 +56,18 @@
          </div>';
     echo '<div class="form-group ">'.
             "<input class='btn btn-primary' type='submit' name='save' value='Save Changes'>
-             <input class='btn btn-secondary' type='submit' name='updateTracks' value='Update Tracks'>
              <input class='btn btn-danger' type='submit' name='delete' value='Delete Album'>
-          </div></form>";
+          </div>
+          </form>
+             <a href='viewTracks.php?id=$albumid'><input class='btn btn-secondary' type='button' value='View Tracks'></a>";
     echo "</div></div>";
-    include 'saveAlbumChanges.php';
-include "../includes/bootstrapDatepicker.php";
+
+echo "<div><a href='albums.php'><button class='btn btn-link'><b><</b> Back</button></a></div>";
+
+
 echo '<script type="text/javascript" src="databaseCon.js"></script>';
-include '../includes/footer.html';
+include '../includes/footer.php';
+echo "<link rel='stylesheet' href='style.css'>";
 
 ?>
 

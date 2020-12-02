@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<?php include '../includes/head.html'; ?>
     <title>Albums | Admin</title>
-
     <style>
         :root {
             --red: #750000;
             --darkred: #410505;
+            --darkwhite: #b5b5b5;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
         }
         #albumlist {
-            width: 40vw;
+            width: 60vw;
             height: 80vh;
+            overflow: scroll;
         }
         .albumimage {
             width: 70px; height: auto;
@@ -22,15 +22,24 @@
             height: 32px;
             padding-top: 3px;
             width: 70px;
-            margin-bottom: 12px;
+            margin:6px 6px;
+            border-radius: 5px;
         }
         button[name="delete"] {
             background-color: var(--red);
             border-color: var(--red);
+            color: white;
         }
         button[name="delete"]:hover {
             background-color: var(--darkred);
             border-color: var(--darkred);
+        }
+
+        button[name="edit"] {
+            border-color: transparent;
+        }
+        button[name="edit"]:hover {
+            box-shadow: 0 1px 2px gray;
         }
 
         table {
@@ -41,28 +50,12 @@
 
 <body>
     <?php
-        include "../includes/database.php";
-
+        echo "<div class='path-links'>
+                <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'>Albums</a></pre>
+        </div>";
         echo "<div>" . date("m/d/Y")."</div>" ;
-
-        $query = 'SELECT albumid, albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid)';
-        $stmt = $database->stmt_init();
-        $stmt -> prepare($query);
-        $stmt -> bind_result($albumid, $albumimg, $albumname, $artistname, $releaseddate);
-        $stmt -> execute();
-
-        include '../includes/dataclass.php';
-
-        $albums = [];
-        while($stmt -> fetch()) {
-            $album = new Album($albumname, $artistname, $releaseddate, $albumimg);
-            $album -> set_albumID($albumid);
-            $test = $album->get_albumname();
-            $albums[] = $album;
-        }
-
         require "../includes/searchAlbumBar.html";
-
+        require 'require/getAlbums.php';
         echo "<div>
                 <a href='addAlbum.php' target='_self'><button class='btn btn-secondary'>Add New Album</button></a>
               </div>";
@@ -95,31 +88,23 @@
                     <td>$albumname</td>
                     <td>$artistname</td>
                     <td>$releaseddate</td>
-                    <td><div class='col editdelete-con'>
-                        <form action='updateAlbum.php' method='post' target='_self'>
-                                <input type='hidden' value='$albumid' name='albumid'>
-                                <input type='hidden' value='$albumimg' name='albumimage'>
-                                <input type='hidden' value='$albumname' name='albumname'>
-                                <input type='hidden' value='$artistname' name='artistname'>
-                                <input type='hidden' value='$releaseddate' name='releaseddate'>
-                               
-                                <button id='$albumid' class='btn btn-secondary' type='submit' name='edit'>Edit</button>
-                        </form><br>
-                        <button value='$albumid' class='btn btn-danger' onclick='getAlbum(this.id)' type='button' name='delete'>Delete
-                          <!--  <img src='../images/delete_icon.jpg' alt='delete button' title='Delete $albumname' style='width: 15px;height: auto;'> -->
-                        </button>
+                    <td><div class='row editdelete-con'>
+                        <a href='updateAlbum.php?id=$albumid'><button id='$albumid' class='btn btn-secondary' name='edit'>Edit</button>
+                        </a> <br>
+                        <a href='deleteAlbum.php?id=$albumid'><button value='$albumid' class='btn btn-danger' type='button' name='delete'>Delete
+                        </button></a>
                         </div>
                     </td>
                   </tr>";
         }
 
         echo "</tbody></table></div>";
-
-        include '../includes/jqueryAndBootstrap.php';
+        // back link
+        echo "<div><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a></div>";
     ?>
     <script type="text/javascript" src="databaseCon.js"></script>
 </body>
 <?php
-    include '../includes/footer.html';
+    include '../includes/footer.php';
 ?>
 </html>

@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.asteriskField {
+  color: var(--red);
+}
