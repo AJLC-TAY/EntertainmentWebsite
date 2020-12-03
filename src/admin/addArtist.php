@@ -4,7 +4,6 @@
 <body>
 <?php
     include '../includes/database.php';
-    include '../includes/bootstrapDatepicker.php';
 
     // back link
     echo "<div><a href='artist.php'><button class='btn btn-link'>< Back</button></a></div>";

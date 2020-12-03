@@ -23,18 +23,16 @@ if(isset($_POST['save'])) {
         } else {
             $query = "UPDATE albums SET albumname='$albumname', albums.artistid='$artistid', releaseddate='$releaseddate' WHERE albumid='$albumid'";
         }
+        $database->query($query);
+//        echo "<script>window.location.assign('albums.php');</script>";
 
-        if ($database->query($query)) {
-            echo "<script>
-                    alert('Changes successfully saved.');
-                    window.location='updateAlbum.php?id=$albumid'</script>";
-        }
+//        if ($database->query($query)) {
+//            header('Location: albums.php');
+//        }
     } else {
         echo "<div class='err'>ERROR: Image size is larger than 70KB</div>";
     }
 } else if(isset($_POST['updateTracks'])) {
     include "viewTracks.php";
-} else if(isset($_POST['delete'])) {
-    $albumid = $_POST['albumid'];
-    header("Location: deleteAlbum.php?id=$albumid");
 }
+?>

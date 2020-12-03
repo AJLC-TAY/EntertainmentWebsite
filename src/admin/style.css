@@ -3,19 +3,15 @@
   --darkred: #410505;
   --darkwhite: #b5b5b5;
 }
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
+/*.row {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*}*/
 
-.asteriskField {
-  color: var(--red);
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
+/*.row {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*}*/
 
 .artistimage {
   width: 70px; height: auto;
@@ -23,7 +19,7 @@
 
 #albumlist, #artistlist {
   width: 60vw;
-  height: 80vh;
+  height: 70vh;
   overflow: scroll;
 }
 .albumimage {
@@ -55,4 +51,8 @@ button[name="edit"]:hover {
 
 table {
   font-size: 14px;
+}
+
+span.asteriskField {
+  color: var(--darkred);
 }

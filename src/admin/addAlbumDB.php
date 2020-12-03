@@ -33,7 +33,9 @@ if (isset($_POST['addalbum'])) {
         if ($database->query($query) === TRUE) {
             $albumid = $database->insert_id;
             $database->close();
-            header("Location: viewTracks.php?id=$albumid");
+            $json = ['albumid' => $albumid];
+            echo json_encode($json);
+//            header("Location: viewTracks.php?id=$albumid");
         }
 //        $stmt = $database->stmt_init();
 //        $stmt->prepare($query);
@@ -47,3 +49,4 @@ if (isset($_POST['addalbum'])) {
         echo "<div class='err'>ERROR: Image size is larger than 70KB</div>";
     }
 }
+?>

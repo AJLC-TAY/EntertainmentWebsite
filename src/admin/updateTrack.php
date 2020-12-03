@@ -1,11 +1,19 @@
 <?php
 
+function saveChanges($query) {
+    include '../includes/database.php';
+    $stmt = $database->stmt_init();
+    $stmt->prepare($query);
+    $stmt->execute();
+    $stmt->close();
+}
 // delete file from folder
 function deleteTrackInFolder ($trackid) {
     include '../includes/database.php';
     // get the file path of track to be delete from the database
     $getfilepathqry = $database->stmt_init();
-    $getfilepathqry->prepare("SELECT musicfile FROM tracks WHERE trackid='$trackid'");
+    $query = "SELECT musicfile FROM tracks WHERE trackid='$trackid'";
+    $getfilepathqry->prepare($query);
     $getfilepathqry->execute();
     $getfilepathqry->bind_result($musicFilePath);
     $getfilepathqry->fetch();
@@ -38,22 +46,16 @@ if(isset($_POST['update'])) {
     } else {
         $query = "UPDATE tracks SET tracks.name='$trackname' WHERE trackid='$trackid'";
     }
-    $stmt = $database->stmt_init();
-    $stmt->prepare($query);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: viewTracks.php?id=$albumid");
+    saveChanges($query);
+    echo json_encode(["filepath" => $filepath]);
+//    header("Location: viewTracks.php?id=$albumid");
 } elseif (isset($_POST['delete'])) {
     include '../includes/database.php';
-    $albumid = $_POST['albumid'];
+//    $albumid = $_POST['albumid'];
     $trackid = $_POST['trackid'];
-
     deleteTrackInFolder($trackid);
     // delete track in database
     $query = "DELETE FROM tracks WHERE trackid='$trackid'";
-    $stmt = $database->stmt_init();
-    $stmt->prepare($query);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: viewTracks.php?id=$albumid");
+    saveChanges($query);
+//    header("Location: viewTracks.php?id=$albumid");
 }

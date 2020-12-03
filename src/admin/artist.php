@@ -80,7 +80,7 @@
         echo "</tbody></table></div>";
     ?>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="databaseCon.js"></script>
+    <script type="text/javascript" src="update.js"></script>
   </body>
     <?php
     include '../includes/footer.php';

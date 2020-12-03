@@ -8,7 +8,7 @@
     require '../includes/dataclass.php';
     echo "<div class='path-links'>
               <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'>Albums</a> / <a href='updateAlbum.php?id=$albumid' target='_self'>Update Album</a></pre>
-    </div>";
+        </div>";
     $query = "SELECT albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid) WHERE albumid='$albumid'";
     $stmt = $database->stmt_init();
     $stmt->prepare($query);
@@ -17,19 +17,21 @@
     $stmt->fetch();
 
     $albumimg = "data:image;base64,".base64_encode($imgbin);
-    $stmt->close();
+    $stmt->close(); ?>
 
-    echo "<div class='container row'>";
+    <div class='container row'>
 
-    echo "<div id='albumForm' style='width: 40vw'>";
-    echo '<form action="saveAlbumChanges.php" method="post" enctype="multipart/form-data">';
+    <div style='width: 40vw'>
+
+    <form id="albumform" method="post" enctype="multipart/form-data">
+            <?php
     echo '<div class="form-group ">
                   <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>';
     echo "        <input type='hidden' name='albumid' value='$albumid'>
                    <input class='form-control' id='name' name='name' type='text' value='$albumname'/>
              </div>";
     echo '<div class="form-group ">
-                  <label class="control-label requiredField" for="artists">Select artist <span class="asteriskField">*</span></label>
+                  <label class="control-label requiredField" for="artists">Select artist</label>
                   <select class="select form-control" id="artists" name="artists">';
 
     require "require/getArtists.php";
@@ -53,23 +55,24 @@
              <input type='hidden' name='albumimg' value='$albumimg'>".
              '<label class="control-label" for="image">Upload Image</label>
               <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
-         </div>';
-    echo '<div class="form-group ">'.
-            "<input class='btn btn-primary' type='submit' name='save' value='Save Changes'>
-             <input class='btn btn-danger' type='submit' name='delete' value='Delete Album'>
-          </div>
-          </form>
-             <a href='viewTracks.php?id=$albumid'><input class='btn btn-secondary' type='button' value='View Tracks'></a>";
-    echo "</div></div>";
+         </div>'."
 
-echo "<div><a href='albums.php'><button class='btn btn-link'><b><</b> Back</button></a></div>";
+        <div class='form-group'>
+            <button class='btn btn-danger' type='button' onclick='deleteAlbum()' name='delete'>Delete</button>
+            <button class='btn btn-primary' type='button' onclick='updateAlbum()' name='save'>Save</button>
+        </div>
+    </form>";
+    ?>
 
+    </div></div>
 
-echo '<script type="text/javascript" src="databaseCon.js"></script>';
-include '../includes/footer.php';
-echo "<link rel='stylesheet' href='style.css'>";
-
-?>
-
+    <div class="row justify-content-between">
+        <a href='albums.php'><button class='btn btn-link'><b><</b> Back</button></a>
+        <a href='<?php echo "viewTracks.php?id=$albumid" ?>'><button class='btn btn-link' type='button'>View Tracks <b>></b></button></a>
+    </div>
+    <script type="text/javascript" src="update.js"></script>
+    <link rel='stylesheet' href='style.css'>
 </body>
-</html>
+
+<?php include '../includes/footer.php'; ?>
+
