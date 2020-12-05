@@ -6,11 +6,28 @@
         private $releaseddate;
         private $albumimg;
 
+        /**
+        *Track constructor
+        *@param $albumName
+        *@param $artistname
+        *@param $releaseddate
+        *@param $albumimg
+        */
         public function __construct($albumname, $artistname, $releaseddate, $albumimg) {
             $this->albumname = $albumname;
             $this->artistname = $artistname;
             $this->releaseddate = $releaseddate;
             $this->albumimg = "data:image;base64,".base64_encode($albumimg);
+        }
+
+        public function jsonSerialize(){
+            return [
+                'albumid' => $this-> albumid,
+                'albumname' => $this-> albumname,
+                'artistname' => $this-> artistname,
+                'releaseddate' => $this-> releaseddate,
+                'albumimg' => $this-> albumimg
+            ];
         }
 
         public function set_albumid($id) {
@@ -37,18 +54,9 @@
             return $this->albumimg;
         }
 
-        public function jsonSerialize() {
-            return [
-                  'albumid' => $this->albumid,
-                  'albumname' => $this->albumname,
-                  'artistname' => $this->artistname,
-                  'releaseddate' => $this->releaseddate,
-                  'albumimg' => $this->albumimg
-            ];
-        }
     }
 
-    class Artist {
+    class Artist implements JsonSerializable {
         private $artistid;
         private $artistname;
 
@@ -69,6 +77,7 @@
             return $this->artistname;
         }
     }
+
     class ArtistDetail extends Artist {
         private $artistimage;
         private $debutyear;
