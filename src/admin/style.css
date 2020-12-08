@@ -7,6 +7,16 @@
 * {
   font-family: Montserrat, sans-serif;
 }
+
+.menu-item svg {
+  margin-top: 30px;
+}
+.menu-item:hover {
+  text-decoration: none;
+}
+.menu-item div:hover {
+  box-shadow: 0 2px 3px grey;
+}
 .artistimage {
   width: 70px; height: auto;
 }
