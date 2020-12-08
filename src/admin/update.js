@@ -37,9 +37,11 @@ try {
                                 <div class='form-group col'>
                                     <input class='form-control' name='file' accept='.mp3' type='file'/>
                                 </div>
-                                 <div class='form-group col'>
-                                    <button type='button' class='btn btn-secondary' onclick='updateTrack(${trackid})' name='update'>Update</button>
-                                    <button type='button' class='btn btn-danger'   onclick='deleteTrack(${trackid})' name='delete'>Delete</button>
+                                 <div class='track-buttons'>
+                                    <button type='button' class='btn btn-danger'   onclick='deleteTrack(${trackid})' name='delete'><img src='../images/delete.png' title='Delete track'>
+                                    </button>
+                                    <button type='button' class='btn btn-secondary' onclick='updateTrack(${trackid})' name='update'><img src='../images/update.png' title='Update track'>
+                                    </button>
                                 </div>
                            </form>
 

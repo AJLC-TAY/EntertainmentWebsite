@@ -1,26 +1,11 @@
 /*NavBanner HTML*/
 .container {
-    width: 90%;
-    margin: auto;
-    background-color: white;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 80%;
 }
-
-#banner h1{
-    font-family: Montserrat, sans-serif;
-    font-size: 25px;
-    float: left;
-    padding-right: 30%;
-    padding-top: 3.8%;
-    padding-left: 10px;
-}
-
-#banner img {
+.row img {
     width:200px;
     height: auto;
     float: left;
-    margin-left: -3%;
 }
 
 nav {
@@ -32,6 +17,7 @@ nav {
     color: black;
     align-items: center;
 }
+
 
 .nav-links {
     display: flex;
@@ -63,7 +49,41 @@ li a:hover, li a:focus, li a.link-focus{
     font-size: 16px;
 }
 
+.admin-header {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.admin-desc {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#logo {
+    width: auto;
+    height: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header-desc-con {
+    display: flex;
+    vertical-align: center;
+    height: auto;
+}
+
 hr {
-    position: relative;
-    margin-top: 99px;
+    margin: 0;
+}
+
+col {
+    height: auto;
+}
+
+#banner {
+    height: 15vh;
+    margin-bottom: 45px;
 }

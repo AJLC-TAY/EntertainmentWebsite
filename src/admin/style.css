@@ -2,6 +2,7 @@
   --red: #750000;
   --darkred: #410505;
   --darkwhite: #b5b5b5;
+  --lightblack: #161616;
 }
 * {
   font-family: Montserrat, sans-serif;
@@ -10,9 +11,9 @@
   width: 70px; height: auto;
 }
 
-#albumlist, #artistlist {
+ #artistlist {
   width: 60vw;
-  height: 70vh;
+  height: 50vh;
   overflow: scroll;
 }
 .albumimage {
@@ -21,14 +22,15 @@
 .editdelete-con form button, .editdelete-con a button{
   height: 32px;
   padding-top: 3px;
-  width: 80px;
+  padding-left: 14px;
+  width: 45px;
   margin:6px 6px;
   border-radius: 5px;
 }
 button[name="delete"] {
   background-color: var(--red);
   border-color: var(--red);
-  color: white;
+  /*color: white;*/
 }
 button[name="delete"]:hover {
   background-color: var(--darkred);
@@ -38,9 +40,23 @@ button[name="delete"]:hover {
 button[name="edit"] {
   border-color: transparent;
 }
-button[name="edit"]:hover {
+button[name="edit"]:hover, button[name="view"]:hover {
   box-shadow: 0 1px 2px gray;
 }
+
+button[name="view"] {
+  box-shadow: 0 1px 2px gray;
+  border-color: transparent;
+}
+
+button[name="view"] {
+  box-shadow: 0 2px 3px gray;
+}
+img[title*="album"], button img[title*='track'], button img[title*='artist'] {
+  width: 15px;
+  height: auto;
+}
+
 
 table {
   font-size: 14px;
@@ -51,14 +67,14 @@ span.asteriskField {
 }
 
 [name='file'] {
-  width: 300px;
+  width: 250px;
 }
 [name='trackname'] {
-  width: 250px;
+  width: 200px;
 }
 audio {
   width: 250px;
-  height: 45px;
+  height: 35px;
 }
 
 .albumimg {
@@ -77,6 +93,10 @@ audio {
   color: black;
 }
 
+.path-links pre {
+  font-size: 16px;
+}
+
 svg {
   width: 150px;
   height: auto;
@@ -88,5 +108,101 @@ a div {
 }
 
 .container {
-  margin: auto auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
 }
+
+.form-con {
+  width: 30vw;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.footer-but-con {
+  margin-top: 40px;
+}
+
+.thead-dark {
+  background-color: var(--lightblack);
+}
+.btn-next {
+  background-color: var(--lightblack);
+  color: white;
+}
+
+.btn-next:hover {
+  color: white;
+  box-shadow: 0 1px 2px grey;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+  border: #1f1f1f 1px solid;
+}
+
+.btn-next:hover {
+  color: black;
+  box-shadow: 0 1px 2px grey;
+}
+
+.album-list-con {
+  width: 80vw;
+}
+
+#albumlist {
+  height: 70vh;
+}
+
+.table-con {
+  width: 950px;
+}
+
+#trackstable *, .addtrack_form * {
+  font-size: 12px;
+}
+
+.tracks-view-con {
+  margin: auto 0;
+}
+
+.album-view-con {
+  border: #1f1f1f 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.albumimg {
+  width: 50px;
+  height: auto;
+}
+
+.album-view-con h5 {
+  font-size: 18px;
+}
+
+
+.album-view-con p{
+  font-size: 12px;
+}
+.album-con {
+  margin-right: 30px;
+}
+
+.track-buttons {
+  margin: 0 0 16px 25px;
+}
+
+.table-con {
+  height: 70vh;
+}
+
+#view-tracks-con {
+  width: 85vw;
+  margin-left: 1.5in;
+}
+
