@@ -1,12 +1,15 @@
+
 <link rel="stylesheet" type="text/css" href="../admin/navbennerStyle.css">
 <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<?php session_start()?>
 <div id='banner' class="container">
     <div class="row">
         <div id='logo'>
             <a href="../admin/index.php" target="_self"><img alt="logo" src="../images/logo site.png"></a>
         </div>
         <div id='header-desc-con'class="col">
-            <?php echo "<p class='admin-desc'><span class='admin-header'>Administrative Page</span><br>Today is " . date("l, d F Y ")."</p>" ; ?>
+            <?php echo "<p class='admin-desc'><span class='admin-header'>Administrative Page</span><br>Today is " . date("l, d F Y ")."</p><br>
+                You are logged in as ".$_SESSION["username"]."."; ?>
         </div>
 <!--        <nav class="col">-->
 <!--            <ul class="nav-links">-->
