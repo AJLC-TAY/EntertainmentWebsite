@@ -1,11 +1,11 @@
 <?php
 include("constructor.php");
 include("login.php");
-$db= new mysqli("p:localhost","root","", "bighitent", 3306);
+include '../includes/database.php';
 $accounts = [];
 
 $query = "SELECT username, password FROM useradmin";
-$result = $db->query($query);
+$result = $database->query($query);
    
 while($row = $result->fetch_assoc()) {
     $accounts[] = new Accounts($row['username'], $row['password']);
@@ -20,7 +20,7 @@ if(isset($_POST['buttonLogin'])){
 
         if($username == $credUser && $password == $credPass){
             session_start();
-            header("Location: src/includes/navbanner.php");
+            header("Location: index.php");
             $_SESSION['username'] = $username;
         }
     }

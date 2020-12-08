@@ -3,14 +3,14 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" type="text/css" href="src/admin/style2.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
       <title>Login Page | Big Hit Music</title> 
   </head>
   <body>
     <div id="loginForm" align="center">
-    <img src="src/images/logo site.png" alt="logo">
+    <img src="../images/logo site.png" alt="logo">
     <p><b> Administrative Login </b></p>
-      <form method="POST" action="src/admin/loginAuthentication.php">
+      <form method="POST" action="loginAuthentication.php">
         <p>
             <b><label> Username: </label></b>
           <input type="text" id="user" name="user" />
