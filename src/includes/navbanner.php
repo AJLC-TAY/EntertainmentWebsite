@@ -18,7 +18,7 @@
 <!--        </nav>-->
 
         <div class="logout-con">
-            <a href=""><button class="btn btn-secondary">Log out</button></a>
+            <a href="../admin/logout.php"><button class="btn btn-secondary">Log out</button></a>
         </div>
 
     </div>
