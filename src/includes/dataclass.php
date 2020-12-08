@@ -84,12 +84,6 @@
             return $this->artistname;
         }
 
-        public function jsonSerialize(){
-            return [
-                'artistid' => $this-> artistid,
-                'artistname' => $this-> artistname
-            ];
-        }
     }
 
     class ArtistDetail extends Artist {
@@ -97,15 +91,6 @@
         private $debutyear;
         private $membernum;
 
-        public function jsonSerialize(){
-            return [
-                'artistid' => $this-> get_artistid(),
-                'artistname' => $this-> get_artistname(),
-                'artistimage' => $this-> artistimage,
-                'debutyear' => $this-> debutyear,
-                'membernum' => $this->membernum
-            ];
-        }
 
         public function _construct($artistid, $artistname, $artistimage, $debutyear, $membernum) {
             parent::__construct($artistid, $artistname);

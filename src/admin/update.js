@@ -30,11 +30,11 @@ try {
                                 </div>
                                 <div class='col'>
                                     <audio controls>
-                                        <source src='${filepath}' type='audio/mpeg'>
+                                        <source src='${filepath}audio' type='audio/mpeg'>
                                             Your browser does not support the audio tag.
                                     </audio>
                                 </div>
-                                <div class='form-group col'>
+                                <div class='form-group col row'>
                                     <input class='form-control' name='file' accept='.mp3' type='file'/>
                                 </div>
                                  <div class='track-buttons'>
