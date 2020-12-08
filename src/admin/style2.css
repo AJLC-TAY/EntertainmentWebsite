@@ -1,0 +1,19 @@
+#loginForm img {
+    margin-top: 150px;;
+    width: 250px;
+    height: auto;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#loginForm form {
+    margin-bottom: 230px;
+}
+
+#loginForm {
+    font-family: Montserrat, sans-serif;
+}
+
+#loginForm button {
+    font-family: Montserrat, sans-serif;
+}
