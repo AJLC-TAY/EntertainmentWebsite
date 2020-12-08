@@ -1,5 +1,8 @@
 <?php include '../includes/head.html'; ?>
     <title>Albums | Admin</title>
+    <style type="text/css">
+        <?php include 'style.css'; ?>
+    </style>
 </head>
 
 <body>

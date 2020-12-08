@@ -3,16 +3,9 @@
   --darkred: #410505;
   --darkwhite: #b5b5b5;
 }
-/*.row {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*}*/
-
-/*.row {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*}*/
-
+* {
+  font-family: Montserrat, sans-serif;
+}
 .artistimage {
   width: 70px; height: auto;
 }
@@ -25,10 +18,10 @@
 .albumimage {
   width: 70px; height: auto;
 }
-.editdelete-con button{
+.editdelete-con form button, .editdelete-con a button{
   height: 32px;
   padding-top: 3px;
-  width: 70px;
+  width: 80px;
   margin:6px 6px;
   border-radius: 5px;
 }
@@ -55,4 +48,45 @@ table {
 
 span.asteriskField {
   color: var(--darkred);
+}
+
+[name='file'] {
+  width: 300px;
+}
+[name='trackname'] {
+  width: 250px;
+}
+audio {
+  width: 250px;
+  height: 45px;
+}
+
+.albumimg {
+  width: 180px;
+  height: auto;
+}
+
+.album-con {
+  text-align: center;
+}
+.addtrack_form {
+
+}
+
+.path-links a {
+  color: black;
+}
+
+svg {
+  width: 150px;
+  height: auto;
+  color: #1f1f1f;
+}
+
+a div {
+  height: 250px;
+}
+
+.container {
+  margin: auto auto;
 }

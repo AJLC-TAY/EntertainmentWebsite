@@ -42,7 +42,7 @@ try {
                                     <button type='button' class='btn btn-danger'   onclick='deleteTrack(${trackid})' name='delete'>Delete</button>
                                 </div>
                            </form>
-                          
+
                            </td>
                     </tr>`;
                 tablebody.insertAdjacentHTML('afterbegin', html);
@@ -51,13 +51,11 @@ try {
     }
 } catch (e) {}
 
-
 async function deleteAlbumFromTable(albumid) {
     let url = `deleteAlbum.php?id=${albumid}`;
     let confirmationResult = confirm("Are you sure you want to delete this album?");
     if (confirmationResult) {
         fetch(url).then();
-
             let rowIndex = document.getElementById(`${albumid}row`).rowIndex;
             alert(`${rowIndex}row`);
             document.getElementById('albumtable').deleteRow(rowIndex);
@@ -132,6 +130,15 @@ async function addAlbum() {
 }
 
 
+function test() {
+
+    let addTrackForm = document.querySelector('.addtrack_form');
+    let errormsg = document.createElement('p');
+    errormsg.innerHTML= 'Please provide a track name.';
+    addTrackForm.insertAdjacentElement('beforeend', errormsg);
+
+    document.getElementById('trkname').focus();
+}
 async function deleteTrack(trackid) {
     let form = document.getElementById(`${trackid}form`);
     let formdata = new FormData(form);

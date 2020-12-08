@@ -1,6 +1,6 @@
 <?php
 include '../includes/database.php';
-include '../includes/dataclass.php';
+include '../includes/trackclass.php';
 
 $albumid = $_POST['albumid'];
 $trackname = $_POST['newtrack'];
@@ -18,7 +18,7 @@ function addTrack(mysqli $database, $query)
     $stmt = $database->stmt_init();
     $stmt->prepare($query);
     $stmt->execute();
-    $newid = $stmt->insert_id;
+    $newid = $stmt->insert_id; // saves the newly created id
     $stmt->close();
     return $newid;
 }
@@ -41,9 +41,8 @@ if (strlen($trackname) != 0) {
         }
     }
     echo json_encode($json);
-
 } else {
-    echo "<script>alert('Please provide a track name');</script>";
+//    echo "<script>alert('Please provide a track name');</script>";
 //    header("Location: updateTracks.php?id=$albumid");
 
 }
