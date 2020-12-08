@@ -9,8 +9,8 @@
     echo "<div><a href='artist.php'><button class='btn btn-link'>< Back</button></a></div>";
 
     echo '<form action="" enctype="multipart/form-data" method="post">
-                <label for="name">Album Name</label>
-                <input type="text" name="albumname" required><br>
+                <label for="name">Artist Name</label>
+                <input type="text" name="artistname" required><br>
                 <div class="form-group">
                      <label for="artistname">Artist Name</label>
                       <select class="form-control" id="artistname" required>

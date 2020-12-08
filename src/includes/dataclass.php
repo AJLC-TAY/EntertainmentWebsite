@@ -60,6 +60,13 @@
         private $artistid;
         private $artistname;
 
+        public function jsonSerialize(){
+            return [
+                'artistid' => $this-> artistid,
+                'artistname' => $this-> artistname
+            ];
+        }
+
         public function __construct($artistid, $artistname) {
             $this->artistid = $artistid;
             $this->artistname = $artistname;
@@ -90,6 +97,15 @@
         private $debutyear;
         private $membernum;
 
+        public function jsonSerialize(){
+            return [
+                'artistid' => $this-> get_artistid(),
+                'artistname' => $this-> get_artistname(),
+                'artistimage' => $this-> artistimage,
+                'debutyear' => $this-> debutyear,
+                'membernum' => $this->membernum
+            ];
+        }
 
         public function _construct($artistid, $artistname, $artistimage, $debutyear, $membernum) {
             parent::__construct($artistid, $artistname);
