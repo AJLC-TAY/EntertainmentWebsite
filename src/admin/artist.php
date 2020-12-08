@@ -16,7 +16,7 @@
         $stmt -> bind_result($artistid, $artistname, $artistimage, $debutyear, $membernum);
         $stmt -> execute();
 
-        include '../includes/dataclass.php';
+        include "../includes/dataclass.php";
 
         $artists = [];
         while($stmt -> fetch()) {
