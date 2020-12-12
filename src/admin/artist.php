@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<?php include '../includes/head.html' ?>
     <title>Artists | Admin</title>
     <style type="text/css">
         <?php include 'style.css'; ?>
@@ -52,12 +49,13 @@
                             <td>$debutyear</td>
                             <td>$membernum</td>
                             <td><div class='row editdelete-con'>
-                                <form id='artistform' method='post' >
-                                    <input name='artistid' value='$artistid' hidden>
+                                 <form id='artistform' method='post' >
+                                    <input name='albumid' value='$artistid' hidden>
                                      <button class='btn btn-danger' onclick='deleteArtistFromTable($artistid)' type='button' name='delete'>
-                                        <img src='../images/delete.png' title='Delete alrtist'>
+                                        <img src='../images/delete.png' title='Delete artist'>
                                      </button>
                                 </form>
+                  
                                 <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
                                     <img src='../images/edit.png' title='Edit artist'>
                                 </button>

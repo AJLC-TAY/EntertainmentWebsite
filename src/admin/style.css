@@ -8,6 +8,10 @@
   font-family: Montserrat, sans-serif;
 }
 
+.menu-con {
+  margin-bottom: 80vh;
+}
+
 .menu-item svg {
   margin-top: 30px;
 }
@@ -55,12 +59,11 @@ button[name="edit"]:hover, button[name="view"]:hover {
 }
 
 button[name="view"] {
-  box-shadow: 0 1px 2px gray;
-  border-color: transparent;
+  border-color: grey;
 }
 
 button[name="view"] {
-  box-shadow: 0 2px 3px gray;
+  box-shadow: 0 1px 2px gray;
 }
 img[title*="album"], button img[title*='track'], button img[title*='artist'] {
   width: 15px;

@@ -6,4 +6,3 @@ $dbase = $database->stmt_init();
 $dbase ->prepare($query);
 $dbase ->execute();
 $dbase ->close();
-?>

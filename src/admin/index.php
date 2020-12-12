@@ -6,10 +6,10 @@
     </style>
 </head>
 
-<body>
+<body class="home">
     <?php include '../includes/navbanner.php' ?>
 
-    <div class='container row'>
+    <div class='menu-con container row'>
         <a class='col-4 menu-item' href='artist.php' target='_self'>
            <div id="artist" class='col rounded border border-secondary' >
                 <p class='text-center text-secondary'><svg viewBox='0 0 16 16' class='bi bi-people-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
@@ -36,6 +36,5 @@
 <!--            </div>-->
 <!--        </a>-->
     </div>
-</body>
 <?php include '../includes/footer.php'; ?>
 

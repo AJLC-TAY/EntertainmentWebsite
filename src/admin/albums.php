@@ -56,7 +56,7 @@
                                 </button>
                                 </a> <br>
                                 <a href='viewTracks.php?id=$albumid'><button id='$albumid' class='btn btn-white' name='view'>
-                                    <img src='../images/view.png' title='View album'>
+                                    <img src='../images/view.png' title='View tracks'>
                                 </button>
                                 </a>                               
                                 </div>

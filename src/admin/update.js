@@ -84,7 +84,6 @@ async function updateAlbum() {
             let confirmationResult = confirm("Are you sure you want to change this album?");
             if (confirmationResult) {
                 form.set('save', 1);
-                // form.append('save', 1);
                 await fetch (url, {
                     method: "POST",
                     body: form
