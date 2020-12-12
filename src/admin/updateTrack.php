@@ -1,5 +1,4 @@
 <?php
-include ("../includes/sessionHandling.php");
 function saveChanges($query) {
     include '../includes/database.php';
     $stmt = $database->stmt_init();
@@ -47,11 +46,11 @@ if(isset($_POST['update'])) {
         $query = "UPDATE tracks SET tracks.name='$trackname' WHERE trackid='$trackid'";
     }
     saveChanges($query);
-    echo json_encode(["filepath" => $filepath]);
+//    echo json_encode(["filepath" => $filepath]);
 //    header("Location: viewTracks.php?id=$albumid");
 } elseif (isset($_POST['delete'])) {
     include '../includes/database.php';
-//    $albumid = $_POST['albumid'];
+    $albumid = $_POST['albumid'];
     $trackid = $_POST['trackid'];
     deleteTrackInFolder($trackid);
     // delete track in database

@@ -25,36 +25,12 @@ include ('../includes/head.html'); ?>
     $stmt->fetch();
     $albumimg = "data:image;base64,".base64_encode($imgbin);
 
-//    function displayTrack($trackid, $albumid, $trackFile, $trackname) {
-//        echo prepareTrack($trackid, $albumid, $trackFile, $trackname);
-//    }
-//
-//    function prepareTrack($trackid, $albumid, $trackFile, $trackname) {
-//        return "<tr id='{$trackid}row'>
-//                        <td colspan='3'>
-//                        <form id='{$trackid}form' class='row'  action='' method='post' enctype='multipart/form-data'>
-//                            <input type='hidden' name='albumid' value='$albumid'>
-//                            <div class='form-group col'>
-//                                <input name='trackid' type='hidden' value='$trackid'/>
-//                                <input id='{$trackid}name'class='form-control' name='trackname' type='text' value='$trackname'/>
-//                            </div>
-//                            <div class='col'>
-//                                <audio controls>
-//                                    <source id='{$trackid}audio' src='$trackFile' type='audio/mpeg'>
-//                                        Your browser does not support the audio tag.
-//                                </audio>
-//                            </div>
-//                            <div class='form-group col'>
-//                                <input class='form-control' name='file' accept='.mp3' type='file'/>
-//                            </div>
-//                             <div class='form-group col'>
-//                                <button type='button' class='btn btn-secondary' onclick='updateTrack($trackid)' name='update'>Update</button>
-//                                <button type='button' class='btn btn-danger'   onclick='deleteTrack($trackid)' name='delete'>Delete</button>
-//                            </div>
-//                       </form>
-//                       </td>
-//                </tr>";
-//    }
+    function provideTrackNameMsg($field) {
+        echo "<script>
+                alert('Please provide a track name.');
+                document.getElementById('{$field}').focus();
+             </script>";
+    }
 
     function displayTrack($trackid, $albumid, $trackFile, $trackname) {
         echo "<tr id='{$trackid}row'>
@@ -75,53 +51,13 @@ include ('../includes/head.html'); ?>
                                 <input class='form-control' name='file' accept='.mp3' type='file'/>
                             </div>
                             <div class='track-buttons'>
-                                <button type='button' class='btn btn-danger'  onclick='deleteTrack($trackid)' name='delete'><img src='../images/delete.png' title='Delete track'></button>
-                                <button type='button' class='btn btn-secondary' onclick='updateTrack($trackid)' name='update'><img src='../images/update.png' title='Update track'></button>
+                                <button type='submit' class='btn btn-danger'  onclick='deleteTrack($trackid)' name='delete'><img src='../images/delete.png' title='Delete track'></button>
+                                <button type='submit' class='btn btn-secondary' onclick='updateTrack($trackid)' name='save'><img src='../images/save.png' title='Save changes'></button>
                             </div>
-                             
                        </form>
                        </td>
                 </tr>";
     }
-
-//    /**
-//     * @param mysqli $database
-//     * @param $query
-//     * @return int
-//     */
-//    function addTrackToDB($query) {
-//        include '../includes/database.php';
-//        $addStmt = $database->stmt_init();
-//        $addStmt->prepare($query);
-//        $addStmt->execute();
-//        $newid = $addStmt->insert_id; // saves the newly created id
-//        $addStmt->close();
-//        return $newid;
-//    }
-//    function addTrack($trackname, $albumid, $dir, $filepath) {
-//        include '../includes/database.php';
-//        if (strlen($trackname) != 0) {
-//            if ($_FILES['file']['size'] === 0) {
-//                $query = "INSERT INTO tracks (tracks.name, albumid) VALUE('$trackname', '$albumid')";
-//                $newid = addTrackToDB($query);
-//                $track = new Track ($newid, $albumid, $trackname);
-//            } else {
-//                // creates directory if album folder does not exist
-//                if (!is_dir($dir)) {
-//                    mkdir($dir, 0755, true);
-//                }
-//                if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
-//                    $query = "INSERT INTO tracks (tracks.name, albumid, musicfile) VALUE('$trackname', '$albumid', '$filepath')";
-//                    $newid = addTrackToDB($query);
-//                    $track = new Track ($newid, $albumid, $trackname);
-//                    $track->setFilepath($filepath);
-//
-//                }
-//            }
-//        }
-//    }
-
-
     ?>
 
     <div id="view-tracks-con" class="">
@@ -133,49 +69,34 @@ include ('../includes/head.html'); ?>
                 <div class='album-view-con'><img class='albumimg' src='$albumimg' alt='$albumname image'>
                     <h5>$albumname</h5>
                     <p>ID: $albumid</p>
+                     <div class='row album-form-btns' style=''>
+                        <a href='updateAlbum.php?id=$albumid'>
+                            <button class='btn btn-white'>Update Album</button>
+                        </a>
+                        <button id='add-track-btn' class='btn btn-secondary' onclick='showAddTrackForm()'>Add a Track</button>
+                    </div>
                 </div>
-                <div class='addtrack_form'>
+                <div class='addtrack_form' style='display: none;'>
                     <h5>Add new track here:</h5>
                     <form id='trackdetail' action=' ' method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='albumid' value='$albumid'>
                         <label for='trkname'>Trackname <span class='asteriskField'>*</span> </label>
                         <input id='trkname' class='form-control' name='newtrack' type='text' placeholder='Enter name'/><br>
-                        <p id='addTrackFormMsg' style='color: red;'></p>
                         <label id='test' for='mfile'>Upload music file: </label><br>
                         <input id='mfile' class='form-control' name='file' accept='.mp3' type='file'/><br>
                         <button id='test' type='submit' name='addTrack' class='btn btn-secondary'>Add track</button>
                     </form>";
-
-            //            if (isset($_POST['addTrack'])) {
-            //                $dom = new DOMDocument('1.0', 'utf-8');
-            //                $newtrack =  $_POST['newtrack'];
-            //                if (strlen(trim($newtrack)) == 0) {
-            //                    echo "<script>
-            //                         let addTrackForm = document.querySelector('.addtrack_form');
-            //                         let errormsg = document.getElementById('addTrackFormMsg');
-            //                         errormsg.innerHTML = 'Please provide a track name.';
-            //                         document.getElementById('trkname').focus();
-            //                        </script>";
-            //                } else if (strlen(trim($newtrack)) > 0){
-            //                    echo "<script>let errmsg = document.getElementById('addTrackFormMsg');
-            //                            errmsg.innerHTML = ''; </script>";
-            //                    $albumid = $_POST['albumid'];
-            //                    $trackname = $_POST['newtrack'];
-            //                    $dir = "tracks/$albumid/";
-            //                    $filename = $_FILES['file']['name'];
-            //                    $filepath = $dir .basename($filename);
-            //                    $file = $_FILES['file'];
-            //
-            //
-            //                    echo `<script>
-            //                            alert("test");
-            //                           await testAddTrack($albumid, $trackname, $filepath);
-            //                        </script>`;
-            //
-            //
-            //                }
-            //            }
-
+                    if (isset($_POST['addTrack'])) {
+                        $newtrack =  $_POST['newtrack'];
+                        if (strlen(trim($newtrack)) == 0) {
+                            echo "<script>
+                                    alert('Please provide a track name.');
+                                    document.getElementById('trkname').focus();
+                                 </script>";
+                        } else if (strlen(trim($newtrack)) > 0){
+                            include 'addTrackDB.php';
+                        }
+                    }
             echo "
                 </div>
           </div>";
@@ -218,14 +139,14 @@ include ('../includes/head.html'); ?>
             </div>
         </div>
 
-        <div class="row justify-content-between">
-            <a href='<?php echo "updateAlbum.php?id=$albumid" ?>'>
-                <button class='btn btn-link'><b><</b> Back</button>
-            </a>
-            <a href='albums.php'>
-                <button class='btn btn-link'>Go to Albums</button>
-            </a>
-        </div>
+<!--        <div class="row justify-content-between">-->
+<!--            <a href='--><?php //echo "updateAlbum.php?id=$albumid" ?><!--'>-->
+<!--                <button class='btn btn-primary'>Update Album</button>-->
+<!--            </a>-->
+<!--            <a href='albums.php'>-->
+<!--                <button class='btn btn-link'>Go to Albums</button>-->
+<!--            </a>-->
+<!--        </div>-->
     </div>
 
     </body>

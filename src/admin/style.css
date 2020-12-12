@@ -25,7 +25,7 @@
   width: 70px; height: auto;
 }
 
- #artistlist {
+#artistlist {
   width: 60vw;
   height: 50vh;
   overflow: scroll;
@@ -44,7 +44,6 @@
 button[name="delete"] {
   background-color: var(--red);
   border-color: var(--red);
-  /*color: white;*/
 }
 button[name="delete"]:hover {
   background-color: var(--darkred);
@@ -62,10 +61,13 @@ button[name="view"] {
   border-color: grey;
 }
 
-button[name="view"] {
-  box-shadow: 0 1px 2px gray;
+input[type*="file"]{
+  overflow-wrap: break-word;
 }
-img[title*="album"], button img[title*='track'], button img[title*='artist'] {
+/*button[name="view"] {*/
+/*  box-shadow: 0 1px 2px gray;*/
+/*}*/
+img[title*="album"], button img[title*='track'],  button img[title*='Save'], button img[title*='artist'] {
   width: 15px;
   height: auto;
 }
@@ -75,7 +77,7 @@ table {
   font-size: 14px;
 }
 
-span.asteriskField {
+.asteriskField {
   color: var(--darkred);
 }
 
@@ -97,9 +99,6 @@ audio {
 
 .album-con {
   text-align: center;
-}
-.addtrack_form {
-
 }
 
 .path-links a {
@@ -155,6 +154,10 @@ a div {
   border: #1f1f1f 1px solid;
 }
 
+.btn-white:hover {
+  background-color: #e3e3e3;
+}
+
 .btn-next:hover {
   color: black;
   box-shadow: 0 1px 2px grey;
@@ -172,10 +175,24 @@ a div {
   width: 950px;
 }
 
-#trackstable *, .addtrack_form * {
+#trackstable *, .addtrack_form *, .album-form-btns * {
   font-size: 12px;
 }
 
+.album-form-btns {
+  width: 80%;
+  margin: 10px auto;
+}
+.album-form-btns button {
+  border-radius: 0;
+}
+
+#add-track-btn {
+  width: 100px;
+}
+#add-track-form {
+  width: 80px;
+}
 .tracks-view-con {
   margin: auto 0;
 }
@@ -187,6 +204,7 @@ a div {
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  width: 280px;
 }
 
 .albumimg {
@@ -219,4 +237,28 @@ a div {
   margin-left: 1.5in;
 }
 
+/* Loading */
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 /*Artist*/
