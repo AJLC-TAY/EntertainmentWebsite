@@ -7,31 +7,31 @@
 <body>
 
 <?php include '../includes/navbanner.php'?>
-<?php include '../includes/database.php'?>
 <div class="container">
     <div class='path-links'>
         <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'>Artists</a> / <a href='addArtist.php?' target='_self'><b>Add Artist</b></a></pre>
     </div>
     <div class="form-con">
         <h4>Please enter the following artist information:</h4>
-        <form id='artistform' method="post" enctype="multipart/form-data">
+        <form id='artistform' method="post" enctype="multipart/form-data" action="addArtist.php">
             <div class="form-group">
-                <label class="control-label requiredField" for="name">Artist name <span class="asteriskField">*</span></label>
-                <input class="form-control" id="name" name="name" type="text"/>
+                <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
+                <input class="form-control" id="artistname" name="name" type="text"/>
             </div>
             <div class="form-group ">
-                <label class="control-label requiredField" for="name">Nickname <span class="asteriskField">*</span></label>
-                <input class="form-control" id="name" name="name" type="text"/></div>
+                <label class="control-label requiredField" for="nickname">Nickname <span class="asteriskField">*</span></label>
+                <input class="form-control" id="nickname" name="nname" type="text"/></div>
 
             <div class="form-group">
-                <label class="control-label requiredField" for="date">Debut Year <span class="asteriskField">*</span></label>
-                <input class='form-control' id='year' name='year' placeholder='YYYY' type='year' required/>
+                <label class="control-label requiredField" for="debutyear">Debut Year <span class="asteriskField">*</span></label>
+                <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='year' required/>
             </div>
             <div class="form-group ">
-                <label class="control-label requiredField" for="name">Number of Members <span class="asteriskField">*</span></label>
-                <input class="form-control" id="name" name="name" type="text"/></div>
+                <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
+                <input class="form-control" id="membernum" name="mnumber" type="text"/></div>
+
             <div class="form-group ">
-                <label class="control-label" for="image">Upload Image</label>
+                <label class="control-label" for="img">Upload Image</label>
                 <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
             </div>
         </form>
@@ -43,5 +43,5 @@
     </div>
 
 </div>
-    <script type="text/javascript" src="update.js"></script>
+<!--    <script type="text/javascript" src="update.js"></script> -->
 <?php include '../includes/footer.php'; ?>

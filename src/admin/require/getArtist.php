@@ -12,5 +12,5 @@ while($stmt -> fetch()) {
     $artist = new ArtistDetail($artistid, $artistimage, $artistname, $nickname, $debutyear, $membernum);
     $artist -> set_artistid($artistid);
     $artists[] = $artist;
-    $test = $artist ->get_artistname();
+
 }
