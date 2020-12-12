@@ -152,12 +152,11 @@ async function updateTrack(trackid) {
         let confirmationResult = confirm("Are you sure you want to change this track?");
         if (confirmationResult) {
             formdata.set('update', 1);
-
             fetch(url, {
                 method: "POST",
                 body: formdata
             });
-                location.reload();
+            location.reload();
         }
     }
 }

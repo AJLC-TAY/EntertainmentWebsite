@@ -61,12 +61,10 @@ button[name="view"] {
   border-color: grey;
 }
 
-input[type*="file"]{
-  overflow-wrap: break-word;
-}
-/*button[name="view"] {*/
-/*  box-shadow: 0 1px 2px gray;*/
+/*input[type*="file"]{*/
+/*  overflow-wrap: break-word;*/
 /*}*/
+
 img[title*="album"], button img[title*='track'],  button img[title*='Save'], button img[title*='artist'] {
   width: 15px;
   height: auto;
