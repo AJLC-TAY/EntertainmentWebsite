@@ -1,6 +1,6 @@
 <?php
-include "../includes/database.php";
-include '../includes/dataclass.php';
+include ("../includes/database.php");
+include ('../includes/dataclass.php');
 $query = 'SELECT albumid, albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid)';
 $stmt = $database->stmt_init();
 $stmt -> prepare($query);

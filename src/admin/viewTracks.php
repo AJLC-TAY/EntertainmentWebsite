@@ -1,4 +1,8 @@
-<?php include '../includes/head.html'; ?>
+<?php
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html'); ?>
+
+
     <title>View Tracks | Admin</title>
     <style type="text/css">
         <?php include 'style.css'; ?>

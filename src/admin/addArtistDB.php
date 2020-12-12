@@ -1,5 +1,6 @@
 <?php
-include '../includes/database.php';
+include ("../includes/sessionHandling.php");
+include ('../includes/database.php');
 if (isset($_POST['addartist'])) {
     $artistname = $_POST['name'];
     $nickname = $_POST['nickname'];

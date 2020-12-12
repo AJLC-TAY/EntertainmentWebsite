@@ -1,6 +1,6 @@
 <?php
-include "../includes/database.php";
-include '../includes/dataclass.php';
+include ("../includes/database.php");
+include ('../includes/dataclass.php');
 $query = 'SELECT artistid, artistimage, artistname, nickname, debutyear, membernum FROM artists';
 $stmt = $database->stmt_init();
 $stmt -> prepare($query);

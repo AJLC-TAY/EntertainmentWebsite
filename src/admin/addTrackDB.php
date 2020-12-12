@@ -1,6 +1,7 @@
 <?php
-include '../includes/database.php';
-include '../includes/trackclass.php';
+include ("../includes/sessionHandling.php");
+include ('../includes/database.php');
+include ('../includes/trackclass.php');
 
 $albumid = $_POST['albumid'];
 $trackname = $_POST['newtrack'];

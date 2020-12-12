@@ -1,4 +1,6 @@
-<?php include '../includes/head.html' ?>
+<?php
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html'); ?>
     <title>Home | Admin</title>
 
     <style type="text/css">

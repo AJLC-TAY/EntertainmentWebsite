@@ -1,7 +1,7 @@
 <?php
 include("constructor.php");
 include("login.php");
-include '../includes/database.php';
+include ("../includes/database.php");
 $accounts = [];
 
 $query = "SELECT username, password FROM useradmin";

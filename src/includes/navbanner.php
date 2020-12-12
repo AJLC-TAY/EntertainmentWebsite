@@ -1,6 +1,5 @@
 
 <link rel="stylesheet" type="text/css" href="../admin/navbennerStyle.css">
-<?php session_start()?>
 <div id='banner' class="container">
     <div class="row">
         <div id='logo'>

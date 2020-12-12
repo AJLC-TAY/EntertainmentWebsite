@@ -1,5 +1,4 @@
 <?php
-
 class Accounts{
 
     private $username;
