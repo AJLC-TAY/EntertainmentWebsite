@@ -1,7 +1,6 @@
 <?php
-include '../includes/database.php';
-include '../admin/addArtist.php'
-include '../admin/require/getArtist.php'
+include ("../includes/sessionHandling.php");
+include ('../includes/database.php');
 if (isset($_POST['addartist'])) {
     $artistname = $_POST['name'];
     $nickname = $_POST['nname'];

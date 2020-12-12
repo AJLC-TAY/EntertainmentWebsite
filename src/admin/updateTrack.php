@@ -1,5 +1,5 @@
 <?php
-
+include ("../includes/sessionHandling.php");
 function saveChanges($query) {
     include '../includes/database.php';
     $stmt = $database->stmt_init();

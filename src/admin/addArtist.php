@@ -1,4 +1,7 @@
-<? include '../includes/head.html'?>
+<?
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html');?>
+
     <title>Add Artist | Admin</title>
     <style type="text/css">
         <?php include 'style.css'; ?>
