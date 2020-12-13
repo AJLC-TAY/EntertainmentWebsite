@@ -1,53 +1,56 @@
-var mysql = require('node_modules/mysql/lib');
+const express = require('express');
+const mysql = require('mysql');
+const btoa = require('btoa');
+
+const app = express();
+
+app.use(express.static('public'));
+app.set('views', `${__dirname}/view`);
+app.set('view engine', 'pug');
+
 const connection = mysql.createConnection({
-    host:'localhost', user:'root', password:'', database:'bighitent', port:3306
+    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3308'
+});
+connection.connect((err) => {
+    if(err) {
+        console.log("Database connection failed");
+    } else {
+        console.log("Database connection successful")
+    }
 });
 
+app.listen(8001, 'localhost');
 
-const DBController = (function () {
-    const _getTracks = async () => {
-        return new Promise(function (resolve, reject) {
-            const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
+app.get('/', (request, response) => {
+    response.render('index');
+});
+
+app.get('/songs', (request, response) => {
+    getTracks().then(function(tracks) {
+        //console.log(tracks);
+        tracks.forEach(track => {
+            track.albumimg = "data:image;base64," + btoa(track.albumimg);
+        });
+        response.render('songs', {tracks: tracks});
+    });
+});
+
+function getTracks() {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
             tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
-            connection.query(query, (err, result) => {
-                if (err){
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
-            });
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
         });
-    }
-
-    return {
-        getTracks() {
-            return _getTracks();
-        }
-    }
-})();
-
-const AppController = (function (DBCtrl) {
-    const loadArtists = async () => {
-        await loadTracks();
-    }
-
-    const loadTracks = async () => {
-        let tracks = (await APICtrl.getTracks().then(function (tracks) {
-            console.log(tracks);
-            //tracks.forEach(track => UICtrl.createSongDetail(track));
-        }));
-    }
-
-    return {
-        init() {
-            console.log('App is starting');
-            loadArtists();
-        }
-    }
-})(DBController);
-
-AppController.init();
+    });
+}
 
 // /**
 //  * Controller responsible for fetching data from Spotify, Youtube
@@ -763,6 +766,8 @@ AppController.init();
 /*
  * Author: Calica, Gwyneth M.
  */
+
+/*
 const navSlide = () => {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav-links');
@@ -807,3 +812,5 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 3000);
 }
+
+ */
