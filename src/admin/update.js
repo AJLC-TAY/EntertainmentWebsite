@@ -62,7 +62,6 @@ async function deleteAlbumFromTable(albumid) {
     if (confirmationResult) {
         fetch(url).then();
             let rowIndex = document.getElementById(`${albumid}row`).rowIndex;
-            alert(`${rowIndex}row`);
             document.getElementById('albumtable').deleteRow(rowIndex);
     }
 }
@@ -171,9 +170,4 @@ function showAddTrackForm () {
         addTrackForm.style.display = "none";
         addTrackBtn.innerText = "Add a track";
     }
-}
-
-function hideAddTrackForm () {
-    let addTrackForm = document.querySelector('.addtrack_form');
-    addTrackForm.style.display = 'block';
 }

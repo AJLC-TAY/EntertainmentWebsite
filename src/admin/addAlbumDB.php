@@ -1,5 +1,4 @@
 <?php
-include ("../includes/sessionHandling.php");
 include ('../includes/database.php');
 if (isset($_POST['addalbum'])) {
     $albumname = $_POST['name'];
@@ -8,7 +7,7 @@ if (isset($_POST['addalbum'])) {
     $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
     $filesize = $_FILES['file']['size'];
 
-    $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
+//    $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
 //    $dbase= $database->stmt_init();
 //    $dbase ->prepare($getartistid);
 //    $dbase ->execute();

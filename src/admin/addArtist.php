@@ -1,4 +1,4 @@
-<?
+<?php
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html');?>
 
@@ -16,22 +16,22 @@ include ('../includes/head.html');?>
     </div>
     <div class="form-con">
         <h4>Please enter the following artist information:</h4>
-        <form id='artistform' method="post" enctype="multipart/form-data" action="addArtist.php">
+        <form id='artistform' method="post" enctype="multipart/form-data" action="">
             <div class="form-group">
                 <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
-                <input class="form-control" id="artistname" name="name" type="text"/>
+                <input class="form-control" id="artistname" name="name" type="text" required/>
             </div>
             <div class="form-group ">
-                <label class="control-label requiredField" for="nickname">Nickname <span class="asteriskField">*</span></label>
+                <label class="control-label requiredField" for="nickname">Nickname</label>
                 <input class="form-control" id="nickname" name="nname" type="text"/></div>
 
             <div class="form-group">
                 <label class="control-label requiredField" for="debutyear">Debut Year <span class="asteriskField">*</span></label>
-                <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='year' required/>
+                <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='text' required/>
             </div>
             <div class="form-group ">
                 <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
-                <input class="form-control" id="membernum" name="mnumber" type="text"/></div>
+                <input class="form-control" id="membernum" name="mnumber" type="number" required/></div>
 
             <div class="form-group ">
                 <label class="control-label" for="img">Upload Image</label>
@@ -41,7 +41,33 @@ include ('../includes/head.html');?>
         <div class="footer-but-con row justify-content-between">
             <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
             <?php
-            echo " <button class='btn btn-secondary' name='addartist' type='button' onclick='addArtist()' >Add Artist</button>"; ?>
+            echo " <button type='submit' class='btn btn-secondary' name='addartist' form='artistform'>Add Artist</button>";
+            if (isset($_POST['addartist'])) {
+                include "../includes/database.php";
+                $filesize = $_FILES['file']['size'];
+                $artistname = $_POST['name'];
+                $nickname = $_POST['nname'];
+                $debutyear = $_POST['year'];
+                $membernum = $_POST['mnumber'];
+                $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+               // if ($filesize <= 700000) {
+                    $query = "";
+                    if ($filesize > 0) {
+                        $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum, artistimage)  VALUE ('$artistname', '$nickname', '$debutyear', '$membernum', '$file');";
+                    } else {
+                        $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum) VALUE ('$artistname', '$nickname', '$debutyear', '$membernum');";
+                    }
+                    if ($database->query($query) === TRUE) {
+                        echo "<script>window.location.href = 'artist.php'</script>";
+                    }
+
+//                } else {
+//                    echo "<script>alert('Image size is larger than 70KB')</script>";
+//                }
+            }
+            ?>
+
+
         </div>
     </div>
 

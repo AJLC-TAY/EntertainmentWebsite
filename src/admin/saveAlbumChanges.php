@@ -36,4 +36,3 @@ if(isset($_POST['save'])) {
 } else if(isset($_POST['updateTracks'])) {
     include "viewTracks.php";
 }
-?>

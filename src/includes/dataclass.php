@@ -17,7 +17,11 @@
             $this->albumname = $albumname;
             $this->artistname = $artistname;
             $this->releaseddate = $releaseddate;
-            $this->albumimg = "data:image;base64,".base64_encode($albumimg);
+            if ($albumimg === NULL) {
+                $this->albumimg = null;
+            } else {
+                $this->albumimg = "data:image;base64,".base64_encode($albumimg);
+            }
         }
 
         public function jsonSerialize(){
