@@ -6,4 +6,3 @@ echo "
 </footer>
 </body>
 </html>";
-?>

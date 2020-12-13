@@ -1,5 +1,6 @@
 <?php
-include '../includes/database.php';
+include ("../includes/sessionHandling.php");
+include ('../includes/database.php');
 if(isset($_POST['save'])) {
     $albumid = $_POST['albumid'];
     $albumname = $_POST['name'];
@@ -35,4 +36,3 @@ if(isset($_POST['save'])) {
 } else if(isset($_POST['updateTracks'])) {
     include "viewTracks.php";
 }
-?>

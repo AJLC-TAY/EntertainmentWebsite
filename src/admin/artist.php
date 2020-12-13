@@ -1,84 +1,78 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<?php
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html'); ?>
     <title>Artists | Admin</title>
+    <style type="text/css">
+        <?php include 'style.css'; ?>
+    </style>
   </head>
+
   <body>
-    <?php
-        include "../includes/database.php";
+    <?php include '../includes/navbanner.php' ?>
+    <?php include '../includes/database.php'?>
 
-        echo "<div>" . date("m/d/Y")."</div>" ;
+    <div class="artist-list-con container">
+        <div class='path-links'>
+            <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'><b>Artists</b></a></pre>
+        </div>
+        <div class="artist-list-header row justify-content-between"><h4>Artist List</h4><a href='addArtist.php' target='_self'><button class='btn btn-next'>Add New Artist</button></a>
+            </div>
+        <div id="artistlist" class="overflow-auto">
+            <table id="artisttable" class='table'>
+                    <thead class='thead-dark'>
+                        <tr>
+                          <th scope='col'>Artist ID</th>
+                          <th scope='col'>Artist Image</th>
+                          <th scope='col'>Artist Name</th>
+                          <th scope='col'>Nickname</th>
+                          <th scope='col'>Debut Year</th>
+                          <th scope='col'>Number of Members</th>
+                          <th scope='col'></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                require 'require/getArtist.php';
+                foreach ($artists as $art) {
+                    $artistid = $art->get_artistid();
+                    $artistimage = $art->get_artistimage();
+                    $artistname = $art->get_artistname();
+                    $nickname = $art->get_nickname();
+                    $debutyear = $art->get_debutyear();
+                    $membernum = $art->get_membernum();
 
-        $query = 'SELECT artistid, artistname, artistimage, debutyear, membernum FROM artists';
-        $stmt = $database->stmt_init();
-        $stmt -> prepare($query);
-        $stmt -> bind_result($artistid, $artistname, $artistimage, $debutyear, $membernum);
-        $stmt -> execute();
-
-        include '../includes/dataclass.php';
-
-        $artists = [];
-        while($stmt -> fetch()) {
-            $artist = new ArtistDetail($artistid, $artistname, $artistimage, $debutyear, $membernum);
-            $artist -> set_artistid($artistid);
-            $test = $artist->get_artistname();
-            $artists[] = $artist;
-        }
-
-
-        echo "<div>
-                <a href='addArtist.php' target='_self'><button class='btn btn-secondary'>Add New Artist</button></a>
-              </div>";
-        echo '<div id="artistlist" class="overflow-auto">';
-        echo "<table class='table'>
-                <thead class='thead-dark'>
-                    <tr>
-                        <th scope='col'>Artist ID</th>
-                        <th scope='col'>Artist Name</th>
-                        <th scope='col'>Artist Image</th>
-                        <th scope='col'>Debut Year</th>
-                        <th scope='col'>Number of Members</th>
-                        <th scope='col'></th>
-                    </tr>
-                </thead>
-                <tbody>";
-
-        foreach ($artists as $art) {
-            $artistid = $art->get_artistid();
-            $artistname = $art->get_artistname();
-            $artistimage = $art->get_artistimage();
-            $debutyear = $art->get_debutyear();
-            $membernum = $art->get_membernum();
-
-            echo "<tr>
-                    <th scope='row'>$artistid</th>
-                    <td>
-                        <img class='artistimage' src='$artistimage' alt='$artistname image'>
-                    </td>
-                    <td>$artistname</td>
-                    <td>$debutyear</td>
-                    <td>$membernum</td>
-                    <td><div class='col editdelete-con'>
-                        <form action='updateAlbum.php' method='post' target='_self'>
-                                <input type='hidden' value='$artistid' name='albumid'>
-                                <input type='hidden' value='$artistname' name='albumimage'>
-                                <input type='hidden' value='$artistimage' name='albumname'>
-                                <input type='hidden' value='$debutyear' name='artistname'>
-                                <input type='hidden' value='$membernum' name='releaseddate'>
-
-                                <button id='$artistid' class='btn btn-secondary' type='submit' name='edit'>Edit</button>
-                        </form><br>
-                        <button value='$artistid' class='btn btn-danger' onclick='getArtist(this.id)' type='button' name='delete'>Delete
-                          <!--  <img src='../images/delete_icon.jpg' alt='delete button' title='Delete $artistname' style='width: 15px;height: auto;'> -->
-                        </button>
-                        </div>
-                    </td>
-                  </tr>";
-        }
-
-        echo "</tbody></table></div>";
-    ?>
+                    echo "<tr id='{$artistid}row'>
+                            <th scope='row'>$artistid</th>
+                            <td>
+                                <img class='artistimage' src='$artistimage' alt='$artistname image'>
+                            </td>
+                            <td>$artistname</td>
+                            <td>$nickname</td>
+                            <td>$debutyear</td>
+                            <td>$membernum</td>
+                            <td><div class='row editdelete-con'>
+                                 <form id='artistform' method='post' >
+                                    <input name='albumid' value='$artistid' hidden>
+                                     <button class='btn btn-danger' onclick='deleteArtistFromTable($artistid)' type='button' name='delete'>
+                                        <img src='../images/delete.png' title='Delete artist'>
+                                     </button>
+                                </form>
+                  
+                                <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
+                                    <img src='../images/edit.png' title='Edit artist'>
+                                </button>
+                                </a> <br>
+                                </div>
+                            </td>
+                          </tr>";
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="row footer-but-con justify-content-between"><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a>
+        </div>
+    </div>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="update.js"></script>
   </body>

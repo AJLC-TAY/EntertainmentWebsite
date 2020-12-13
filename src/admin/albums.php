@@ -1,19 +1,21 @@
-<?php include '../includes/head.html'; ?>
+<?php
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html'); ?>
     <title>Albums | Admin</title>
+    <style type="text/css">
+        <?php include 'style.css'; ?>
+    </style>
 </head>
 
 <body>
-    <div class='path-links'>
-        <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'>Albums</a></pre>
-    </div>
-    <?php
-        echo "<div>" . date("m/d/Y")."</div>" ;
-        require "../includes/searchAlbumBar.html";
-    ?>
-    <div>
+    <?php include '../includes/navbanner.php' ?>
 
-    </div>
-
+    <div class="album-list-con container">
+        <div class='path-links'>
+            <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'><b>Albums</b></a></pre>
+        </div>
+        <div class="album-list-header row justify-content-between"><h4>Album List</h4><a href='addAlbum.php' target='_self'><button class='btn btn-next'>Add New Album</button></a>
+            </div>
         <div id="albumlist" class="overflow-auto">
             <table id="albumtable" class='table'>
                     <thead class='thead-dark'>
@@ -47,12 +49,18 @@
                             <td><div class='row editdelete-con'>
                                 <form id='albumform' method='post' >
                                     <input name='albumid' value='$albumid' hidden>
-                                     <button class='btn btn-danger' onclick='deleteAlbumFromTable($albumid)' type='button' name='delete'>Delete</button>
+                                     <button class='btn btn-danger' onclick='deleteAlbumFromTable($albumid)' type='button' name='delete'>
+                                        <img src='../images/delete.png' title='Delete album'>
+                                     </button>
                                 </form>
-                 
-                                <a href='updateAlbum.php?id=$albumid'><button id='$albumid' class='btn btn-secondary' name='edit'>Edit</button>
+                                <a href='updateAlbum.php?id=$albumid'><button id='$albumid' class='btn btn-secondary' name='edit'>
+                                    <img src='../images/edit.png' title='Edit album'>
+                                </button>
                                 </a> <br>
-                                
+                                <a href='viewTracks.php?id=$albumid'><button id='$albumid' class='btn btn-white' name='view'>
+                                    <img src='../images/view.png' title='View tracks'>
+                                </button>
+                                </a>                               
                                 </div>
                             </td>
                           </tr>";
@@ -61,10 +69,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="row justify-content-between"><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a>
-            <div>
-                <a href='addAlbum.php' target='_self'><button class='btn btn-secondary'>Add New Album</button></a>
-            </div></div>
+        <div class="row footer-but-con justify-content-between"><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a>
+        </div>
+    </div>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="update.js"></script>
 <?php

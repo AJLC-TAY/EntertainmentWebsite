@@ -1,39 +1,76 @@
-<? include '../includes/head.html'?>
+<?php
+include ("../includes/sessionHandling.php");
+include ('../includes/head.html');?>
+
     <title>Add Artist | Admin</title>
+    <style type="text/css">
+        <?php include 'style.css'; ?>
+    </style>
 </head>
 <body>
-<?php
-    include '../includes/database.php';
 
-    // back link
-    echo "<div><a href='artist.php'><button class='btn btn-link'>< Back</button></a></div>";
+<?php include '../includes/navbanner.php'?>
+<div class="container">
+    <div class='path-links'>
+        <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'>Artists</a> / <a href='addArtist.php?' target='_self'><b>Add Artist</b></a></pre>
+    </div>
+    <div class="form-con">
+        <h4>Please enter the following artist information:</h4>
+        <form id='artistform' method="post" enctype="multipart/form-data" action="">
+            <div class="form-group">
+                <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
+                <input class="form-control" id="artistname" name="name" type="text" required/>
+            </div>
+            <div class="form-group ">
+                <label class="control-label requiredField" for="nickname">Nickname</label>
+                <input class="form-control" id="nickname" name="nname" type="text"/></div>
 
-    echo '<form action="" enctype="multipart/form-data" method="post">
-                <label for="name">Album Name</label>
-                <input type="text" name="albumname" required><br>
-                <div class="form-group">
-                     <label for="artistname">Artist Name</label>
-                      <select class="form-control" id="artistname" required>
-                      <option id="0"></option>';
+            <div class="form-group">
+                <label class="control-label requiredField" for="debutyear">Debut Year <span class="asteriskField">*</span></label>
+                <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='text' required/>
+            </div>
+            <div class="form-group ">
+                <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
+                <input class="form-control" id="membernum" name="mnumber" type="number" required/></div>
 
-        $query = "SELECT artistid, artistname FROM artists";
-        $stmt = $database->stmt_init();
-        $stmt->prepare($query);
-        $stmt->execute();
-        $stmt->bind_result($artistid, $artistname);
-        $artists = [];
-        while($stmt->fetch()) {
-            $artists[] = [$artistid, $artistname];
-        }
+            <div class="form-group ">
+                <label class="control-label" for="img">Upload Image</label>
+                <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
+            </div>
+        </form>
+        <div class="footer-but-con row justify-content-between">
+            <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
+            <?php
+            echo " <button type='submit' class='btn btn-secondary' name='addartist' form='artistform'>Add Artist</button>";
+            if (isset($_POST['addartist'])) {
+                include "../includes/database.php";
+                $filesize = $_FILES['file']['size'];
+                $artistname = $_POST['name'];
+                $nickname = $_POST['nname'];
+                $debutyear = $_POST['year'];
+                $membernum = $_POST['mnumber'];
+                $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+               // if ($filesize <= 700000) {
+                    $query = "";
+                    if ($filesize > 0) {
+                        $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum, artistimage)  VALUE ('$artistname', '$nickname', '$debutyear', '$membernum', '$file');";
+                    } else {
+                        $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum) VALUE ('$artistname', '$nickname', '$debutyear', '$membernum');";
+                    }
+                    if ($database->query($query) === TRUE) {
+                        echo "<script>window.location.href = 'artist.php'</script>";
+                    }
 
-        foreach ($artists as $art) {
-            echo "<option id='$art[0]'>$art[1]</option>";
-        }
-        echo '</select>
-                </div>
-                <label for="date">Date Released</label>
-                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-                 <label for="image">Image</label>
-                <input type="file" id="img" name="file" accept="image/*" required>
-                <center><button class="btn btn-secondary">Add</button></center>
-              </form>';
+//                } else {
+//                    echo "<script>alert('Image size is larger than 70KB')</script>";
+//                }
+            }
+            ?>
+
+
+        </div>
+    </div>
+
+</div>
+<!--    <script type="text/javascript" src="update.js"></script> -->
+<?php include '../includes/footer.php'; ?>

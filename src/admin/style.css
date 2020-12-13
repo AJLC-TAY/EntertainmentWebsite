@@ -2,40 +2,48 @@
   --red: #750000;
   --darkred: #410505;
   --darkwhite: #b5b5b5;
+  --lightblack: #161616;
 }
-/*.row {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*}*/
+* {
+  font-family: Montserrat, sans-serif;
+}
 
-/*.row {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*}*/
+.menu-con {
+  margin-bottom: 80vh;
+}
 
+.menu-item svg {
+  margin-top: 30px;
+}
+.menu-item:hover {
+  text-decoration: none;
+}
+.menu-item div:hover {
+  box-shadow: 0 2px 3px grey;
+}
 .artistimage {
   width: 70px; height: auto;
 }
 
-#albumlist, #artistlist {
+#artistlist {
   width: 60vw;
-  height: 70vh;
+  height: 50vh;
   overflow: scroll;
 }
 .albumimage {
   width: 70px; height: auto;
 }
-.editdelete-con button{
+.editdelete-con form button, .editdelete-con a button{
   height: 32px;
   padding-top: 3px;
-  width: 70px;
+  padding-left: 14px;
+  width: 45px;
   margin:6px 6px;
   border-radius: 5px;
 }
 button[name="delete"] {
   background-color: var(--red);
   border-color: var(--red);
-  color: white;
 }
 button[name="delete"]:hover {
   background-color: var(--darkred);
@@ -45,14 +53,210 @@ button[name="delete"]:hover {
 button[name="edit"] {
   border-color: transparent;
 }
-button[name="edit"]:hover {
+button[name="edit"]:hover, button[name="view"]:hover {
   box-shadow: 0 1px 2px gray;
 }
+
+button[name="view"] {
+  border-color: grey;
+}
+
+/*input[type*="file"]{*/
+/*  overflow-wrap: break-word;*/
+/*}*/
+
+img[title*="album"], button img[title*='track'],  button img[title*='Save'], button img[title*='artist'] {
+  width: 15px;
+  height: auto;
+}
+
 
 table {
   font-size: 14px;
 }
 
-span.asteriskField {
+.asteriskField {
   color: var(--darkred);
 }
+
+[name='file'] {
+  width: 250px;
+}
+[name='trackname'] {
+  width: 200px;
+}
+audio {
+  width: 250px;
+  height: 35px;
+}
+
+.albumimg {
+  width: 180px;
+  height: auto;
+}
+
+.album-con {
+  text-align: center;
+}
+
+.path-links a {
+  color: black;
+}
+
+.path-links pre {
+  font-size: 16px;
+}
+
+svg {
+  width: 150px;
+  height: auto;
+  color: #1f1f1f;
+}
+
+a div {
+  height: 250px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
+}
+
+.form-con {
+  width: 30vw;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.footer-but-con {
+  margin-top: 40px;
+}
+
+.thead-dark {
+  background-color: var(--lightblack);
+}
+.btn-next {
+  background-color: var(--lightblack);
+  color: white;
+}
+
+.btn-next:hover {
+  color: white;
+  box-shadow: 0 1px 2px grey;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+  border: #1f1f1f 1px solid;
+}
+
+.btn-white:hover {
+  background-color: #e3e3e3;
+}
+
+.btn-next:hover {
+  color: black;
+  box-shadow: 0 1px 2px grey;
+}
+
+.album-list-con {
+  width: 80vw;
+}
+
+#albumlist {
+  height: 70vh;
+}
+
+.table-con {
+  width: 950px;
+}
+
+#trackstable *, .addtrack_form *, .album-form-btns * {
+  font-size: 12px;
+}
+
+.album-form-btns {
+  width: 80%;
+  margin: 10px auto;
+}
+.album-form-btns button {
+  border-radius: 0;
+}
+
+#add-track-btn {
+  width: 100px;
+}
+#add-track-form {
+  width: 80px;
+}
+.tracks-view-con {
+  margin: auto 0;
+}
+
+.album-view-con {
+  border: #1f1f1f 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  width: 280px;
+}
+
+.albumimg {
+  width: 50px;
+  height: auto;
+}
+
+.album-view-con h5 {
+  font-size: 18px;
+}
+
+
+.album-view-con p{
+  font-size: 12px;
+}
+.album-con {
+  margin-right: 30px;
+}
+
+.track-buttons {
+  margin: 0 0 16px 25px;
+}
+
+.table-con {
+  height: 70vh;
+}
+
+#view-tracks-con {
+  width: 85vw;
+  margin-left: 1.5in;
+}
+
+/* Loading */
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+/*Artist*/
