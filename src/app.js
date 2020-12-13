@@ -25,6 +25,58 @@ app.get('/', (request, response) => {
     response.render('index');
 });
 
+app.get('/albums', (request, response) => {
+    getAlbums().then(function(albums) {
+
+        albums.forEach(album => {
+            album.albumimg = "data:image;base64," + btoa(album.albumimg);
+        });
+        response.render('songs', {albums: albums});
+    });
+});
+
+function getAlbums() {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid)`;
+
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
+        });
+    });
+}
+
+app.get('/artist', (request, response) => {
+    getArtists().then(function(artists) {
+        //console.log(artists);
+        artists.forEach(artist => {
+            artist.artistimage = "data:image;base64," + btoa(artist.artistimage);
+        });
+        response.render('artists', {artists: artists});
+    });
+});
+
+function getArtists() {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT artistid, artistname, artistimage, debutyear, membernum FROM artists`;
+
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
+        });
+    });
+}
+
 app.get('/songs', (request, response) => {
     getTracks().then(function(tracks) {
         //console.log(tracks);
@@ -37,7 +89,7 @@ app.get('/songs', (request, response) => {
 
 function getTracks() {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
+        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
             tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
         connection.query(query, (err, result) => {
