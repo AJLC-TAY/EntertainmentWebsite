@@ -34,14 +34,24 @@ $stmt->close();
 <div class="form-con">
     <h4>Please provide changes for the artist:</h4>
     <form id='artistform' method="post" enctype="multipart/form-data" action="">
-        <div class="form-group">
-            <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
-            <input type='hidden' name='albumid' value=<?php echo $artistid?> />
-            <input class="form-control" id="artistname" name="name" type="text" required value="<?php echo $artistname?>"/>
-        </div>
-        <div class="form-group ">
-            <label class="control-label requiredField" for="nickname">Nickname</label>
-            <input class="form-control" id="nickname" name="nname" type="text" value="<?php echo $nickname?>"/>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
+                    <input type='hidden' name='albumid' value=<?php echo $artistid?> />
+                    <input class="form-control" id="artistname" name="name" type="text" required value="<?php echo $artistname?>"/>
+                </div>
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="nickname">Nickname</label>
+                    <input class="form-control" id="nickname" name="nname" type="text" value="<?php echo $nickname?>"/>
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <label class="control-label" for="currentimg">Current Image</label><br>
+                <img id='currentimg' class='file' src='<?php echo `$artistimg`?>' alt='<?php echo $artistname?> image'><br>
+                <input type='hidden' name='albumimg' value='$artistimg'>
+            </div>
         </div>
 
         <div class="form-group">
@@ -52,16 +62,14 @@ $stmt->close();
             <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
             <input class="form-control" id="membernum" name="mnumber" type="number" required value="<?php echo $membernum?>"/></div>
 
-        <div class='form-group'><label class="control-label" for="currentimg">Current Image</label><br>
-            <img id='currentimg' class='file' src='<?php echo `$artistimg`?>' alt='<?php echo $artistname?> image'><br>
-            <input type='hidden' name='albumimg' value='$artistimg'>
+        <div class='form-group'>
             <label class="control-label" for="image">Upload Image</label>
             <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
         </div>
 
         <div class='form-group d-flex flex-row-reverse'>
-            <button class='btn btn-primary' type='button' onclick='updateArtist()' name='save'>Save</button>
-            <button class='btn btn-danger' type='button' onclick='deleteArtist()' name='delete'>Delete</button>
+            <button class='btn btn-success' type='button' onclick='updateArtist()' name='save'>Save</button>
+            <button class='btn btn-danger' type='button' onclick='deleteArtist()' style='margin-right: 10px;' name='delete'>Delete</button>
         </div>
     </form>
 

@@ -39,7 +39,7 @@ include ('../includes/head.html'); ?>
                             <input type='hidden' name='albumid' value='$albumid'>
                             <div class='form-group col'>
                                 <input name='trackid' type='hidden' value='$trackid'/>
-                                <input id='{$trackid}name'class='form-control' name='trackname' type='text' value='$trackname'/>
+                                <input id='{$trackid}name'class='form-control' name='trackname' type='text' value='$trackname' required/>
                             </div>
                             <div class='col'>
                                 <audio controls>
@@ -52,7 +52,7 @@ include ('../includes/head.html'); ?>
                             </div>
                             <div class='track-buttons'>
                                 <button type='submit' class='btn btn-danger'  onclick='deleteTrack($trackid)' name='delete'><img src='../images/delete.png' title='Delete track'></button>
-                                <button type='submit' class='btn btn-secondary' onclick='updateTrack($trackid)' name='save'><img src='../images/save.png' title='Save changes'></button>
+                                <button type='submit' class='btn btn-dark' onclick='updateTrack($trackid)' name='save-track'><img src='../images/saveicon.png' title='Save changes'></button>
                             </div>
                        </form>
                        </td>
@@ -81,7 +81,7 @@ include ('../includes/head.html'); ?>
                     <form id='trackdetail' action=' ' method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='albumid' value='$albumid'>
                         <label for='trkname'>Trackname <span class='asteriskField'>*</span> </label>
-                        <input id='trkname' class='form-control' name='newtrack' type='text' placeholder='Enter name'/><br>
+                        <input id='trkname' class='form-control' name='newtrack' type='text' placeholder='Enter name' required/><br>
                         <label id='test' for='mfile'>Upload music file: </label><br>
                         <input id='mfile' class='form-control' name='file' accept='.mp3' type='file'/><br>
                         <button id='test' type='submit' name='addTrack' class='btn btn-secondary'>Add track</button>
@@ -117,7 +117,7 @@ include ('../includes/head.html'); ?>
             <table id='trackstable' class='table col'>
                 <thead class='thead-dark'>
                 <tr>
-                    <th scope='col' style='width: 250px'>Track name</th>
+                    <th scope='col' style='width: 265px'>Track name</th>
                     <th scope='col' style='width: 250px'>Music File</th>
                     <th scope='col' style='width: auto;'>Upload File</th>
                     <th></th>

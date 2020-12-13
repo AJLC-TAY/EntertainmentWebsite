@@ -17,7 +17,7 @@ include ('../includes/head.html'); ?>
         <form id='albumform' method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>
-                <input class="form-control" id="name" name="name" type="text"/>
+                <input class="form-control" id="name" name="name" type="text" required/>
             </div>
             <div class="form-group ">
                 <label class="control-label requiredField" for="artists">Select an artist</label>
@@ -53,7 +53,41 @@ include ('../includes/head.html'); ?>
         <div class="footer-but-con row justify-content-between">
             <a href='albums.php'><button class='btn btn-link'><b><</b> Back</button></a>
             <?php
-            echo " <button class='btn btn-secondary' name='addalbum' type='button' onclick='addAlbum()' >Add Album</button>"; ?>
+            echo " <button type='submit' class='btn btn-secondary' name='addalbum' form='albumform' >Add Album</button>";
+            if (isset($_POST['addalbum'])) {
+                include '../includes/database.php';
+                $albumname = $_POST['name'];
+                $artistname = $_POST['artists'];
+                $releaseddate = $_POST['date'];
+                $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+                $filesize = $_FILES['file']['size'];
+
+                require 'require/getArtistID.php';
+
+                if (strlen(trim($albumname)) == 0) {
+                    echo "<script>
+                                alert('Please provide the name of the album.');
+                                document.getElementById('name').focus();
+                           </script>";
+                } else {
+                    if (strlen(trim($releaseddate)) == 0) {
+                        echo "<script>
+                                alert('Please provide the release date of the album.');
+                                document.getElementById('date').focus();
+                           </script>";
+                    }
+                    else {
+                        if ($filesize > 0) {
+                            $query = "INSERT INTO albums (albumname, albums.artistid, releaseddate, albumimg)  VALUE ('$albumname', '$artistid', '$releaseddate', '$file');";
+                        } else {
+                            $query = "INSERT INTO albums (albumname, albums.artistid, releaseddate) VALUE ('$albumname', '$artistid', '$releaseddate');";
+                        }
+                        if ($database->query($query) === TRUE) {
+                            echo "<script> window.location.href = 'albums.php'; </script>";
+                        }
+                    }
+                }
+            }?>
         </div>
     </div>
 

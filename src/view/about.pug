@@ -1,0 +1,111 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  // Favicon
+  // Author: Calica, Gwyneth M.
+  link(rel='apple-touch-icon' sizes='57x57' href='favicon/apple-icon-57x57.png')
+  link(rel='apple-touch-icon' sizes='60x60' href='favicon/apple-icon-60x60.png')
+  link(rel='apple-touch-icon' sizes='72x72' href='favicon/apple-icon-72x72.png')
+  link(rel='apple-touch-icon' sizes='76x76' href='favicon/apple-icon-76x76.png')
+  link(rel='apple-touch-icon' sizes='114x114' href='favicon/apple-icon-114x114.png')
+  link(rel='apple-touch-icon' sizes='120x120' href='favicon/apple-icon-120x120.png')
+  link(rel='apple-touch-icon' sizes='144x144' href='favicon/apple-icon-144x144.png')
+  link(rel='apple-touch-icon' sizes='152x152' href='favicon/apple-icon-152x152.png')
+  link(rel='apple-touch-icon' sizes='180x180' href='favicon/apple-icon-180x180.png')
+  link(rel='icon' type='image/png' sizes='192x192' href='favicon/android-icon-192x192.png')
+  link(rel='icon' type='image/png' sizes='32x32' href='favicon/favicon-32x32.png')
+  link(rel='icon' type='image/png' sizes='96x96' href='favicon/favicon-96x96.png')
+  link(rel='icon' type='image/png' sizes='16x16' href='favicon/favicon-16x16.png')
+  link(rel='manifest' href='favicon/manifest.json')
+  meta(name='msapplication-TileColor' content='#ffffff')
+  meta(name='msapplication-TileImage' content='favicon/ms-icon-144x144.png')
+  meta(name='theme-color' content='#ffffff')
+  link(rel='stylesheet' type='text/css' href='public/style.css')
+  link(href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet')
+  title About | Big Hit Music
+.container
+  header
+    // Navigation Bar
+    // Author: Calica, Gwyneth M.
+    nav
+      a(href='view/index.pug')
+        img(src='images/logo site.png' alt='logo')
+      ul.nav-links
+        li
+          a(href='view/index.pug') Home
+        li
+          a(href='view/songs.pug') Music
+        li
+          a(href='artists.html') Artists
+        li
+          a.link-focus(href='about.html') About
+      .burger
+        .line1
+        .line2
+        .line3
+  // About Us
+  //
+    Author: Palma, Leslie Joy J.
+    Natividad, Hudson Kit P.
+  h1 About Us
+  // Logo
+  img(src='')
+  .wrapper
+    // About the site
+    aricle.aboutTheSite
+      h2 About Company
+      p
+        | With our passion for music and arts, we are committed to strengthening and encouraging everyone worldwide through our music and artists. Our highest priority is to provide excellent quality content for our customers globally.  Big Hit Entertainment continues to introduce new innovations to the music industry. Big Hit aims to provide a world-class entertainment lifestyle with their well trained and talented artists in the music industry. The agency is actively working to meet and advance the high expectations of our clients.
+      // The People Behind
+      article.peopleBehind
+        // Descript about the Team
+        h2 Our Team
+        // Image
+        img(src='images/groupPhoto.jpg' alt='group photo')
+        p
+          | Hi! We are the Alpha Team, five passionate individuals inspiring others with our creative use of technology and attention to detail. We are dedicated to providing our users with a web design that is easy to use and a fun user experience that they have never had before.
+          // How the Group was formed
+          br
+          br
+          |       We are merely Kpop fans and admire Big Hit Entertainment. As a group of students studying Information Technology, we have desired to maximize Big Hit songs and advocacies. By creating a site that provides information and services like displaying their music and news about them.We want to help broaden their audience to spread their advocacies and love for music.
+      br
+      br
+      // Our location
+      article.loc
+        h2 Location
+        em 2601 La Trinidad, Benguet, Philippines
+      br
+      br
+      br
+      br
+      hr
+      hr
+      #GetInTouch
+        p
+          strong Get in touch with us!
+        #con
+          img(src='images/contactUs.png' alt='contactUs')
+        form(action='mailto:2190485@slu.edu.ph.com' method='post' enctype='text/plain')
+          label#lbl1(for='fname') Name
+          input#name(type='text' name='name')
+          br
+          br
+          label#lbl2(for='lname') Email
+          input#email(type='text' name='email')
+          br
+          br
+          label#lbl3(for='lname') Subject
+          input#subject(type='text' name='subject')
+          br
+          br
+          label#lbl4(for='lname') Message
+          br
+          textarea#msg(name='yourMessage' rows='20' cols='80')
+          br
+          br
+          input#submitt(type='submit' value='HIGH FIVE')
+  footer
+    hr
+    p(align='center') Copyright &copy; 2020 Alpha Group. All rights reserved.
+    script(type='text/javascript' src='app.js')

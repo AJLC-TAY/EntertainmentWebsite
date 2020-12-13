@@ -14,7 +14,7 @@ include ('../includes/head.html'); ?>
         <div class='path-links'>
             <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='albums.php' target='_self'><b>Albums</b></a></pre>
         </div>
-        <div class="album-list-header row justify-content-between"><h4>Album List</h4><a href='addAlbum.php' target='_self'><button class='btn btn-next'>Add New Album</button></a>
+        <div class="album-list-header row justify-content-between"><h4>Album List</h4><a href='addAlbum.php' target='_self'><button class='btn btn-dark'>Add New Album</button></a>
             </div>
         <div id="albumlist" class="overflow-auto">
             <table id="albumtable" class='table'>
@@ -49,7 +49,7 @@ include ('../includes/head.html'); ?>
                             <td><div class='row editdelete-con'>
                                 <form id='albumform' method='post' >
                                     <input name='albumid' value='$albumid' hidden>
-                                     <button class='btn btn-danger' onclick='deleteAlbumFromTable($albumid)' type='button' name='delete'>
+                                     <button class='btn btn-danger' onclick='deleteAlbum($albumid)' type='button' name='delete'>
                                         <img src='../images/delete.png' title='Delete album'>
                                      </button>
                                 </form>
@@ -58,7 +58,7 @@ include ('../includes/head.html'); ?>
                                 </button>
                                 </a> <br>
                                 <a href='viewTracks.php?id=$albumid'><button id='$albumid' class='btn btn-white' name='view'>
-                                    <img src='../images/view.png' title='View tracks'>
+                                    <img src='../images/viewicon.png' title='View tracks'>
                                 </button>
                                 </a>                               
                                 </div>
