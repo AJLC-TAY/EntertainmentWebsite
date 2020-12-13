@@ -80,7 +80,9 @@ br
                     .spotify-song-con(id = track.artistname)
                         h3 #{track.trackname}
                         .track-info
-                            img(src= `${track.albumimg}` alt='Album image')
+                            form(action='addToPlaylist' method='get')
+                                button.track-btn(id = track.trackid type='submit' name='add' value=`${track.trackid}`)
+                                    img(src= `${track.albumimg}` alt='Album image')
                             .song-desc-con
                                 p
                                     | #{track.artistname}
@@ -90,11 +92,17 @@ br
                                             | Album name: #{track.albumname}
                                             br
                                             | Released on: #{track.releaseddate}
-                                button.album-btn(id = track.albumid) Play album
-                                button.see-vid(id = track.trackname) See Music Videos
+                                form(action='addAlbumToPlaylist' method='get')
+                                    button.album-btn(id = track.albumid type='submit' name='addAlbum' value=`${track.albumid}`) Play album
+                                form(action='searchInYoutube' method='get')
+                                    button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Videos
                     br
 
     .spotify-player
+        audio(src='' controls='' id='')
+        ul#playList
+            li
+            a(href=`${song}`)
 footer
     hr
     p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.

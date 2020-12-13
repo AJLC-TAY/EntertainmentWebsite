@@ -35,12 +35,34 @@ app.get('/songs', (request, response) => {
     });
 });
 
+app.get('/addToPlaylist', (request, response) => {
+    getSpecificTrack(request.query.add).then(function (track) {
+       response.render('songs', {song: track})
+    });
+});
+
 function getTracks() {
     return  new Promise(function (resolve, reject) {
         const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
             tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
         connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
+        });
+    });
+}
+
+function getSpecificTrack(trackid) {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT musicfile FROM tracks WHERE trackid = ?`;
+
+        connection.query(query, [trackid], (err, result) => {
             if (err) {
                 console.log('Unsuccessful');
                 reject(err);
