@@ -52,7 +52,7 @@ include ('../includes/head.html'); ?>
                             </div>
                             <div class='track-buttons'>
                                 <button type='submit' class='btn btn-danger'  onclick='deleteTrack($trackid)' name='delete'><img src='../images/delete.png' title='Delete track'></button>
-                                <button type='submit' class='btn btn-secondary' onclick='updateTrack($trackid)' name='save'><img src='../images/save.png' title='Save changes'></button>
+                                <button type='submit' class='btn btn-success' onclick='updateTrack($trackid)' name='save'><img src='../images/save.png' title='Save changes'></button>
                             </div>
                        </form>
                        </td>

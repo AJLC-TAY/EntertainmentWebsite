@@ -36,7 +36,7 @@ include ('../includes/head.html'); ?>
     echo '<div class="form-group ">
                   <label class="control-label requiredField" for="name">Album name <span class="asteriskField">*</span></label>'
          ."        <input type='hidden' name='albumid' value='$albumid'>
-                   <input class='form-control' id='name' name='name' type='text' value='$albumname'/>
+                   <input class='form-control' id='name' name='name' type='text' value='$albumname' required/>
              </div>".
          '<div class="form-group ">
                   <label class="control-label requiredField" for="artists">Select artist</label>
@@ -56,7 +56,7 @@ include ('../includes/head.html'); ?>
 
     echo '<div class="form-group ">
                 <label class="control-label requiredField" for="date">Released Date <span class="asteriskField">*</span></label>'.
-         "  <input class='form-control' id='date' name='date' placeholder='YYYY-MM-DD' type='text' value='$releaseddate'/>
+         "  <input class='form-control' id='date' name='date' placeholder='YYYY-MM-DD' type='text' value='$releaseddate' required/>
                </div>";
     echo '<div class="form-group ">'.'<label class="control-label" for="currentimg">Current Image</label><br>'.
             "<img id='currentimg' class='file' src='$albumimg' alt='$albumname image'><br>
@@ -65,9 +65,9 @@ include ('../includes/head.html'); ?>
               <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
          </div>'."
 
-        <div class='form-group'>
-            <button class='btn btn-danger' type='button' onclick='deleteAlbum()' name='delete'>Delete</button>
-            <button class='btn btn-primary' type='button' onclick='updateAlbum()' name='save'>Save</button>
+        <div class='form-group d-flex flex-row-reverse'>
+            <button class='btn btn-success' type='button' onclick='updateAlbum()' style='width: 90px;' name='save'>Save</button>
+            <button class='btn btn-danger' type='button' onclick='deleteAlbum()' style='margin-right: 10px;' name='delete'>Delete</button>
         </div>
     </form>";
     ?>
