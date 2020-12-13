@@ -16,6 +16,5 @@
     $stmt->prepare($query);
     $stmt->execute();
     $stmt->close();
-    echo "<script>alert('success');</script>";
 
 

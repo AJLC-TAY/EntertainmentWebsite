@@ -15,7 +15,7 @@ include ('../includes/head.html'); ?>
         <div class='path-links'>
             <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'><b>Artists</b></a></pre>
         </div>
-        <div class="artist-list-header row justify-content-between"><h4>Artist List</h4><a href='addArtist.php' target='_self'><button class='btn btn-next'>Add New Artist</button></a>
+        <div class="artist-list-header row justify-content-between"><h4>Artist List</h4><a href='addArtist.php' target='_self'><button class='btn btn-dark'>Add New Artist</button></a>
             </div>
         <div id="artistlist" class="overflow-auto">
             <table id="artisttable" class='table'>
@@ -56,12 +56,12 @@ include ('../includes/head.html'); ?>
                                      <button class='btn btn-danger' onclick='deleteArtistFromTable($artistid)' type='button' name='delete'>
                                         <img src='../images/delete.png' title='Delete artist'>
                                      </button>
-                                </form>
+                                </form><br>
                   
                                 <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
                                     <img src='../images/edit.png' title='Edit artist'>
                                 </button>
-                                </a> <br>
+                                </a> 
                                 </div>
                             </td>
                           </tr>";

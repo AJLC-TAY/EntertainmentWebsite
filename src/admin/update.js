@@ -43,7 +43,7 @@ if ( window.history.replaceState ) {
 //                                  <div class='track-buttons'>
 //                                     <button type='button' class='btn btn-danger' onclick='deleteTrack(${trackid})' name='delete'><img src='../images/delete.png' title='Delete track'>
 //                                     </button>
-//                                     <button type='button' class='btn btn-secondary' onclick='updateTrack(${trackid})' name='update'><img src='../images/save.png' title='Save changes'>
+//                                     <button type='button' class='btn btn-secondary' onclick='updateTrack(${trackid})' name='update'><img src='../images/saveicon.png' title='Save changes'>
 //                                     </button>
 //                                 </div>
 //                            </form>
@@ -61,8 +61,8 @@ async function deleteAlbumFromTable(albumid) {
     let confirmationResult = confirm("Are you sure you want to delete this album?");
     if (confirmationResult) {
         fetch(url).then();
-            let rowIndex = document.getElementById(`${albumid}row`).rowIndex;
-            document.getElementById('albumtable').deleteRow(rowIndex);
+        let rowIndex = document.getElementById(`${albumid}row`).rowIndex;
+        document.getElementById('albumtable').deleteRow(rowIndex);
     }
 }
 async function deleteAlbum(albumid) {
@@ -74,32 +74,32 @@ async function deleteAlbum(albumid) {
     }
 }
 
-async function updateAlbum() {
-    let form = new FormData(document.getElementById('albumform'));
-    let albumname = form.get('name').trim();
-    let releaseddate = form.get('date').trim();
-    let url = "saveAlbumChanges.php";
-
-    if (albumname.length !== 0) {
-        if (releaseddate.length !== 0) {
-            let confirmationResult = confirm("Are you sure you want to change this album?");
-            if (confirmationResult) {
-                form.set('save', 1);
-                await fetch (url, {
-                    method: "POST",
-                    body: form
-                }).then();
-                window.location.href='albums.php';
-            }
-        } else {
-            alert("Please provide the date of release.")
-            document.getElementById('date').focus();
-        }
-    } else {
-        alert("Please provide name for the album.");
-        document.getElementById('name').focus();
-    }
-}
+// async function updateAlbum() {
+//     let form = new FormData(document.getElementById('albumform'));
+//     let albumname = form.get('name').trim();
+//     let releaseddate = form.get('date').trim();
+//     let url = "saveAlbumChanges.php";
+//
+//     if (albumname.length !== 0) {
+//         if (releaseddate.length !== 0) {
+//             let confirmationResult = confirm("Are you sure you want to implement the changes in this album?");
+//             if (confirmationResult) {
+//                 form.set('save', 1);
+//                 await fetch (url, {
+//                     method: "POST",
+//                     body: form
+//                 }).then();
+//                 window.location.href='albums.php';
+//             }
+//         } else {
+//             alert("Please provide the date of release.")
+//             document.getElementById('date').focus();
+//         }
+//     } else {
+//         alert("Please provide name for the album.");
+//         document.getElementById('name').focus();
+//     }
+// }
 
 
 async function addAlbum() {
@@ -125,40 +125,39 @@ async function addAlbum() {
     }
 
 }
-async function deleteTrack(trackid) {
-    let form = document.getElementById(`${trackid}form`);
-    let formdata = new FormData(form);
-    let url = "updateTrack.php";
-    let confirmationResult = confirm("Are you sure you want to delete this track?");
-    if (confirmationResult) {
-        formdata.set('delete', 1);
-        fetch(url, {
-            method: "POST",
-            body: formdata
-        });
-        location.reload();
-    }
-}
-async function updateTrack(trackid) {
-    let form = document.getElementById(`${trackid}form`);
-    let formdata = new FormData(form);
-    // let albumid = formdata.get("albumid");
-    let url = "updateTrack.php";
-    if (formdata.get("trackname").trim().length === 0) {
-        alert("Please provide a track name.")
-        document.getElementById(`${trackid}name`).focus();
-    } else {
-        let confirmationResult = confirm("Are you sure you want to change this track?");
-        if (confirmationResult) {
-            formdata.set('update', 1);
-            fetch(url, {
-                method: "POST",
-                body: formdata
-            });
-            location.reload();
-        }
-    }
-}
+// async function deleteTrack(trackid) {
+//     let form = document.getElementById(`${trackid}form`);
+//     let formdata = new FormData(form);
+//     let url = "updateTrack.php";
+//     let confirmationResult = confirm("Are you sure you want to delete this track?");
+//     if (confirmationResult) {
+//         formdata.set('delete', 1);
+//         fetch(url, {
+//             method: "POST",
+//             body: formdata
+//         });
+//         location.reload();
+//     }
+// }
+// async function updateTrack(trackid) {
+//     let form = document.getElementById(`${trackid}form`);
+//     let formdata = new FormData(form);
+//     let url = "updateTrack.php";
+//     if (formdata.get("trackname").trim().length === 0) {
+//         alert("Please provide a track name.")
+//         document.getElementById(`${trackid}name`).focus();
+//     } else {
+//         let confirmationResult = confirm("Are you sure you want to implement the changes this track?");
+//         if (confirmationResult) {
+//             formdata.set('update', 1);
+//             fetch(url, {
+//                 method: "POST",
+//                 body: formdata
+//             });
+//             location.reload();
+//         }
+//     }
+// }
 
 function showAddTrackForm () {
     let addTrackForm = document.querySelector('.addtrack_form');
