@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed0ae829-b02f-422b-94fe-abca114025b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/admin/update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/videos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addAlbumDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addAlbumDB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addArtist.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addArtist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/addTrackDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/addTrackDB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/albums.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/albums.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/artist.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/artist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/databaseCon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/deleteAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/deleteAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/home.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/saveAlbumChanges.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateAlbum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateAlbum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/updateTrack.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/updateTrack.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/viewTracks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/viewTracks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/dataclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/dataclass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artists.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/artists.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/songs.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sample" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -72,21 +60,14 @@
       <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src\public" />
+      <recent name="C:\wamp64\www\EntertainmentWebsite\src\view" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\admin" />
       <recent name="C:\wamp64\www\EntertainmentWebsite\src\admin\require" />
-      <recent name="C:\wamp64\www\EntertainmentWebsite\src\includes" />
-      <recent name="C:\wamp64\www\EntertainmentWebsite\src" />
-      <recent name="C:\wamp64\www\EntertainmentWebsite" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <module name="EntertainmentWebsite" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -100,11 +81,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.test" />
-      </list>
-    </recent_temporary>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="EntertainmentWebsite" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,6 +122,9 @@
       <workItem from="1606878016878" duration="10251000" />
       <workItem from="1606889118688" duration="35874000" />
       <workItem from="1606964638253" duration="53388000" />
+      <workItem from="1607435464686" duration="14640000" />
+      <workItem from="1607747413192" duration="14162000" />
+      <workItem from="1607846291706" duration="3054000" />
     </task>
     <task id="LOCAL-00001" summary="fixed search button and fixed the filter and radio buttons">
       <created>1603988777980</created>
@@ -295,99 +281,5 @@
     <MESSAGE value="finished album but with no validation of textfields" />
     <MESSAGE value="premerged the output of artist.php" />
     <option name="LAST_COMMIT_MESSAGE" value="premerged the output of artist.php" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="249" y="0" key="#Project_Structure" timestamp="1606626776302">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606626776302" />
-    <state x="916" y="226" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606641989543">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="916" y="226" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1606641989543" />
-    <state x="574" y="128" width="412" height="647" key="#com.intellij.ide.util.MemberChooser" timestamp="1606981782585">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="574" y="128" width="412" height="647" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1606981782585" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606739087789">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1606739087789" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606891239137">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606891239137" />
-    <state x="1078" y="124" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#function1" timestamp="1606984576921">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="1078" y="124" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#function1/0.0.1536.824@0.0.1536.824" timestamp="1606984576921" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1606928048541">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606928048541" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606536327103">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606536327103" />
-    <state x="349" y="155" key="IDE.errors.dialog" timestamp="1606927212599">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1606927212599" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1604369109303">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1604369109303" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1603988856280">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1603988856280" />
-    <state x="384" y="271" key="NewPhpClassDialog" timestamp="1606924116453">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="384" y="271" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1606924116453" />
-    <state x="990" y="246" key="NewPhpFileDialog" timestamp="1607015315054">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="990" y="246" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1607015315054" />
-    <state x="584" y="346" key="ReplaceDuplicatesPrompt" timestamp="1606984582321">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="584" y="346" key="ReplaceDuplicatesPrompt/0.0.1536.824@0.0.1536.824" timestamp="1606984582321" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1606803859954">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606803859954" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606928053570">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606928053570" />
-    <state x="110" y="0" width="1432" height="830" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606983153183">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="110" y="0" width="1432" height="830" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1606983153183" />
-    <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606570439226">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="190" y="201" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1606570439226" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606927246382">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606927246382" />
-    <state x="648" y="0" width="626" height="810" key="dock-window-1" timestamp="1606902936011">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="648" y="0" width="626" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1606902936011" />
-    <state x="611" y="185" key="refactoring.ChangeSignatureDialog" timestamp="1606992899661">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="611" y="185" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1606992899661" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1606979543119">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606979543119" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607007409379">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607007409379" />
   </component>
 </project>

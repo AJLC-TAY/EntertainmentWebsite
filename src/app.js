@@ -5,23 +5,73 @@
  *
  * Author: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  */
+
+const express = require('express');
+const mysql = require('mysql');
+const btoa = require('btoa');
+
+const app = express();
+
+app.use(express.static('public'));
+app.set('views', `${__dirname}/view`);
+app.set('view engine', 'pug');
+
+const connection = mysql.createConnection({
+    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3308'
+});
+connection.connect((err) => {
+    if(err) {
+        console.log("Database connection failed");
+    } else {
+        console.log("Database connection successful")
+    }
+});
+
+app.listen(3000, 'bighitmusic');
+
+app.get('/', (request, response) => {
+    response.render('index');
+});
+
+app.get('/songs', (request, response) => {
+    getTracks().then(function(tracks) {
+        //console.log(tracks);
+        tracks.forEach(track => {
+            track.albumimg = "data:image;base64," + btoa(track.albumimg);
+        });
+        response.render('songs', {tracks: tracks});
+    });
+});
+
+function getTracks() {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
+            tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
+        });
+    });
+}
+
 const APIController = (function () {
-    window.onload = loadClientAPI;
+    loadClientAPI;
     // YOUTUBE REQUIREMENTS
     const YT_API_KEY = 'AIzaSyDGdhwvUVmISQJlo8oforHn9LmFL-wJZ7M';
     const YT_CLIENT_ID = '471584331255-p66pq86kuef1ocv3jcectp3t9kb1f9bl.apps.googleusercontent.com';
     const BIGHIT_CHANNELID = 'UC3IZKseVpdzPSBaWxBxundA';
 
-    // SPOTIFY REQUIREMENTS
-    const SP_CLIENT_ID = '42aee398a9a943fd839ff19072e88470';
-    const SP_CLIENT_SEC = 'ce15cd96b46444929eec7b641dea0365';
-    const SP_TOKEN = btoa(SP_CLIENT_ID + ":" + SP_CLIENT_SEC);
-
     // No of elements
     const MAX_RESULTS = '3';
 
-    /** Private methods for Youtube API */
 
+    /** Private methods for Youtube API */
     /* Loads the Youtube API */
     function loadClientAPI() {
         gapi.client.setApiKey(YT_API_KEY);
@@ -56,33 +106,20 @@ const APIController = (function () {
 
     /** Private methods for Spotify API */
 
-    /* Fetches the token of the Spotify API */
-    const _getToken = async () => {
-        const result = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/x-www-form-urlencoded',
-                'Authorization' : 'Basic ' + SP_TOKEN
-            },
-            body: 'grant_type=client_credentials'
+    /* Fetches all tracks in the database */
+    const _getTracks = async () => {
+        return new Promise(function (resolve, reject) {
+            const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname, 
+            tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+
+            connection.query(query, (err, result) => {
+                if (err){
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
         });
-
-        const data = await result.json();
-        return data.access_token;
-    }
-
-    /* Fetches the Top Tracks of an artist by its ID, in a country */
-    const _getTopTracks = async (artistId, market) => {
-
-        const result = await fetch (`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=${market}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type' : 'application/json',
-                'Authorization' : 'Bearer ' + await _getToken()
-            }
-        });
-        return await result.json();
     }
 
     /* Fetches the admin.tracks related to the searched keyword */
@@ -108,12 +145,12 @@ const APIController = (function () {
         fetchVideos(keyword) {
             return _fetchVideos(keyword);
         },
-        getTopTracks(artistId, market, token) {
-            return _getTopTracks(artistId, market, token);
+        getTracks() {
+            return _getTracks();
         },
         fetchSongs(keyword) {
             return _fetchSongs(keyword);
-        }
+        },
     }
 })();
 
@@ -122,6 +159,7 @@ const APIController = (function () {
  * Controller responsible for the creation of DOM elements.
  * Authors: Cutay, Alvin John L. & Del-ong, Kilrone Yance B.
  * */
+
 const UIController = (function() {
     /* Constant that holds all classes and IDs of the necessary
     elements for the making of DOM elements.*/
@@ -293,12 +331,12 @@ const UIController = (function() {
    * Author: Cutay, Alvin John L.
    * */
     const _createSongDetail = async (track) => {
-        let artistName = track.album.artists[0].name;
-        let albumuri = track.album.uri;
-        var trackName = track.name;
-        let albumName = track.album.name;
-        let releasedate = track.album.release_date;
-        let img = track.album.images[1];
+        let artistName = track.artistname;
+        let albumid = track.albumid;
+        var trackName = track.trackname;
+        let albumName = track.albumname;
+        let releasedate = track.releasedate;
+        let img = "data:image;base64," + track.albumimg;
 
         let spotifySongCon = createElementWithClass('div', 'spotify-song-con');
         spotifySongCon.id = `${artistName}`;
@@ -307,13 +345,13 @@ const UIController = (function() {
         h3.innerText = `${trackName}`;
 
         let trackInfo = createElementWithClass('div', 'track-info');
-        let albumImg = createImage(`${img.url}`, "Album image", `${albumName} album image`);
+        let albumImg = createImage(`${img}`, "Album image", `${albumName} album image`);
         let songDescCon = createElementWithClass('div', 'song-desc-con');
         let p = createElement('p');
         p.innerHTML = `${artistName}<br>
                         <span> <small>Album name: ${albumName}
                         <br>Released on: ${releasedate}</small> </span>`;
-        let albumBtn = createButton(`${albumuri}`, 'album-btn', 'Play album');
+        let albumBtn = createButton(`${albumid}`, 'album-btn', 'Play album');
         let seeVidLink = createElementWithClass('button', 'see-vid');
         seeVidLink.id = `${trackName}`;
         seeVidLink.innerHTML = `<u>See Music Videos</u>`;
@@ -472,6 +510,7 @@ const APPController = (function (UICtrl, APICtrl) {
     const DOMElements = UICtrl.inputOutputFields();
     const artistsDetail = Array();
     let topTracks = [];
+
     const loadSeeMVButtons = async () => {
         // Add event listener for every button inside the song detail container to search for its music video
         let seeMVButtons = UICtrl.getSeeVidButtons().seeVideosButton;
@@ -513,8 +552,8 @@ const APPController = (function (UICtrl, APICtrl) {
         });
 
         await loadTopTracks();
-        await loadSeeMVButtons();
-        await loadPlayAlbumButtons();
+        // await loadSeeMVButtons();
+        // loadPlayAlbumButtons();
 
         try {
             let filterButtons = DOMElements.filterButtons.children;
@@ -562,18 +601,11 @@ const APPController = (function (UICtrl, APICtrl) {
      */
     const loadTopTracks = async () => {
         // loading of top admin.tracks to the song list
-        for (const artist of artistsDetail) {
-            let tracks = (await APICtrl.getTopTracks(artist.sId, 'PH')).tracks;
-            topTracks = topTracks.concat(tracks);
-        }
-        topTracks.sort((a, b) => {
-            var x = a.name.toLowerCase();
-            var y = b.name.toLowerCase();
-            if (x < y) {return -1;}
-            if (x > y) {return 1;}
-            return 0;
-        });
-        topTracks.forEach(track => UICtrl.createSongDetail(track));
+        let tracks = (await APICtrl.getTracks().then(function (tracks) {
+            tracks.forEach(track => UICtrl.createSongDetail(track));
+        }));
+
+        //tracks.forEach(track => UICtrl.createSongDetail(track));
         // // print the url of images for the albums
         // let jsonStringTracks = "{";
         // topTracks.forEach(track => {
