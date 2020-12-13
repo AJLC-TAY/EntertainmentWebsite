@@ -9,7 +9,11 @@
 }
 
 .menu-con {
-  margin-bottom: 80vh;
+  height: 80vh;
+}
+
+.home-con {
+  margin-bottom: 30px !important;
 }
 
 .menu-item svg {
@@ -33,9 +37,18 @@
   width: 70px; height: auto;
 }
 /* Buttons  */
-.editdelete-con form button, .editdelete-con a button{
+.editdelete-con form button, .editdelete-con a button, button[name="save-track"] {
   height: 32px;
   padding-top: 3px;
+  padding-left: 14px;
+  width: 45px;
+  margin:6px 6px;
+  border-radius: 5px;
+}
+
+.small-del {
+  height: 32px;
+  padding-top: 5px;
   padding-left: 14px;
   width: 45px;
   margin:6px 6px;
@@ -45,7 +58,7 @@ button[name="delete"], .btn-danger {
   background-color: var(--red);
   border-color: var(--red);
 }
-button[name="delete"]:hover {
+button[name="delete"]:hover, .btn-danger:hover {
   background-color: var(--darkred);
   border-color: var(--darkred);
 }
@@ -65,7 +78,7 @@ button[name="save"] {
   width: 90px;
 }
 
-img[title*="album"], button img[title*='track'],  button img[title*='Save'], button img[title*='artist'] {
+img[title*="album"], button img[title*='track'],  button img[title*='Save'], button img[title*='artist'], a.btn-danger img {
   width: 15px;
   height: auto;
 }
@@ -109,9 +122,9 @@ audio {
 }
 .album-con {
   text-align: center;
-  width: 23%;
+  width: 20%;
   padding: 0;
-  margin: 0;
+  margin-right: 20px;
 }
 
 .path-links a {
@@ -193,7 +206,7 @@ a div {
 }
 
 .addtrack_form {
-  width: 95%;
+  width: 100%;
 }
 #trackstable *, .addtrack_form *, .album-form-btns * {
   font-size: 12px;
@@ -201,14 +214,17 @@ a div {
 
 .album-form-btns {
   width: 80%;
-  margin: 10px auto;
+  margin: 0 auto;
 }
-.album-form-btns button {
-  border-radius: 0;
+
+.track-buttons a, .track-buttons button {
+  margin: 3px;
 }
 
 #add-track-btn {
   width: 100px;
+  margin-right: 18px;
+
 }
 #add-track-form {
   width: 80px;
@@ -218,13 +234,16 @@ a div {
 }
 
 .album-view-con {
-  border: #1f1f1f 1px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-  width: 280px;
+  width: 100%;
+  box-shadow: 0 1px 2px grey;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  /*background-color: #343A40;*/
 }
 
 .albumimg {

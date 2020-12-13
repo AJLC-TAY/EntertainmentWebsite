@@ -10,10 +10,6 @@
     margin-bottom: 230px;
 }
 
-#loginForm {
-    font-family: Montserrat, sans-serif;
-}
-
-#loginForm button {
+body {
     font-family: Montserrat, sans-serif;
 }
