@@ -32,29 +32,21 @@ header
                 #videoContainer
                 ul#video-list.list-con
                     each video in videos
+                        - let title = video.snippet.title;
+                        - let published = video.snippet.publishedAt;
+                        - let videoID = video.id.videoId;
+                        - let img = video.snippet.thumbnails.high;
+                        small= published
                         li
-                        .video-container(id = video.name)
-
-
-        .all-video-con
-            h3 Videos
-            hr
-            ul#song-list.list-con
-                each track in tracks
-                    li
-                    .spotify-song-con(id = track.artistname)
-                        h3 #{track.trackname}
-                        .track-info
-                            img(src= `${track.albumimg}` alt='Album image')
-                            .song-desc-con
-                                p
-                                    | #{track.artistname}
-                                    br
-                                    span
-                                        small
-                                            | Album name: #{track.albumname}
-                                            br
-                                            | Released on: #{track.releaseddate}
-                                button.album-btn(id = track.albumid) Play album
-                                button.see-vid(id = track.trackname) See Music Videos
-                    br
+                        .video-con(id = `${videoID}`)
+                            form(action='video' method='get')
+                                button.video-btn(id  = `${videoID}` type='submit' name='play' value=`${videoID}`)
+                                    img(src=`${img.url}` title=`${title}`)
+                            .desc-con
+                                h4 #{title}
+                                small #{published}
+footer
+    hr
+    p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.
+script(src='https://apis.google.com/js/client.js?onload=handleClientLoad')
+script#main-css(type='text/javascript' src='../app.js')

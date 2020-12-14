@@ -4,6 +4,7 @@
     $dir = "tracks/$albumid/";
     $filename = $_FILES['file']['name'];
     $filepath = $dir .basename($filename);
+    $mv = trim($_POST['url']);
 
     /**
      * @param $query
@@ -18,7 +19,11 @@
     }
 
     if ($_FILES['file']['size'] === 0) {
-        $query = "INSERT INTO tracks (tracks.name, albumid) VALUE('$trackname', '$albumid')";
+        if (strlen($mv) == 0 ){
+            $query = "INSERT INTO tracks (tracks.name, albumid) VALUE('$trackname', '$albumid')";
+        } else {
+            $query = "INSERT INTO tracks (tracks.name, albumid, musicvideo) VALUE('$trackname', '$albumid', '$mv')";
+        }
         addTrack($query);
     } else {
         // creates directory if album folder does not exist
@@ -26,7 +31,7 @@
             mkdir($dir, 0755, true);
         }
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
-            $query = "INSERT INTO tracks (tracks.name, albumid, musicfile) VALUE('$trackname', '$albumid', '$filepath')";
+            $query = "INSERT INTO tracks (tracks.name, albumid, musicfile, musicvideo) VALUE('$trackname', '$albumid', '$filepath', '$mv')";
             addTrack($query);
         }
     }

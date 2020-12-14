@@ -9,7 +9,7 @@ app.set('views', `${__dirname}/view`);
 app.set('view engine', 'pug');
 
 const connection = mysql.createConnection({
-    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3308'
+    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3306'
 });
 connection.connect((err) => {
     if(err) {
@@ -75,7 +75,7 @@ function getArtists() {
             if (err) {
                 console.log('Unsuccessful');
                 reject(err);
-            }else {
+            } else {
                 console.log('Successful');
                 resolve(result);
             }
@@ -84,12 +84,18 @@ function getArtists() {
 }
 
 app.get('/songs', (request, response) => {
-    getTracks().then(function(tracks) {
+    getTracks().then(function (tracks) {
         //console.log(tracks);
         tracks.forEach(track => {
             track.albumimg = "data:image;base64," + btoa(track.albumimg);
         });
         response.render('songs', {tracks: tracks});
+    });
+});
+
+app.get('/videos', (request, response) => {
+    getVideos(request.query.search).then(function (videos) {
+        response.render('videos', {videos: videos});
     });
 });
 
@@ -117,10 +123,6 @@ function getTracks() {
         });
     });
 }
-
-
-
-
 
 // /**
 //  * Controller responsible for fetching data from Spotify, Youtube
