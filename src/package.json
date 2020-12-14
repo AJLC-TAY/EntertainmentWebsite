@@ -1,0 +1,34 @@
+{
+  "name": "express20",
+  "version": "1.0.0",
+  "description": "Project website",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "btoa": "^1.2.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "html2pug": "^4.0.0",
+    "init": "^0.1.2",
+    "jQuery": "^1.7.4",
+    "jsdom": "^16.4.0",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJLC-TAY/EntertainmentWebsite.git"
+  },
+  "author": "Alpha Group",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJLC-TAY/EntertainmentWebsite/issues"
+  },
+  "homepage": "https://github.com/AJLC-TAY/EntertainmentWebsite#readme"
+}
