@@ -8,7 +8,9 @@ include ('../includes/head.html'); ?>
   </head>
 
   <body>
+    <!--Contains the logo, the title of the page, the date today, and the log out button-->
     <?php include '../includes/navbanner.php' ?>
+    <!--Contains the -->
     <?php include '../includes/database.php'?>
 
     <div class="artist-list-con container">
@@ -17,6 +19,8 @@ include ('../includes/head.html'); ?>
         </div>
         <div class="artist-list-header row justify-content-between"><h4>Artist List</h4><a href='addArtist.php' target='_self'><button class='btn btn-dark'>Add New Artist</button></a>
             </div>
+
+<!---->
         <div id="artistlist" class="overflow-auto">
             <table id="artisttable" class='table'>
                     <thead class='thead-dark'>

@@ -1,13 +1,18 @@
-/*NavBanner HTML*/
+/* Contains the styling for the navbanner.php file*/
+
+/* Set the placement of the whole navigation section to the body*/
 .container {
     width: 80%;
 }
+
+/* Set the placement and position of the image*/
 .row img {
     width:200px;
     height: auto;
     float: left;
 }
 
+/* Set the placement and position of the navigation sections*/
 nav {
     width: 100%;
     background-color: white;
@@ -18,14 +23,14 @@ nav {
     align-items: center;
 }
 
-
+/* Set the placement and position of the navigation links*/
 .nav-links {
     display: flex;
     float: right;
     margin-top: -70px;
-
 }
 
+/* Set the size and way of listing style of the navigation links*/
 nav li {
     list-style: none;
     height: auto;
@@ -34,6 +39,7 @@ nav li {
 
 }
 
+/* Set the styling of the navigation links*/
 nav ul a {
     width: auto;
     height: 100px;
@@ -44,50 +50,60 @@ nav ul a {
     font-family: Montserrat, sans-serif;
 }
 
+/* Set the action/response of the navigation links when it was hovered, clicked and used*/
 li a:hover, li a:focus, li a.link-focus{
     font-weight: bolder;
     font-size: 16px;
 }
 
+/* Set the placement and position of the admin header*/
 .admin-header {
     font-size: 28px;
     font-weight: bold;
 }
 
+/* Set the placement and position of the admin*/
 .admin-desc {
     margin-top: 30px;
     margin-left: 20px;
 }
 
+/* Set the placement and position of the logo id*/
 #logo {
     width: auto;
     height: auto;
 }
 
+/* Set the placement and position of row*/
 .row {
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Set the placement and position of the header*/
 .header-desc-con {
     display: flex;
     vertical-align: center;
     height: auto;
 }
 
+/* Set the margin of the line used */
 hr {
     margin: 0;
 }
 
+/* Set the size of the column*/
 col {
     height: auto;
 }
 
+/* Set the placement and position of the banner id*/
 #banner {
     height: 15vh;
     margin-bottom: 45px;
 }
 
+/* Set the placement and position of the logout button*/
 .logout-con {
     margin: 20px 20px;
 }
