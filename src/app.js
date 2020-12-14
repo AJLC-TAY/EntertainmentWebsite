@@ -26,11 +26,17 @@ app.get('/', (request, response) => {
 });
 
 app.get('/songs', (request, response) => {
-    getTracks().then(function(tracks) {
+    const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
+            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+
+    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    getTracks(query1).then(function(tracks) {
         tracks.forEach(track => {
             track.albumimg = "data:image;base64," + btoa(track.albumimg);
         });
-        response.render('songs', {tracks: tracks});
+        getArtists(query2).then(function(artists) {
+            response.render('songs', {tracks: tracks, artists: artists});
+        });
     });
 });
 
@@ -38,10 +44,8 @@ app.get('/index', (request, response) => {
     response.render('index');
 });
 
-function getTracks() {
+function getTracks(query) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
         connection.query(query, (err, result) => {
             if (err) {
@@ -59,19 +63,27 @@ function getTracks() {
 
 app.get('/albums', (request, response) => {
     var albumid = request.query.playlist;
+    const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
+            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
     getAlbums(albumid).then(function(albums) {
-        getTracks().then(function(tracks) {
+        albums.forEach(album => {
+           album.albumimg = "data:image;base64," + btoa(album.albumimg);
+        });
+        getTracks(query1).then(function(tracks) {
             tracks.forEach(track => {
                 track.albumimg = "data:image;base64," + btoa(track.albumimg);
             });
-            response.render('playlist', {tracks: tracks, albums: albums});
+            getArtists(query2).then(function(artists) {
+                response.render('playlist', {tracks: tracks, artists: artists, albums: albums});
+            });
         });
     });
 });
 
 function getAlbums(albumid) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT name AS trackname, musicfile FROM tracks WHERE albumid = ?`;
+        const query = `SELECT albumimg, tracks.name AS trackname, tracks.musicfile FROM albums JOIN tracks USING(albumid) WHERE albumid = ?`;
 
         connection.query(query, [albumid], (err, result) => {
             if (err) {
@@ -85,8 +97,14 @@ function getAlbums(albumid) {
     });
 }
 
+app.get('/videos', (request, response) => {
+
+    response.render('video');
+});
+
 app.get('/artists', (request, response) => {
-    getArtists().then(function(artists) {
+    const query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    getArtists(query).then(function(artists) {
         artists.forEach(artist => {
             if(artist.artistimage == null) {
                 console.log("No Image");
@@ -98,10 +116,8 @@ app.get('/artists', (request, response) => {
     });
 });
 
-function getArtists() {
+function getArtists(query) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
-
         connection.query(query, (err, result) => {
             if (err) {
                 console.log('Unsuccessful');
@@ -118,6 +134,20 @@ app.get('/about', (request, response) => {
     response.render('about');
 });
 
+app.get('/filter', (request, response) => {
+    var artistid = request.query.filterArtist;
+    var query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
+        tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE artistid = ${artistid}`;
+    var query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    getTracks(query1).then(function(tracks) {
+        tracks.forEach(track => {
+            track.albumimg = "data:image;base64," + btoa(track.albumimg);
+        });
+        getArtists(query2).then(function(artists) {
+            response.render('songs', {tracks: tracks, artists: artists});
+        });
+    });
+});
 
 
 // /**

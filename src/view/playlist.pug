@@ -47,21 +47,22 @@ header
             .line2
             .line3
 .musicHeader
-    h1 Videos or Songs List
+    h1 Songs List
     .search-container
         input#search-fld(type='text' placeholder='Type something..' name='search')
         button#search-btn(type='submit')
             img.search-icon(src='images/search-icon.png' alt='search icon')
-#radio-btn-con.aligned-con
-    .radio-btn.aligned-con
-        input#choice1(checked='' name='searchParam' type='radio' value='songs')
-        label(for='choice1') Songs
-    .radio-btn.aligned-con
-        input#choice2(type='radio' name='searchParam' value='videos')
-        label(for='choice2') Videos
 .aligned-con.filter-con
     p Artists:
     #filters.aligned-con
+        form(action='songs' method='get')
+            button.filter-but(id= all type='submit' name='filterArtist')
+                p(style='margin: 2px 4px;') All
+        each artist in artists
+            form(action='filter' method='get')
+                button.filter-but(id= artist.nickname type='submit' value=`${artist.artistid}` name='filterArtist')
+                    p(style='margin: 2px 4px;')
+                    | #{artist.nickname}
 br
 .column
     #result-items-con
@@ -75,38 +76,36 @@ br
         .all-song-con
             h3 Songs
             hr
-            ul#song-list.list-con
-                each track in tracks
-                    li
-                    .spotify-song-con(id = track.artistname)
-                        h3 #{track.trackname}
-                        .track-info
-                            img(src= `${track.albumimg}` alt='Album image')
-                            .song-desc-con
-                                p
-                                    | #{track.artistname}
-                                    br
-                                    span
-                                        small
-                                            | Album name: #{track.albumname}
-                                            br
-                                            | Released on: #{track.releaseddate}
-                                form(action='albums' method='get')
-                                    button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
-                                form(action='videos' method='get')
-                                    button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Videos
-                    br
+            .song-det-con
+                ul#song-list.list-con
+                    each track in tracks
+                        li
+                        .spotify-song-con(id = track.artistname)
+                            h3 #{track.trackname}
+                            .track-info
+                                img(src= `${track.albumimg}` alt='Album image')
+                                .song-desc-con
+                                    p
+                                        | #{track.artistname}
+                                        br
+                                        span
+                                            small
+                                                | Album name: #{track.albumname}
+                                                br
+                                                | Released on: #{track.releaseddate}
+                                    form(action='albums' method='get')
+                                        button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
+                                    form(action='videos' method='get')
+                                        button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Video
+                        br
 
-        .spotify-player
-            ul#playList
-                each track in albums
-                    li
-                    - var index = 0;
-                    button(id=index onclick=`play(${JSON.stringify(track.musicfile)})`) #{track.trackname}
-
-
-            audio(src="" controls id="audio")
-
+                .spotify-player
+                    img(id="audioImage" src="")
+                    audio(src="" controls id="audio")
+                    ul#playList
+                        each track in albums
+                            button(id=index onclick=`play(${JSON.stringify(track.musicfile)})`) #{track.trackname}
+                            br
 
 footer
     hr
@@ -120,10 +119,13 @@ script(type='text/javascript').
 
 
     function play(file) {
-
         $(`#audio`)[0].src = "http://localhost:8001/" + file;
         $(`#audio`)[0].play();
         $("#audio")[0].addEventListener("ended", function() {
 
         })
+    }
+
+    function addImage() {
+
     }

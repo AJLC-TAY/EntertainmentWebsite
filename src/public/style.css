@@ -192,6 +192,10 @@ li a:hover, li a:focus, li a.link-focus{
   width: 100%;
 }
 
+.song-det-con {
+    display: flex;
+}
+
 /* Spotify Design */
 /* Author: Cutay, Alvin John L. */
 .spotify-song-con {
@@ -203,14 +207,23 @@ li a:hover, li a:focus, li a.link-focus{
 .spotify-player {
     width: 400px;
     height: 300px;
-    position: fixed;
-    top: 45vh;
-    right: 5vw;
+    margin-top: 10vh;
+    margin-left: 2vw;
 }
 
 .spotify-player iframe {
     width: 100%;
     height: 100%;
+}
+#audio {
+    width: 100%;
+}
+
+#playList button {
+    border-radius: 10px;
+    width: 300px;
+    height: 50px;
+    margin-top: 1vh;
 }
 
 
