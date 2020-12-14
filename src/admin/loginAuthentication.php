@@ -1,7 +1,13 @@
 <?php
+
+// Contains the constructor for Accounts
 include("AccountClass.php");
+// Contains the login page
 include("login.php");
+// Contains the establishment to the database
 include ("../includes/database.php");
+
+// Contains the checking of the entered credentials from login.php to the database.
 $accounts = [];
 
 $query = "SELECT username, password FROM useradmin";
