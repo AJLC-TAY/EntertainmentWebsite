@@ -18,63 +18,61 @@ echo "<div class='container'>
     <div class='path-links'>
               <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'>Artists</a> / <a href='updateArtist.php.php?id=$artistid' target='_self'><b>Update Artist</b></a></pre>
         </div>";
-$query = "SELECT artistimage, artistname, nickname, debutyear, membernum FROM artists WHERE artistid='$artistid'";
-$stmt = $database->stmt_init();
-$stmt->prepare($query);
-$stmt->execute();
-$stmt->bind_result($img, $artistname, $nickname, $debutyear, $membernum);
-$stmt->fetch();
-
-$artistimage = "data:image;base64,".base64_encode($img);
-$stmt->close();
-?>
+    $query = "SELECT artistimage, artistname, nickname, debutyear, membernum FROM artists WHERE artistid='$artistid'";
+    $stmt = $database->stmt_init();
+    $stmt->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($img, $artistname, $nickname, $debutyear, $membernum);
+    $stmt->fetch();
+    $stmt->close();
+    ?>
 
 
 
-<div class="form-con">
-    <h4>Please provide changes for the artist:</h4>
-    <form id='artistform' method="post" enctype="multipart/form-data" action="">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
+    <div class="form-con">
+        <h4>Please provide changes for the artist:</h4>
+        <form id='artistform' method="post" enctype="multipart/form-data" action="">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
 
 
-                    <input type='hidden' name='artistid' value=<?php echo $artistid?> />
-                    <input class="form-control" id="artistname" name="name" type="text" required value="<?php echo $artistname?>"/>
+                        <input type='hidden' name='artistid' value=<?php echo $artistid?> />
+                        <input class="form-control" id="artistname" name="name" type="text" required value="<?php echo $artistname?>"/>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label requiredField" for="nickname">Nickname</label>
+                        <input class="form-control" id="nickname" name="nname" type="text" value="<?php echo $nickname?>"/>
+                    </div>
                 </div>
-                <div class="form-group ">
-                    <label class="control-label requiredField" for="nickname">Nickname</label>
-                    <input class="form-control" id="nickname" name="nname" type="text" value="<?php echo $nickname?>"/>
+
+                <div class="form-group col">
+                    <label class="control-label" for="currentimg">Current Image</label><br>
+                    <img id='currentimgartist' class='file' src='<?php echo $img?>' alt='<?php echo $artistname?> image'><br>
+                    <input type='hidden' name='artistimage' value='$artistimage'>
                 </div>
             </div>
 
-            <div class="form-group col">
-                <label class="control-label" for="currentimg">Current Image</label><br>
-                <img id='currentimg' class='file' src='<?php echo `$artistimage`?>' alt='<?php echo $artistname?> image'><br>
-                <input type='hidden' name='artistimage' value='$artistimage'>
+            <div class="form-group">
+                <label class="control-label requiredField" for="debutyear">Debut Year <span class="asteriskField">*</span></label>
+                <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='text' required value="<?php echo $debutyear?>"/>
             </div>
-        </div>
+            <div class="form-group">
+                <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
+                <input class="form-control" id="membernum" name="mnumber" type="number" required value="<?php echo $membernum?>"/></div>
 
-        <div class="form-group">
-            <label class="control-label requiredField" for="debutyear">Debut Year <span class="asteriskField">*</span></label>
-            <input class='form-control' id='debutyear' name='year' placeholder='YYYY' type='text' required value="<?php echo $debutyear?>"/>
-        </div>
-        <div class="form-group">
-            <label class="control-label requiredField" for="membernum">Number of Members <span class="asteriskField">*</span></label>
-            <input class="form-control" id="membernum" name="mnumber" type="number" required value="<?php echo $membernum?>"/></div>
+            <div class='form-group'>
+                <label class="control-label" for="image">Upload Image</label>
+                <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
+            </div>
 
-        <div class='form-group'>
-            <label class="control-label" for="image">Upload Image</label>
-            <input class="form-control" id="img" name="file" accept="image/*" type="file"/>
-        </div>
-
-        <div class='form-group d-flex flex-row-reverse'>
-            <button class='btn btn-success' type='submit' name='save' form='artistform'>Save</button>
-            <a href='deleteArtist.php?id=".$artistid."' onClick=\"javascript:return confirm(`Are you sure you want to delete this artist?`);\" class='btn btn-danger' style='margin-right: 10px;'>Delete</a>
-        </div>
-        </div>
-    </form>
+            <div class='form-group d-flex flex-row-reverse'>
+                <button class='btn btn-success' type='submit' name='save' form='artistform'>Save</button>
+        <?php  echo "<a href='deleteArtist.php?id=".$artistid."' onClick=\"javascript:return confirm(`Are you sure you want to delete this artist?`);\" class='btn btn-danger' style='margin-right: 10px;'>Delete</a>";?>
+            </div>
+            </div>
+        </form>
 
 <?php
     if (isset($_POST['save'])) {
@@ -88,25 +86,19 @@ $stmt->close();
         $filesize = $_FILES['file']['size'];
 
 
-        $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
-        $dbase= $database->stmt_init();
-        $dbase ->prepare($getartistid);
-        $dbase ->execute();
-        $dbase ->bind_result($artistid);
-        $dbase ->fetch();
-        $dbase ->close();
+        $getartist = "SELECT artistid, artistimage FROM artists WHERE artistname='$artistname'";
+        $dbase = $database->stmt_init();
+        $dbase->prepare($getartist);
+        $dbase->execute();
+        $dbase->bind_result($artistid, $imagepath);
+        $dbase->fetch();
+        $dbase->close();
 
         if (strlen($artistname) == 0) {
             echo "<script>
                         alert('Please provide the name of the artist.');
                         document.getElementById('name').focus();
                    </script>";
-        } elseif (strlen($nickname) == 0) {
-            echo "<script>
-                    alert('Please provide the nickname of the artist.');
-                    document.getElementById('nname').focus();
-               </script>";
-
         } elseif (strlen($debutyear) == 0) {
             echo "<script>
                     alert('Please provide the debut year of the artist.');
@@ -117,34 +109,38 @@ $stmt->close();
                   alert('Please provide the number of member artist.');
                   document.getElementById('number').focus();
             </script>";
-        }
-
-
-            else {
-                if ($filesize <= 70000) {
-                    if ($filesize > 0) {
-                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum', artistimage='$file' WHERE artistid='$artistid'";
-                    } else {
-                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum' WHERE artistid='$artistid'";
+        } else {
+            $filename = $_FILES['file']['name'];
+            $dir = "artists/";
+            $filepath = $dir.basename($filename);
+            if ($filesize <= 5000000) {
+                if ($filesize > 0) {
+                    if (file_exists($imagepath)) {
+                        unlink("$imagepath");
                     }
-                    $database->query($query);
-                    echo "<script> window.location.href = 'artist.php'; </script>";
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum', artistimage='$filepath' WHERE artistid='$artistid'";
+                    }
                 } else {
-                    echo "<script>alert('Image size is larger than 70KB')</script>";
+                    $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum' WHERE artistid='$artistid'";
                 }
+                if ($database->query($query) === TRUE) {
+                    echo "<script> window.location.href = 'artist.php'; </script>";
+                }
+            } else {
+                echo "<script>alert('Image size is larger than 5MB')</script>";
             }
         }
-
+    }
     ?>
         <div class="row justify-content-between">
             <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
         </div>
-</div>
+    </div>
 </div>
 
-
-<script type="text/javascript" src="update.js"></script>
-<link rel='stylesheet' href='style.css'>
+    <script type="text/javascript" src="update.js"></script>
+    <link rel='stylesheet' href='style.css'>
 </body>
 
 <?php include '../includes/footer.php'; ?>
