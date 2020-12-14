@@ -27,7 +27,6 @@ app.get('/', (request, response) => {
 
 app.get('/albums', (request, response) => {
     var albumid = request.query.playlist;
-    console.log(albumid);
     getAlbums(albumid).then(function(albums) {
         getTracks().then(function(tracks) {
             //console.log(tracks);
@@ -57,9 +56,12 @@ function getAlbums(albumid) {
 
 app.get('/artists', (request, response) => {
     getArtists().then(function(artists) {
-        console.log(artists);
         artists.forEach(artist => {
-            artist.artistimage = "data:image;base64," + btoa(artist.artistimage);
+            if(artist.artistimage == null) {
+                console.log("No Image");
+            } else {
+                artist.artistimage = "data:image;base64," + btoa(artist.artistimage);
+            }
         });
         response.render('artists', {artists: artists});
     });
@@ -67,7 +69,7 @@ app.get('/artists', (request, response) => {
 
 function getArtists() {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT artistid, artistname, artistimage, debutyear, membernum FROM artists`;
+        const query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
 
         connection.query(query, (err, result) => {
             if (err) {
