@@ -80,16 +80,16 @@ function getArtists() {
 app.get('/songs', (request, response) => {
     getTracks().then(function(tracks) {
         //console.log(tracks);
-        tracks.forEach(track => {
-            track.albumimg = "data:image;base64," + btoa(track.albumimg);
-        });
+        // tracks.forEach(track => {
+        //     track.albumimg = "data:image;base64," + btoa(track.albumimg);
+        // });
         response.render('songs', {tracks: tracks});
     });
 });
 
 function getTracks() {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
+        const query = `SELECT albumid, concat('data:image;base64,', TO_BASE64(albumimg)), albumname, artists.artistname, releaseddate, tracks.name AS trackname,
             tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
         connection.query(query, (err, result) => {
