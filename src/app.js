@@ -98,9 +98,14 @@ function getAlbums(albumid) {
 }
 
 app.get('/videos', (request, response) => {
+    var trackid = request.query.seeVid;
 
     response.render('video');
 });
+
+function getVid(trackid) {
+
+}
 
 app.get('/artists', (request, response) => {
     const query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
