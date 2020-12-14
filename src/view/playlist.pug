@@ -31,7 +31,7 @@ header
     // Navigation Bar
     // Author: Calica, Gwyneth M.
     nav
-        a(href='index.pug')
+        a(href='index')
             img(src='images/logo site.png' alt='logo')
         ul.nav-links
             li
@@ -101,7 +101,9 @@ br
                         br
 
                 .spotify-player
-                    img(id="audioImage" src="")
+                    each img in albumImg
+                        img(src=`${img.albumimg}`)
+
                     audio(src="" controls id="audio")
                     ul#playList
                         each track in albums
@@ -116,8 +118,6 @@ script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 script#main-css(type='text/javascript' src='../app.js')
 script()
 script(type='text/javascript').
-
-
     function play(file) {
         $(`#audio`)[0].src = "http://localhost:8001/" + file;
         $(`#audio`)[0].play();
