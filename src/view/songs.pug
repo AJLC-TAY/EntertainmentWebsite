@@ -38,6 +38,13 @@ header
 br
 .column
     #result-items-con
+        .all-video-con(style='display: none;')
+            h3 Videos
+            hr
+            #videos
+                #videoContainer
+                ul#video-list
+
         .all-song-con
             h3 Songs
             hr
@@ -57,8 +64,10 @@ br
                                             | Album name: #{track.albumname}
                                             br
                                             | Released on: #{track.releaseddate}
-                                button.album-btn(id = track.albumid) Play album
-                                button.see-vid(id = track.trackname) See Music Videos
+                                form(action='albums' method='get')
+                                    button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
+                                form(action='videos' method='get')
+                                    button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Videos
                     br
 
     .spotify-player
