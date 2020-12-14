@@ -53,7 +53,7 @@ include ('../includes/head.html'); ?>
                             <td><div class='row editdelete-con'>
                                  <form id='artistform' method='post' >
                                     <input name='artistid' value='$artistid' hidden>
-                                     <button class='btn btn-danger' onclick='deleteArtistFromTable($artistid)' type='button' name='delete'>
+                                     <button class='btn btn-danger' onclick='deleteArtist($artistid)' type='button' name='delete'>
                                         <img src='../images/delete.png' title='Delete artist'>
                                      </button>
                                 </form><br>
