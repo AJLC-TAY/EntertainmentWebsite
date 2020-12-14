@@ -35,7 +35,7 @@ include ('../includes/head.html'); ?>
                 require 'require/getArtist.php';
                 foreach ($artists as $art) {
                     $artistid = $art->get_artistid();
-                    $artistimage = $art->get_artistimage();
+                    $filepath = $art->get_artistimage();
                     $artistname = $art->get_artistname();
                     $nickname = $art->get_nickname();
                     $debutyear = $art->get_debutyear();
@@ -44,7 +44,7 @@ include ('../includes/head.html'); ?>
                     echo "<tr id='{$artistid}row'>
                             <th scope='row'>$artistid</th>
                             <td>
-                                <img class='artistimage' src='$artistimage' alt='$artistname image'>
+                                <img class='artistimage' src='$filepath' alt='$artistname image'>
                             </td>
                             <td>$artistname</td>
                             <td>$nickname</td>

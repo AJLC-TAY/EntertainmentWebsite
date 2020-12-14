@@ -88,6 +88,11 @@ img[title*="album"], button img[title*='track'],  button img[title*='Save'], but
   height: 150px;
 }
 
+#currentimgartist {
+  width: 250px;
+  height: 150px;
+}
+
 table {
   font-size: 14px;
 }

@@ -98,7 +98,7 @@
 
         public function __construct($artistid, $artistname, $artistimage, $nickname, $debutyear, $membernum) {
             parent::__construct($artistid, $artistname);
-            $this->artistimage = "data:image;base64,".base64_encode($artistimage);
+            $this->artistimage = $artistimage;
             $this->nickname = $nickname;
             $this->debutyear = $debutyear;
             $this->membernum = $membernum;
