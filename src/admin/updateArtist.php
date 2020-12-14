@@ -51,8 +51,8 @@ $stmt->close();
 
             <div class="form-group col">
                 <label class="control-label" for="currentimg">Current Image</label><br>
-                <img id='currentimg' class='file' src='<?php echo `$artistimg`?>' alt='<?php echo $artistname?> image'><br>
-                <input type='hidden' name='artistimg' value='$artistimg'>
+                <img id='currentimg' class='file' src='<?php echo `$artistimage`?>' alt='<?php echo $artistname?> image'><br>
+                <input type='hidden' name='artistimage' value='$artistimage'>
             </div>
         </div>
 
@@ -70,7 +70,7 @@ $stmt->close();
         </div>
 
         <div class='form-group d-flex flex-row-reverse'>
-            <button class='btn btn-success' type='submit' onclick='updateArtist()' name='save'>Save</button>
+            <button class='btn btn-success' type='submit' name='save' form='artistform'>Save</button>
             <button class='btn btn-danger' type='button' onclick='deleteArtist()' style='margin-right: 10px;' name='delete'>Delete</button>
         </div>
     </form>
@@ -83,11 +83,11 @@ $stmt->close();
         $artistname = trim($_POST['name']);
         $nickname = trim($_POST['nname']);
         $debutyear = trim($_POST['year']);
-        $membernum = trim($_POST['mnumber'])
+        $membernum = trim($_POST['mnumber']);
         $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
 
 
-        $getartistid = "SELECT artistid FROM artists WHERE artistname='$artist'";
+        $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
         $dbase= $database->stmt_init();
         $dbase ->prepare($getartistid);
         $dbase ->execute();
@@ -113,7 +113,7 @@ $stmt->close();
               </script>";
         } elseif (strlen($membernum) == 0) {
             echo "<script>
-                  alert('Please provide the members number of the artist.');
+                  alert('Please provide the number of member artist.');
                   document.getElementById('number').focus();
             </script>";
         }
@@ -122,7 +122,7 @@ $stmt->close();
             else {
                 if ($filesize <= 70000) {
                     if ($filesize > 0) {
-                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', artistimg='$file' WHERE artistid='$artistid'";
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', artistimage='$file' WHERE artistid='$artistid'";
                     } else {
                         $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear' WHERE artistid='$artistid'";
                     }
@@ -133,7 +133,7 @@ $stmt->close();
                 }
             }
         }
-    }
+
     ?>
         <div class="row justify-content-between">
             <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
