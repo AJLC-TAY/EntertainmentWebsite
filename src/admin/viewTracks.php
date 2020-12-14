@@ -25,21 +25,14 @@ include ('../includes/head.html'); ?>
     $stmt->fetch();
     $albumimg = "data:image;base64,".base64_encode($imgbin);
 
-    function provideTrackNameMsg($field) {
-        echo "<script>
-                alert('Please provide a track name.');
-                document.getElementById('{$field}').focus();
-             </script>";
-    }
-
     function displayTrack($trackid, $albumid, $trackFile, $trackname) {
         echo "<tr id='{$trackid}row'>
                         <td colspan='3'>
-                        <form id='{$trackid}form' class='row'  action='' method='post' enctype='multipart/form-data'>
+                        <form id='{$trackid}form' class='row' action='updateTrack.php' method='post' enctype='multipart/form-data'>
                             <input type='hidden' name='albumid' value='$albumid'>
                             <div class='form-group col'>
                                 <input name='trackid' type='hidden' value='$trackid'/>
-                                <input id='{$trackid}name'class='form-control' name='trackname' type='text' value='$trackname' required/>
+                                <input id='{$trackid}name' class='form-control' name='trackname' type='text' value='$trackname' required/>
                             </div>
                             <div class='col'>
                                 <audio controls>
@@ -51,8 +44,8 @@ include ('../includes/head.html'); ?>
                                 <input class='form-control' name='file' accept='.mp3' type='file'/>
                             </div>
                             <div class='track-buttons'>
-                                <button type='submit' class='btn btn-danger'  onclick='deleteTrack($trackid)' name='delete'><img src='../images/delete.png' title='Delete track'></button>
-                                <button type='submit' class='btn btn-dark' onclick='updateTrack($trackid)' name='save-track'><img src='../images/saveicon.png' title='Save changes'></button>
+                                <a href='deleteTrack.php?albumid=$albumid&trackid=$trackid' onclick='javascript:return confirm(`Are you sure you want to delete this track?`)' type='submit' class='btn btn-danger small-del'><img src='../images/delete.png' title='Delete track'></a>
+                                <button type='submit' class='btn btn-dark' name='save-track'><img src='../images/saveicon.png' title='Save changes'></button>
                             </div>
                        </form>
                        </td>
@@ -69,14 +62,14 @@ include ('../includes/head.html'); ?>
                 <div class='album-view-con'><img class='albumimg' src='$albumimg' alt='$albumname image'>
                     <h5>$albumname</h5>
                     <p>ID: $albumid</p>
-                     <div class='row album-form-btns' style=''>
+                     <div class='row album-form-btns flex-row-reverse'>
                         <a href='updateAlbum.php?id=$albumid'>
-                            <button class='btn btn-white'>Update Album</button>
+                            <button class='btn btn-link'>Update Album?</button>
                         </a>
-                        <button id='add-track-btn' class='btn btn-secondary' onclick='showAddTrackForm()'>Add a Track</button>
+                        <!-- <button id='add-track-btn' class='btn btn-secondary' onclick='showAddTrackForm()'>Add a Track</button> -->
                     </div>
                 </div>
-                <div class='addtrack_form' style='display: none;'>
+                <div class='addtrack_form'>
                     <h5>Add new track here:</h5>
                     <form id='trackdetail' action=' ' method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='albumid' value='$albumid'>
@@ -84,7 +77,8 @@ include ('../includes/head.html'); ?>
                         <input id='trkname' class='form-control' name='newtrack' type='text' placeholder='Enter name' required/><br>
                         <label id='test' for='mfile'>Upload music file: </label><br>
                         <input id='mfile' class='form-control' name='file' accept='.mp3' type='file'/><br>
-                        <button id='test' type='submit' name='addTrack' class='btn btn-secondary'>Add track</button>
+                        
+                        <div class='row flex-row-reverse'><button id='add-track-btn' type='submit' name='addTrack' class='btn btn-secondary'>Add track</button></div>
                     </form>";
                     if (isset($_POST['addTrack'])) {
                         $newtrack =  $_POST['newtrack'];

@@ -47,19 +47,18 @@ include ('../includes/head.html'); ?>
                             <td>$artistname</td>
                             <td>$releaseddate</td>
                             <td><div class='row editdelete-con'>
-                                <form id='albumform' method='post' >
-                                    <input name='albumid' value='$albumid' hidden>
-                                     <button class='btn btn-danger' onclick='deleteAlbum($albumid)' type='button' name='delete'>
-                                        <img src='../images/delete.png' title='Delete album'>
-                                     </button>
-                                </form>
-                                <a href='updateAlbum.php?id=$albumid'><button id='$albumid' class='btn btn-secondary' name='edit'>
-                                    <img src='../images/edit.png' title='Edit album'>
-                                </button>
+                                 <a href='deleteAlbum.php?id=$albumid' onclick='javascript:return confirm(`Are you sure you want to delete this album?`)' class='btn btn-danger small-del' type='submit'>
+                                    <img src='../images/delete.png' title='Delete album'>
+                                 </a>
+                                <a href='updateAlbum.php?id=$albumid'>
+                                    <button id='$albumid' class='btn btn-secondary' name='edit'>
+                                        <img src='../images/edit.png' title='Edit album'>
+                                    </button>
                                 </a> <br>
-                                <a href='viewTracks.php?id=$albumid'><button id='$albumid' class='btn btn-white' name='view'>
-                                    <img src='../images/viewicon.png' title='View tracks'>
-                                </button>
+                                <a href='viewTracks.php?id=$albumid'>
+                                    <button id='$albumid' class='btn btn-white' name='view'>
+                                        <img src='../images/viewicon.png' title='View tracks'>
+                                    </button>
                                 </a>                               
                                 </div>
                             </td>
@@ -69,7 +68,7 @@ include ('../includes/head.html'); ?>
                 </tbody>
             </table>
         </div>
-        <div class="row footer-but-con justify-content-between"><a href='index.php'><button class='btn btn-link'><b><</b> Back</button></a>
+        <div class="row footer-but-con justify-content-between"><a href='index.php'><button class='btn btn-link'><b><</b> Home</button></a>
         </div>
     </div>
     <link rel="stylesheet" href="style.css">

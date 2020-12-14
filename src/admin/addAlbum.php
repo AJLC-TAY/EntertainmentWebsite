@@ -62,7 +62,13 @@ include ('../includes/head.html'); ?>
                 $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
                 $filesize = $_FILES['file']['size'];
 
-                require 'require/getArtistID.php';
+                $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
+                $dbase= $database->stmt_init();
+                $dbase ->prepare($getartistid);
+                $dbase ->execute();
+                $dbase ->bind_result($artistid);
+                $dbase ->fetch();
+                $dbase ->close();
 
                 if (strlen(trim($albumname)) == 0) {
                     echo "<script>

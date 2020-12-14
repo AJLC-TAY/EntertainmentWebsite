@@ -73,10 +73,8 @@ include ('../includes/head.html'); ?>
          </div>'."
 
         <div class='form-group d-flex flex-row-reverse'>
-           <!-- <button class='btn btn-success' type='button' onclick='updateAlbum()' name='save'>Save</button> -->
             <button class='btn btn-success' type='submit' name='save' form='albumform'>Save</button>
-            <!-- <button class='btn btn-danger' type='button' onclick='deleteAlbum()' style='margin-right: 10px;' name='delete'>Delete</button> -->
-            <a href='deleteAlbum.php?id=".$albumid."' onClick=\"javascript:return confirm('Are you sure you want to delete this?');\" class='btn btn-danger' style='margin-right: 10px;'>Delete</a>
+            <a href='deleteAlbum.php?id=".$albumid."' onClick=\"javascript:return confirm(`Are you sure you want to delete this album?`);\" class='btn btn-danger' style='margin-right: 10px;'>Delete</a>
         </div>
     </form>";
 
