@@ -47,7 +47,26 @@ head
   #artist-list
     // Content
     // Author: Natividad, Hudson Kit P.
-    h1  BigHit Artists
+    .all-artists
+            h3 BigHit Artists
+            hr
+            ul#artist-list.list.artist
+                each artist in artists
+                   / li
+                    .artist(id = artist.artistname)
+                        h3 #{artist.artistname}
+                        .artist-info
+                            img(src= `${artist.artistimage}` alt='Artist image')
+                            .artist-details
+                                p
+                                    | #{artist.artistname}
+                                    br
+                                    span
+                                        small
+                                            | Artist Nickname: #{artists.nickname}
+                                            br
+                                            | Debut Year: #{artists.debutyear}
+                    br
   footer
     hr
     p(align='center') Copyright &copy; 2020 Alpha Group. All rights reserved.
