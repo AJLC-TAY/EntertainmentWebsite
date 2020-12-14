@@ -1,8 +1,6 @@
 include head.pug
-    title Music | Big Hit Music
+    title Videos | Big Hit Music
 header
-    // Navigation Bar
-    // Author: Calica, Gwyneth M.
     nav
         a(href='index.pug')
             img(src='images/logo site.png' alt='logo')
@@ -20,26 +18,26 @@ header
             .line2
             .line3
 .musicHeader
-    h1 Songs List
-    .search-container
-        input#search-fld(type='text' placeholder='Type something..' name='search')
+    h1 Videos List
+    input#search-fld(type='text' placeholder='Type something..' name='search')
         button#search-btn(type='submit')
             img.search-icon(src='images/search-icon.png' alt='search icon')
-//#radio-btn-con.aligned-con
-//    .radio-btn.aligned-con
-//        input#choice1(checked='' name='searchParam' type='radio' value='songs')
-//        label(for='choice1') Songs
-//    .radio-btn.aligned-con
-//        input#choice2(type='radio' name='searchParam' value='videos')
-//        label(for='choice2') Videos
-.aligned-con.filter-con
-    p Artists:
-    #filters.aligned-con
-br
+
 .column
     #result-items-con
-        .all-song-con
-            h3 Songs
+        .all-video-con(style='display: none;')
+            h3 Videos
+            hr
+            #videos
+                #videoContainer
+                ul#video-list.list-con
+                    each video in videos
+                        li
+                        .video-container(id = video.name)
+
+
+        .all-video-con
+            h3 Videos
             hr
             ul#song-list.list-con
                 each track in tracks
@@ -60,10 +58,3 @@ br
                                 button.album-btn(id = track.albumid) Play album
                                 button.see-vid(id = track.trackname) See Music Videos
                     br
-
-    .spotify-player
-footer
-    hr
-    p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.
-script(src='https://apis.google.com/js/client.js?onload=handleClientLoad')
-script#main-css(type='text/javascript' src='../app.js')
