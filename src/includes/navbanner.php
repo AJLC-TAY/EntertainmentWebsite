@@ -1,4 +1,4 @@
-
+<!--Contains the logo and banner elements shown at the top of administrative page-->
 <link rel="stylesheet" type="text/css" href="../admin/navbennerStyle.css">
 <div id='banner' class="container">
     <div class="row">
@@ -8,13 +8,8 @@
         <div id='header-desc-con'class="col">
             <?php echo "<p class='admin-desc'><span class='admin-header'>Administrative Page</span><br>Today is " . date("l, d F Y ")."<br> You are logged in as <b>".$_SESSION["username"]."</b></p>"?>
         </div>
-<!--        <nav class="col">-->
-<!--            <ul class="nav-links">-->
-<!--                <li><a href="../admin/artist.php" class="link-focus">Artist</a></li>-->
-<!--                <li><a href='../admin/albums.php' target='_self'>Album</a></li>-->
-<!--            </ul>-->
-<!--        </nav>-->
 
+        <!-- Contains the button for log out and what action (PHP File) it will take when triggered -->
         <div class="logout-con">
             <a href="../admin/logout.php"><button class="btn btn-secondary">Log out</button></a>
         </div>
