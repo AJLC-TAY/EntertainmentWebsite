@@ -26,20 +26,24 @@ app.get('/', (request, response) => {
 });
 
 app.get('/albums', (request, response) => {
-    getAlbums().then(function(albums) {
-
-        albums.forEach(album => {
-            album.albumimg = "data:image;base64," + btoa(album.albumimg);
+    var albumid = request.query.playlist;
+    console.log(albumid);
+    getAlbums(albumid).then(function(albums) {
+        getTracks().then(function(tracks) {
+            //console.log(tracks);
+            tracks.forEach(track => {
+                track.albumimg = "data:image;base64," + btoa(track.albumimg);
+            });
+            response.render('playlist', {tracks: tracks, albums: albums});
         });
-        response.render('songs', {albums: albums});
     });
 });
 
-function getAlbums() {
+function getAlbums(albumid) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid)`;
+        const query = `SELECT name AS trackname, musicfile FROM tracks WHERE albumid = ?`;
 
-        connection.query(query, (err, result) => {
+        connection.query(query, [albumid], (err, result) => {
             if (err) {
                 console.log('Unsuccessful');
                 reject(err);
@@ -51,9 +55,9 @@ function getAlbums() {
     });
 }
 
-app.get('/artist', (request, response) => {
+app.get('/artists', (request, response) => {
     getArtists().then(function(artists) {
-        //console.log(artists);
+        console.log(artists);
         artists.forEach(artist => {
             artist.artistimage = "data:image;base64," + btoa(artist.artistimage);
         });
@@ -89,14 +93,16 @@ app.get('/songs', (request, response) => {
 
 app.get('/addToPlaylist', (request, response) => {
     getSpecificTrack(request.query.add).then(function (track) {
-       response.render('songs', {song: track})
+        console.log(track);
+        response.send({file: track.musicfile, name: track.name});
+        response.end();
     });
 });
 
 function getTracks() {
     return  new Promise(function (resolve, reject) {
         const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-            tracks.trackid FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
         connection.query(query, (err, result) => {
             if (err) {
@@ -110,21 +116,9 @@ function getTracks() {
     });
 }
 
-function getSpecificTrack(trackid) {
-    return  new Promise(function (resolve, reject) {
-        const query = `SELECT musicfile FROM tracks WHERE trackid = ?`;
 
-        connection.query(query, [trackid], (err, result) => {
-            if (err) {
-                console.log('Unsuccessful');
-                reject(err);
-            }else {
-                console.log('Successful');
-                resolve(result);
-            }
-        });
-    });
-}
+
+
 
 // /**
 //  * Controller responsible for fetching data from Spotify, Youtube
