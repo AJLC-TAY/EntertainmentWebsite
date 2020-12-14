@@ -20,8 +20,9 @@ include ('../includes/head.html'); ?>
         <div class="artist-list-header row justify-content-between"><h4>Artist List</h4><a href='addArtist.php' target='_self'><button class='btn btn-dark'>Add New Artist</button></a>
             </div>
 
-<!---->
+
         <div id="artistlist" class="overflow-auto">
+            <!--A table that displays the information from the artist table in the database-->
             <table id="artisttable" class='table'>
                     <thead class='thead-dark'>
                         <tr>
@@ -36,6 +37,7 @@ include ('../includes/head.html'); ?>
                     </thead>
                     <tbody>
                 <?php
+                // Fetches the information 
                 require 'require/getArtist.php';
                 foreach ($artists as $art) {
                     $artistid = $art->get_artistid();
