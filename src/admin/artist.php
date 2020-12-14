@@ -51,12 +51,9 @@ include ('../includes/head.html'); ?>
                             <td>$debutyear</td>
                             <td>$membernum</td>
                             <td><div class='row editdelete-con'>
-                                 <form id='artistform' method='post' >
-                                    <input name='artistid' value='$artistid' hidden>
-                                     <button class='btn btn-danger' onclick='deleteArtist($artistid)' type='button' name='delete'>
-                                        <img src='../images/delete.png' title='Delete artist'>
-                                     </button>
-                                </form><br>
+                                <a href='deleteArtist.php?id=$artistid' onclick='javascript:return confirm(`Are you sure you want to delete this artist?`)' class='btn btn-danger small-del' type='submit'>
+                                  <img src='../images/delete.png' title='Delete album'>
+                                </a>
 
                                 <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
                                     <img src='../images/edit.png' title='Edit artist'>
