@@ -10,6 +10,7 @@ if(isset($_POST['save-track'])) {
     $dir = "tracks/$albumid/";
     $filename = $_FILES['file']['name'];
     $filepath = $dir .basename($filename);
+    $mv = trim($_POST['url']);
     if (strlen(trim($trackname)) == 0) {
         echo "<script>alert('Track name was empty');
                 window.location.href = 'viewTracks.php?id=$albumid';
@@ -23,10 +24,19 @@ if(isset($_POST['save-track'])) {
                 mkdir($dir, 0755, true);
             }
             if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
-                $query = "UPDATE tracks SET musicfile='$filepath', tracks.name='$trackname' WHERE trackid='$trackid'";
+                if (strlen($mv) == 0) {
+                    $query = "UPDATE tracks SET musicfile='$filepath', tracks.name='$trackname' WHERE trackid='$trackid'";
+                } else {
+                    $query = "UPDATE tracks SET musicfile='$filepath', tracks.name='$trackname', musicvideo='$mv' WHERE trackid='$trackid'";
+                }
             }
         } else {
-            $query = "UPDATE tracks SET tracks.name='$trackname' WHERE trackid='$trackid'";
+            if (strlen($mv) == 0) {
+                $query = "UPDATE tracks SET tracks.name='$trackname' WHERE trackid='$trackid'";
+            } else {
+                $query = "UPDATE tracks SET tracks.name='$trackname', musicvideo='$mv' WHERE trackid='$trackid'";
+            }
+
         }
         saveChanges($query);
         header("Location: viewTracks.php?id=$albumid");

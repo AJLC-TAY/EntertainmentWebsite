@@ -1,6 +1,7 @@
 if (window.history.replaceState) {
     window.history.replaceState( null, null, window.location.href );
 }
+
 //
 // async function deleteAlbumFromTable(albumid) {
 //     let url = `deleteAlbum.php?id=${albumid}`;

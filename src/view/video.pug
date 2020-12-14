@@ -47,54 +47,17 @@ header
             .line2
             .line3
 .musicHeader
-    h1 Songs List
+    h1 Video
     .search-container
         input#search-fld(type='text' placeholder='Type something..' name='search')
         button#search-btn(type='submit')
             img.search-icon(src='images/search-icon.png' alt='search icon')
-.aligned-con.filter-con
-    p Artists:
-    #filters.aligned-con
-        form(action='songs' method='get')
-            button.filter-but(id= all type='submit' name='filterArtist')
-                p(style='margin: 2px 4px;') All
-        each artist in artists
-            form(action='filter' method='get')
-                button.filter-but(id= artist.nickname type='submit' value=`${artist.artistid}` name='filterArtist')
-                    p(style='margin: 2px 4px;')
-                    | #{artist.nickname}
 
 br
 .column
     #result-items-con
-        .all-song-con
-            h3 Songs
+        .all-video-con(style='display: none;')
+            h3 Video
             hr
-            .song-det-con
-                ul#song-list.list-con
-                    each track in tracks
-                        li
-                        .spotify-song-con(id = track.artistname)
-                            h3 #{track.trackname}
-                            .track-info
-                                img(src= `${track.albumimg}` alt='Album image')
-                                .song-desc-con
-                                    p
-                                        | #{track.artistname}
-                                        br
-                                        span
-                                            small
-                                                | Album name: #{track.albumname}
-                                                br
-                                                | Released on: #{track.releaseddate}
-                                    form(action='albums' method='get')
-                                        button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
-                                    form(action='videos' method='get')
-                                        button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Video
-                        br
-
-footer
-    hr
-    p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.
-script(src='https://apis.google.com/js/client.js?onload=handleClientLoad')
-script#main-css(type='text/javascript' src='../app.js')
+            #videos
+                #videoContainer
