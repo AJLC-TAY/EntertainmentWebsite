@@ -5,6 +5,7 @@ class Track implements JsonSerializable {
     private $albumid;
     private $trackname;
     private $filepath;
+    private $musicvideo;
 
     /**
      * Track constructor.
@@ -17,6 +18,24 @@ class Track implements JsonSerializable {
         $this->albumid = $albumid;
         $this->trackname = $trackname;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMusicVideo()
+    {
+        return $this->musicvideo;
+    }
+
+    /**
+     * @param mixed $musicvideo
+     */
+    public function setMusicVideo($musicvideo)
+    {
+        $this->musicvideo = $musicvideo;
+    }
+
+
 
     /**
      * @return mixed
@@ -105,7 +124,8 @@ class Track implements JsonSerializable {
             "trackid" => $this->getTrackid(),
             "albumid" => $this->getAlbumid(),
             "trackname" => $this->getTrackname(),
-            "filepath" => $this->getFilepath()
+            "filepath" => $this->getFilepath(),
+            "musicvideo" => $this->getMusicVideo()
         ];
     }
 }

@@ -25,12 +25,12 @@ include ('../includes/head.html'); ?>
     $stmt->fetch();
     $albumimg = "data:image;base64,".base64_encode($imgbin);
 
-    function displayTrack($trackid, $albumid, $trackFile, $trackname) {
+    function displayTrack($trackid, $albumid, $trackFile, $trackname, $mv) {
         echo "<tr id='{$trackid}row'>
-                        <td colspan='3'>
-                        <form id='{$trackid}form' class='row' action='updateTrack.php' method='post' enctype='multipart/form-data'>
+                        <td colspan='5'>
+                        <form id='{$trackid}form' class='row track-form' action='updateTrack.php' method='post' enctype='multipart/form-data'>
                             <input type='hidden' name='albumid' value='$albumid'>
-                            <div class='form-group col'>
+                            <div>
                                 <input name='trackid' type='hidden' value='$trackid'/>
                                 <input id='{$trackid}name' class='form-control' name='trackname' type='text' value='$trackname' required/>
                             </div>
@@ -42,6 +42,9 @@ include ('../includes/head.html'); ?>
                             </div>
                             <div class='form-group col row'>
                                 <input class='form-control' name='file' accept='.mp3' type='file'/>
+                            </div>
+                             <div class='form-group col'>
+                                <textarea id='{$trackid}url' class='form-control' name='url'>$mv</textarea>
                             </div>
                             <div class='track-buttons'>
                                 <a href='deleteTrack.php?albumid=$albumid&trackid=$trackid' onclick='javascript:return confirm(`Are you sure you want to delete this track?`)' type='submit' class='btn btn-danger small-del'><img src='../images/delete.png' title='Delete track'></a>
@@ -75,9 +78,11 @@ include ('../includes/head.html'); ?>
                         <input type='hidden' name='albumid' value='$albumid'>
                         <label for='trkname'>Trackname <span class='asteriskField'>*</span> </label>
                         <input id='trkname' class='form-control' name='newtrack' type='text' placeholder='Enter name' required/><br>
-                        <label id='test' for='mfile'>Upload music file: </label><br>
+                        <label id='test' for='mfile'>Upload music file</label><br>
                         <input id='mfile' class='form-control' name='file' accept='.mp3' type='file'/><br>
-                        
+                        <label id='mv' for='mvField'>YouTube MV URL </label><br>
+                        <input id='mvField' class='form-control' name='url'  type='text' placeholder='Enter Youtube URL here'/><br>
+  
                         <div class='row flex-row-reverse'><button id='add-track-btn' type='submit' name='addTrack' class='btn btn-secondary'>Add track</button></div>
                     </form>";
                     if (isset($_POST['addTrack'])) {
@@ -94,16 +99,17 @@ include ('../includes/head.html'); ?>
             echo "
                 </div>
           </div>";
-            $query = "SELECT trackid, tracks.name, musicfile FROM tracks WHERE albumid='$albumid'";
+            $query = "SELECT trackid, tracks.name, musicfile, musicvideo FROM tracks WHERE albumid='$albumid'";
             $stmt = $database->stmt_init();
             $stmt->prepare($query);
-            $stmt->bind_result($trackid, $name, $musicFile);
+            $stmt->bind_result($trackid, $name, $musicFile, $musicvideo);
             $stmt->execute();
 
             $tracks = [];
             while ($stmt->fetch()) {
                 $track = new Track($trackid, $albumid, $name);
                 $track->setFilepath($musicFile);
+                $track->setMusicVideo($musicvideo);
                 $tracks[] = $track;
             }
             ?>
@@ -111,9 +117,10 @@ include ('../includes/head.html'); ?>
             <table id='trackstable' class='table col'>
                 <thead class='thead-dark'>
                 <tr>
-                    <th scope='col' style='width: 265px'>Track name</th>
-                    <th scope='col' style='width: 250px'>Music File</th>
-                    <th scope='col' style='width: auto;'>Upload File</th>
+                    <th scope="col" style="width: 160px;">Track name</th>
+                    <th scope="col" style="width: 260px;">Music File</th>
+                    <th scope="col" style="width: 190px;">Upload File</th>
+                    <th scope="col" style="width: 180px;">YT URL</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -124,7 +131,8 @@ include ('../includes/head.html'); ?>
                     $albumid = $track->getAlbumid();
                     $trackFile = $track->getFilepath();
                     $trackname = $track->getTrackname();
-                    displayTrack($trackid, $albumid, $trackFile, $trackname);
+                    $mv = $track->getMusicVideo();
+                    displayTrack($trackid, $albumid, $trackFile, $trackname, $mv);
                 }
                 ?>
 
