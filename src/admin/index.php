@@ -10,8 +10,13 @@ include ('../includes/head.html'); ?>
 
 <body class="home">
     <?php include '../includes/navbanner.php' ?>
-
+    <div class="home-con container">
+        <div class='path-links'>
+            <pre><a href='index.php' target='_self'>Admin Home</a></pre>
+        </div>
+    </div>
     <div class='menu-con container row'>
+
         <a class='col-4 menu-item' href='artist.php' target='_self'>
            <div id="artist" class='col rounded border border-secondary' >
                 <p class='text-center text-secondary'><svg viewBox='0 0 16 16' class='bi bi-people-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>

@@ -25,7 +25,7 @@ $stmt->execute();
 $stmt->bind_result($img, $artistname, $nickname, $debutyear, $membernum);
 $stmt->fetch();
 
-$artistimg = "data:image;base64,".base64_encode($img);
+$artistimage = "data:image;base64,".base64_encode($img);
 $stmt->close();
 ?>
 
@@ -38,7 +38,9 @@ $stmt->close();
             <div class="col">
                 <div class="form-group">
                     <label class="control-label requiredField" for="artistname">Artist name <span class="asteriskField">*</span></label>
-                    <input type='hidden' name='albumid' value=<?php echo $artistid?> />
+
+
+                    <input type='hidden' name='artistid' value=<?php echo $artistid?> />
                     <input class="form-control" id="artistname" name="name" type="text" required value="<?php echo $artistname?>"/>
                 </div>
                 <div class="form-group ">
@@ -49,8 +51,8 @@ $stmt->close();
 
             <div class="form-group col">
                 <label class="control-label" for="currentimg">Current Image</label><br>
-                <img id='currentimg' class='file' src='<?php echo `$artistimg`?>' alt='<?php echo $artistname?> image'><br>
-                <input type='hidden' name='albumimg' value='$artistimg'>
+                <img id='currentimg' class='file' src='<?php echo `$artistimage`?>' alt='<?php echo $artistname?> image'><br>
+                <input type='hidden' name='artistimage' value='$artistimage'>
             </div>
         </div>
 
@@ -68,11 +70,71 @@ $stmt->close();
         </div>
 
         <div class='form-group d-flex flex-row-reverse'>
-            <button class='btn btn-success' type='button' onclick='updateArtist()' name='save'>Save</button>
+            <button class='btn btn-success' type='submit' name='save' form='artistform'>Save</button>
             <button class='btn btn-danger' type='button' onclick='deleteArtist()' style='margin-right: 10px;' name='delete'>Delete</button>
         </div>
     </form>
 
+<?php
+    if (isset($_POST['save'])) {
+        include '../includes/database.php';
+        $filesize = $_FILES['file']['size'];
+        $artistid = $_POST['artistid'];
+        $artistname = trim($_POST['name']);
+        $nickname = trim($_POST['nname']);
+        $debutyear = trim($_POST['year']);
+        $membernum = trim($_POST['mnumber']);
+        $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+
+
+        $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
+        $dbase= $database->stmt_init();
+        $dbase ->prepare($getartistid);
+        $dbase ->execute();
+        $dbase ->bind_result($artistid);
+        $dbase ->fetch();
+        $dbase ->close();
+
+        if (strlen($artistname) == 0) {
+            echo "<script>
+                        alert('Please provide the name of the artist.');
+                        document.getElementById('name').focus();
+                   </script>";
+        } elseif (strlen($nickname) == 0) {
+            echo "<script>
+                    alert('Please provide the nickname of the artist.');
+                    document.getElementById('nname').focus();
+               </script>";
+
+        } elseif (strlen($debutyear) == 0) {
+            echo "<script>
+                    alert('Please provide the debut year of the artist.');
+                    document.getElementById('year').focus();
+              </script>";
+        } elseif (strlen($membernum) == 0) {
+            echo "<script>
+                  alert('Please provide the number of member artist.');
+                  document.getElementById('number').focus();
+            </script>";
+        }
+
+
+            else {
+                if ($filesize <= 70000) {
+                    if ($filesize > 0) {
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', artistimage='$file' WHERE artistid='$artistid'";
+                    } else {
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear' WHERE artistid='$artistid'";
+                    }
+                    $database->query($query);
+                    echo "<script> window.location.href = 'artist.php'; </script>";
+                } else {
+                    echo "<script>alert('Image size is larger than 70KB')</script>";
+                }
+            }
+        }
+
+    ?>
         <div class="row justify-content-between">
             <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
         </div>
@@ -85,4 +147,3 @@ $stmt->close();
 </body>
 
 <?php include '../includes/footer.php'; ?>
-

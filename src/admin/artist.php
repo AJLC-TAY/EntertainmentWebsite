@@ -52,16 +52,16 @@ include ('../includes/head.html'); ?>
                             <td>$membernum</td>
                             <td><div class='row editdelete-con'>
                                  <form id='artistform' method='post' >
-                                    <input name='albumid' value='$artistid' hidden>
+                                    <input name='artistid' value='$artistid' hidden>
                                      <button class='btn btn-danger' onclick='deleteArtistFromTable($artistid)' type='button' name='delete'>
                                         <img src='../images/delete.png' title='Delete artist'>
                                      </button>
                                 </form><br>
-                  
+
                                 <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
                                     <img src='../images/edit.png' title='Edit artist'>
                                 </button>
-                                </a> 
+                                </a>
                                 </div>
                             </td>
                           </tr>";
