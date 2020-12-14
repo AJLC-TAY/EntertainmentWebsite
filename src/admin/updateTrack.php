@@ -10,7 +10,7 @@ if(isset($_POST['save-track'])) {
     $dir = "tracks/$albumid/";
     $filename = $_FILES['file']['name'];
     $filepath = $dir .basename($filename);
-    $mv = trim($_POST['url']);
+    $mv = trim($_POST['mvid']);
     if (strlen(trim($trackname)) == 0) {
         echo "<script>alert('Track name was empty');
                 window.location.href = 'viewTracks.php?id=$albumid';
