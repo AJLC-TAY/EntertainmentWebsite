@@ -71,20 +71,21 @@ $stmt->close();
 
         <div class='form-group d-flex flex-row-reverse'>
             <button class='btn btn-success' type='submit' name='save' form='artistform'>Save</button>
-            <button class='btn btn-danger' type='button' onclick='deleteArtist()' style='margin-right: 10px;' name='delete'>Delete</button>
+            <a href='deleteArtist.php?id=".$artistid."' onClick=\"javascript:return confirm(`Are you sure you want to delete this artist?`);\" class='btn btn-danger' style='margin-right: 10px;'>Delete</a>
+        </div>
         </div>
     </form>
 
 <?php
     if (isset($_POST['save'])) {
         include '../includes/database.php';
-        $filesize = $_FILES['file']['size'];
         $artistid = $_POST['artistid'];
         $artistname = trim($_POST['name']);
         $nickname = trim($_POST['nname']);
         $debutyear = trim($_POST['year']);
         $membernum = trim($_POST['mnumber']);
         $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+        $filesize = $_FILES['file']['size'];
 
 
         $getartistid = "SELECT artistid FROM artists WHERE artistname='$artistname'";
