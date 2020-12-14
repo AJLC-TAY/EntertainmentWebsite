@@ -122,9 +122,9 @@ $stmt->close();
             else {
                 if ($filesize <= 70000) {
                     if ($filesize > 0) {
-                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', artistimage='$file' WHERE artistid='$artistid'";
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum', artistimage='$file' WHERE artistid='$artistid'";
                     } else {
-                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear' WHERE artistid='$artistid'";
+                        $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum' WHERE artistid='$artistid'";
                     }
                     $database->query($query);
                     echo "<script> window.location.href = 'artist.php'; </script>";
