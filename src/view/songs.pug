@@ -49,9 +49,10 @@ header
 .musicHeader
     h1 Songs List
     .search-container
-        input#search-fld(type='text' placeholder='Type something..' name='search')
-        button#search-btn(type='submit')
-            img.search-icon(src='images/search-icon.png' alt='search icon')
+        form(action='search' method='get')
+            input#search-fld(type='text' placeholder='Type something..' name='searchTracks')
+            button#search-btn(type='submit')
+                img.search-icon(src='images/search-icon.png' alt='search icon')
 .aligned-con.filter-con
     p Artists:
     #filters.aligned-con
@@ -90,7 +91,7 @@ br
                                     form(action='albums' method='get')
                                         button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
                                     form(action='videos' method='get')
-                                        button.see-vid(id = track.trackname type='submit' name='search' value=`${track.trackname}`) See Music Video
+                                        button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
                         br
 
 footer

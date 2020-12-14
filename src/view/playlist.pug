@@ -49,9 +49,10 @@ header
 .musicHeader
     h1 Songs List
     .search-container
-        input#search-fld(type='text' placeholder='Type something..' name='search')
-        button#search-btn(type='submit')
-            img.search-icon(src='images/search-icon.png' alt='search icon')
+        form(action='search' method='get')
+            input#search-fld(type='text' placeholder='Type something..' name='searchTracks')
+            button#search-btn(type='submit')
+                img.search-icon(src='images/search-icon.png' alt='search icon')
 .aligned-con.filter-con
     p Artists:
     #filters.aligned-con
