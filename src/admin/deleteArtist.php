@@ -16,5 +16,5 @@
     $dbase ->prepare($query);
     $dbase ->execute();
     $dbase ->close();
-    unlink("$imagepath");
+    unlink("../public/$imagepath");
     header("Location: artist.php");

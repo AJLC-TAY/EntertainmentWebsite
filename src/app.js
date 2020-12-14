@@ -9,7 +9,7 @@ app.set('views', `${__dirname}/view`);
 app.set('view engine', 'pug');
 
 const connection = mysql.createConnection({
-    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3308'
+    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3306'
 });
 connection.connect((err) => {
     if(err) {
@@ -19,7 +19,7 @@ connection.connect((err) => {
     }
 });
 
-app.listen(8001, 'localhost');
+app.listen(8001, 'bighitmusic.com');
 
 app.get('/', (request, response) => {
     response.render('index');
@@ -136,7 +136,7 @@ app.get('/filter', (request, response) => {
 
 function getImage(albumid) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumimg FROM albums WHERE albumid = ?`;
+        const query = `SELECT albumimg, albumname FROM albums WHERE albumid = ?`;
 
         connection.query(query, [albumid], (err, result) => {
             if (err) {

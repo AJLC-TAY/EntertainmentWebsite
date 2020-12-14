@@ -51,11 +51,13 @@ include ('../includes/head.html');?>
                 $membernum = $_POST['mnumber'];
                 $filename = $_FILES['file']['name'];
                 $dir = "artists/";
+                $dirInProject = "../public/artists/";
                 $filepath = $dir.basename($filename);
+                $filepathInProject = "../public/".$filepath;
                 $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
                 if ($filesize <= 5000000) {
 
-                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepathInProject)) {
                         if ($filesize > 0) {
                             $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum, artistimage)  VALUE ('$artistname', '$nickname', '$debutyear', '$membernum', '$filepath');";
                         } else {

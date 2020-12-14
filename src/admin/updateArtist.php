@@ -25,8 +25,8 @@ echo "<div class='container'>
     $stmt->bind_result($img, $artistname, $nickname, $debutyear, $membernum);
     $stmt->fetch();
     $stmt->close();
+    $imgPathInProject = "../public/".$img;
     ?>
-
 
 
     <div class="form-con">
@@ -49,7 +49,7 @@ echo "<div class='container'>
 
                 <div class="form-group col">
                     <label class="control-label" for="currentimg">Current Image</label><br>
-                    <img id='currentimgartist' class='file' src='<?php echo $img?>' alt='<?php echo $artistname?> image'><br>
+                    <img id='currentimgartist' class='file' src='<?php echo $imgPathInProject?>' alt='<?php echo $artistname?> image'><br>
                     <input type='hidden' name='artistimage' value='$artistimage'>
                 </div>
             </div>
@@ -85,7 +85,6 @@ echo "<div class='container'>
         $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
         $filesize = $_FILES['file']['size'];
 
-
         $getartist = "SELECT artistid, artistimage FROM artists WHERE artistname='$artistname'";
         $dbase = $database->stmt_init();
         $dbase->prepare($getartist);
@@ -93,6 +92,7 @@ echo "<div class='container'>
         $dbase->bind_result($artistid, $imagepath);
         $dbase->fetch();
         $dbase->close();
+        $imagepath = "../public/".$imagepath;
 
         if (strlen($artistname) == 0) {
             echo "<script>
@@ -112,13 +112,16 @@ echo "<div class='container'>
         } else {
             $filename = $_FILES['file']['name'];
             $dir = "artists/";
+            $dirInProject = "../public/".$dir;
+            $filepath = $dir.basename($filename);
+            $filepathInProject = "../public/".$filepath;
             $filepath = $dir.basename($filename);
             if ($filesize <= 5000000) {
                 if ($filesize > 0) {
                     if (file_exists($imagepath)) {
                         unlink("$imagepath");
                     }
-                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepathInProject)) {
                         $query = "UPDATE artists SET artistname='$artistname', nickname='$nickname', debutyear='$debutyear', membernum='$membernum', artistimage='$filepath' WHERE artistid='$artistid'";
                     }
                 } else {
