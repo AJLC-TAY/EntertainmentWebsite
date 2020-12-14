@@ -25,11 +25,42 @@ app.get('/', (request, response) => {
     response.render('index');
 });
 
+app.get('/songs', (request, response) => {
+    getTracks().then(function(tracks) {
+        tracks.forEach(track => {
+            track.albumimg = "data:image;base64," + btoa(track.albumimg);
+        });
+        response.render('songs', {tracks: tracks});
+    });
+});
+
+app.get('/index', (request, response) => {
+    response.render('index');
+});
+
+function getTracks() {
+    return  new Promise(function (resolve, reject) {
+        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
+            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.log('Unsuccessful');
+                reject(err);
+            }else {
+                console.log('Successful');
+                resolve(result);
+            }
+        });
+    });
+}
+
+
+
 app.get('/albums', (request, response) => {
     var albumid = request.query.playlist;
     getAlbums(albumid).then(function(albums) {
         getTracks().then(function(tracks) {
-            //console.log(tracks);
             tracks.forEach(track => {
                 track.albumimg = "data:image;base64," + btoa(track.albumimg);
             });
@@ -83,42 +114,9 @@ function getArtists() {
     });
 }
 
-app.get('/songs', (request, response) => {
-    getTracks().then(function(tracks) {
-        //console.log(tracks);
-        tracks.forEach(track => {
-            track.albumimg = "data:image;base64," + btoa(track.albumimg);
-        });
-        response.render('songs', {tracks: tracks});
-    });
+app.get('/about', (request, response) => {
+    response.render('about');
 });
-
-app.get('/addToPlaylist', (request, response) => {
-    getSpecificTrack(request.query.add).then(function (track) {
-        console.log(track);
-        response.send({file: track.musicfile, name: track.name});
-        response.end();
-    });
-});
-
-function getTracks() {
-    return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
-
-        connection.query(query, (err, result) => {
-            if (err) {
-                console.log('Unsuccessful');
-                reject(err);
-            }else {
-                console.log('Successful');
-                resolve(result);
-            }
-        });
-    });
-}
-
-
 
 
 
