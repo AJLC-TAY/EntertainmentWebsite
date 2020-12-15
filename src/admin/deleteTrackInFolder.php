@@ -12,7 +12,7 @@ function deleteTrackInFolder ($trackid) {
     $getfilepathqry->fetch();
 
     if (strlen($musicFilePath) != 0) {
-        unlink($musicFilePath);
+        unlink("../public/".$musicFilePath);
     }
     $getfilepathqry->close();
 }

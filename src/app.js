@@ -9,7 +9,7 @@ app.set('views', `${__dirname}/view`);
 app.set('view engine', 'pug');
 
 const connection = mysql.createConnection({
-    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3308'
+    host: 'localhost', user: 'root', password: '', database: 'bighitent', port:'3306'
 });
 connection.connect((err) => {
     if(err) {
@@ -19,7 +19,7 @@ connection.connect((err) => {
     }
 });
 
-app.listen(8001, 'localhost');
+app.listen(8001, 'bighitmusic.com');
 
 app.get('/', (request, response) => {
     response.render('index');
@@ -31,7 +31,7 @@ app.get('/index', (request, response) => {
 
 app.get('/songs', (request, response) => {
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+            tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
     const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
     getTracks(query1).then(function(tracks) {
@@ -62,7 +62,7 @@ function getTracks(query) {
 app.get('/albums', (request, response) => {
     var albumid = request.query.playlist;
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-            tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
+            tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
     const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
     getAlbums(albumid).then(function(albums) {
         getImage(albumid).then(function (albumImage) {
@@ -122,7 +122,7 @@ function getVid(trackid) {
 app.get('/filter', (request, response) => {
     var artistid = request.query.filterArtist;
     var query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-        tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE artistid = ${artistid}`;
+        tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE artistid = ${artistid}`;
     var query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
     getTracks(query1).then(function(tracks) {
         tracks.forEach(track => {
@@ -136,7 +136,7 @@ app.get('/filter', (request, response) => {
 
 function getImage(albumid) {
     return  new Promise(function (resolve, reject) {
-        const query = `SELECT albumimg FROM albums WHERE albumid = ?`;
+        const query = `SELECT albumimg, albumname FROM albums WHERE albumid = ?`;
 
         connection.query(query, [albumid], (err, result) => {
             if (err) {
@@ -153,7 +153,7 @@ function getImage(albumid) {
 app.get('/search', (request, response) => {
     var keyword = request.query.searchTracks;
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
-        tracks.trackid, tracks.musicfile FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE upper(tracks.name) LIKE '%${keyword}%'
+        tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE upper(tracks.name) LIKE '%${keyword}%'
         OR lower(tracks.name) LIKE '%${keyword}%'`;
     const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
 

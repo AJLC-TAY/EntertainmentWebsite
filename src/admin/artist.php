@@ -42,7 +42,7 @@ include ('../includes/head.html'); ?>
                 require 'require/getArtist.php';
                 foreach ($artists as $art) {
                     $artistid = $art->get_artistid();
-                    $filepath = $art->get_artistimage();
+                    $filepath = "../public/".$art->get_artistimage();
                     $artistname = $art->get_artistname();
                     $nickname = $art->get_nickname();
                     $debutyear = $art->get_debutyear();

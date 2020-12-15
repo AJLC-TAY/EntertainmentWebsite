@@ -96,19 +96,30 @@ br
                                                 | Released on: #{track.releaseddate}
                                     form(action='albums' method='get')
                                         button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
-                                    form(action='videos' method='get')
-                                        button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
+                                    if(track.musicvideo == null)
+                                        console.log("No Video")
+                                    else
+                                        form(action='videos' method='get')
+                                            button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
                         br
 
                 .spotify-player
-                    each img in albumImg
-                        img(src=`${img.albumimg}`)
 
-                    audio(src="" controls id="audio")
-                    ul#playList
-                        each track in albums
-                            button(id=index onclick=`play(${JSON.stringify(track.musicfile)})`) #{track.trackname}
-                            br
+                    .spotify-playlist-con
+                        each img in albumImg
+                            p.album-name
+                                | #{img.albumname}
+                            .row
+                                .player.col
+                                    img(src=`${img.albumimg}`)
+
+
+                                .track-playlist-con.col
+                                    ul#playList
+                                        each track in albums
+                                            button.track(id=index onclick=`play(${JSON.stringify(track.musicfile)})`) #{track.trackname}
+                                            br
+                            audio(src="" controls id="audio")
 
 footer
     hr
@@ -119,7 +130,7 @@ script#main-css(type='text/javascript' src='../app.js')
 script()
 script(type='text/javascript').
     function play(file) {
-        $(`#audio`)[0].src = "http://localhost:8001/" + file;
+        $(`#audio`)[0].src = "http://bighitmusic.com:8001/" + file;
         $(`#audio`)[0].play();
         $("#audio")[0].addEventListener("ended", function() {
 

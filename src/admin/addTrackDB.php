@@ -2,9 +2,11 @@
     $albumid = $_POST['albumid'];
     $trackname = $_POST['newtrack'];
     $dir = "tracks/$albumid/";
+    $dirInProject = "../public/".$dir;
     $filename = $_FILES['file']['name'];
     $filepath = $dir .basename($filename);
-    $mv = trim($_POST['url']);
+    $filepathInProject = "../public/".$filepath;
+    $mv = trim($_POST['mvid']);
 
     /**
      * @param $query
@@ -27,10 +29,10 @@
         addTrack($query);
     } else {
         // creates directory if album folder does not exist
-        if (!is_dir($dir)) {
-            mkdir($dir, 0755, true);
+        if (!is_dir($dirInProject)) {
+            mkdir($dirInProject, 0755, true);
         }
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $filepathInProject)) {
             $query = "INSERT INTO tracks (tracks.name, albumid, musicfile, musicvideo) VALUE('$trackname', '$albumid', '$filepath', '$mv')";
             addTrack($query);
         }

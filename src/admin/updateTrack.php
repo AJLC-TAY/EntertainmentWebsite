@@ -8,8 +8,10 @@ if(isset($_POST['save-track'])) {
     $trackid = $_POST['trackid'];
     $trackname = $_POST["trackname"];
     $dir = "tracks/$albumid/";
+    $dirInProject = "../public/".$dir;
     $filename = $_FILES['file']['name'];
     $filepath = $dir .basename($filename);
+    $filepathInProject = "../public/".$filepath;
     $mv = trim($_POST['mvid']);
     if (strlen(trim($trackname)) == 0) {
         echo "<script>alert('Track name was empty');
@@ -20,10 +22,10 @@ if(isset($_POST['save-track'])) {
         if ($_FILES['file']['size'] > 0) {
             deleteTrackInFolder($trackid);
             // creates directory if album folder does not exist
-            if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+            if (!is_dir($dirInProject)) {
+                mkdir($dirInProject, 0755, true);
             }
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $filepathInProject)) {
                 if (strlen($mv) == 0) {
                     $query = "UPDATE tracks SET musicfile='$filepath', tracks.name='$trackname' WHERE trackid='$trackid'";
                 } else {

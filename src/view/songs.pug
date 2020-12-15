@@ -90,8 +90,11 @@ br
                                                 | Released on: #{track.releaseddate}
                                     form(action='albums' method='get')
                                         button.album-btn(id = track.albumid type='submit' name='playlist' value=`${track.albumid}`) Play album
-                                    form(action='videos' method='get')
-                                        button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
+                                    if(track.musicvideo == null)
+                                        console.log("No Video")
+                                    else
+                                        form(action='videos' method='get')
+                                            button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
                         br
 
 footer
