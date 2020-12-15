@@ -10,9 +10,10 @@ include ('../includes/head.html'); ?>
   <body>
     <!--Contains the logo, the title of the page, the date today, and the log out button-->
     <?php include '../includes/navbanner.php' ?>
-    <!--Contains the -->
+    <!--Contains the establishment to the database-->
     <?php include '../includes/database.php'?>
 
+    <!--Contains the navigation links-->
     <div class="artist-list-con container">
         <div class='path-links'>
             <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'><b>Artists</b></a></pre>
@@ -22,7 +23,7 @@ include ('../includes/head.html'); ?>
 
 
         <div id="artistlist" class="overflow-auto">
-            <!--A table that displays the information from the artist table in the database-->
+            <!--A table that displays the information from the artists table in the database-->
             <table id="artisttable" class='table'>
                     <thead class='thead-dark'>
                         <tr>
@@ -37,7 +38,7 @@ include ('../includes/head.html'); ?>
                     </thead>
                     <tbody>
                 <?php
-                // Fetches the information 
+                // Fetches the information of artists in the database
                 require 'require/getArtist.php';
                 foreach ($artists as $art) {
                     $artistid = $art->get_artistid();
@@ -57,9 +58,14 @@ include ('../includes/head.html'); ?>
                             <td>$debutyear</td>
                             <td>$membernum</td>
                             <td><div class='row editdelete-con'>
+
+                                <!--Button that deletes the artist record-->
+
                                 <a href='deleteArtist.php?id=$artistid' onclick='javascript:return confirm(`Are you sure you want to delete this artist?`)' class='btn btn-danger small-del' type='submit'>
                                   <img src='../images/delete.png' title='Delete album'>
                                 </a>
+
+                                <!--Button that updates the artist record-->
 
                                 <a href='updateArtist.php?id=$artistid'><button id='$artistid' class='btn btn-secondary' name='edit'>
                                     <img src='../images/edit.png' title='Edit artist'>
@@ -80,6 +86,7 @@ include ('../includes/head.html'); ?>
     <script type="text/javascript" src="update.js"></script>
   </body>
     <?php
+    //Contains the footer of the page
     include '../includes/footer.php';
     ?>
 </html>

@@ -9,11 +9,14 @@ include ('../includes/head.html');?>
 </head>
 <body>
 
+<!--Contains the logo, the title of the page, the date today, and the log out button-->
 <?php include '../includes/navbanner.php'?>
 <div class="container">
+    <!--Contains the navigation links-->
     <div class='path-links'>
         <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'>Artists</a> / <a href='addArtist.php?' target='_self'><b>Add Artist</b></a></pre>
     </div>
+    <!--A form where it asks for the information of the artist-->
     <div class="form-con">
         <h4>Please enter the following artist information:</h4>
         <form id='artistform' method="post" enctype="multipart/form-data" action="">
@@ -41,6 +44,7 @@ include ('../includes/head.html');?>
         <div class="footer-but-con row justify-content-between">
             <a href='artist.php'><button class='btn btn-link'><b><</b> Back</button></a>
             <?php
+            // Button that adds the artist information specified in the form
             echo " <button type='submit' class='btn btn-secondary' name='addartist' form='artistform'>Add Artist</button>";
             if (isset($_POST['addartist'])) {
                 include "../includes/database.php";
@@ -53,8 +57,8 @@ include ('../includes/head.html');?>
                 $dir = "artists/";
                 $filepath = $dir.basename($filename);
                 $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
+                //The image file size to be uploaded is less than or 5 mb
                 if ($filesize <= 5000000) {
-
                     if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
                         if ($filesize > 0) {
                             $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum, artistimage)  VALUE ('$artistname', '$nickname', '$debutyear', '$membernum', '$filepath');";

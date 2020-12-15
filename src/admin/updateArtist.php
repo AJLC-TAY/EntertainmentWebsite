@@ -113,6 +113,7 @@ echo "<div class='container'>
             $filename = $_FILES['file']['name'];
             $dir = "artists/";
             $filepath = $dir.basename($filename);
+            //The image file size to be uploaded is less than or 5 mb
             if ($filesize <= 5000000) {
                 if ($filesize > 0) {
                     if (file_exists($imagepath)) {
