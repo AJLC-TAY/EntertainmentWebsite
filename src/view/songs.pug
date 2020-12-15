@@ -1,3 +1,5 @@
+// Translated to pug file from html by Leslie Joy J. Palma
+
 doctype html
 
 head
@@ -53,6 +55,7 @@ header
             input#search-fld(type='text' placeholder='Type something..' name='searchTracks')
             button#search-btn(type='submit')
                 img.search-icon(src='images/search-icon.png' alt='search icon')
+// Author: Kilrone Yance B. Del-ong
 .aligned-con.filter-con
     p Artists:
     #filters.aligned-con
@@ -73,6 +76,7 @@ br
             hr
             .song-det-con
                 ul#song-list.list-con
+                    // Author: Kilrone Yance B. Del-ong
                     each track in tracks
                         li
                         .spotify-song-con(id = track.artistname)
