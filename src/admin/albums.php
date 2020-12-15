@@ -1,4 +1,10 @@
 <?php
+/**
+ * A page that shows the albums of the company and lets users delete, update
+ * album details, and view an album tracks through redirect buttons.
+ *
+ * @author Alvin John Cutay
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
     <title>Albums | Admin</title>

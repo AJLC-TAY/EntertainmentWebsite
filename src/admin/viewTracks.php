@@ -1,4 +1,10 @@
 <?php
+/**
+ * A page that allows the admin view the tracks of certain album as well as
+ * add, update, and delete a track one at a time.
+ *
+ * @author Alvin John Cutay
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
 

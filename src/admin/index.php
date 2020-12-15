@@ -1,4 +1,10 @@
 <?php
+/**
+ * The home page showing clickable buttons that redirects the admin to
+ * view artists and albums.
+ *
+ * @author Alvin John Cutay
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
     <title>Home | Admin</title>

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Php file that adds the new track in the database.
+ * @author Alvin John Cutay
+ */
     $albumid = $_POST['albumid'];
     $trackname = $_POST['newtrack'];
     $dir = "tracks/$albumid/";

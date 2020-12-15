@@ -1,4 +1,9 @@
 <?php
+/**
+ * Php file update an track's information in the database.
+ *
+ * @author Alvin John Cutay
+ */
 include 'implementQuery.php';
 include 'deleteTrackInFolder.php';
 

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Php file that gets artists' ID and name from the database.
+ *
+ * @author Gwyneth Menor Calica
+ */
     $query = "SELECT artistid, artistname 
               FROM artists";
     $result = $database->query($query);
