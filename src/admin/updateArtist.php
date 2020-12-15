@@ -19,11 +19,14 @@ require '../includes/database.php';
 require '../includes/dataclass.php';
 $artistid = $_GET['id'];
 
+// Contains the navigation links
 echo "<div class='container'>
 
     <div class='path-links'>
               <pre><a href='index.php' target='_self'>Admin Home</a> / <a href='artist.php' target='_self'>Artists</a> / <a href='updateArtist.php.php?id=$artistid' target='_self'><b>Update Artist</b></a></pre>
         </div>";
+
+    // Fetches the artist's information from the database
     $query = "SELECT artistimage, artistname, nickname, debutyear, membernum FROM artists WHERE artistid='$artistid'";
     $stmt = $database->stmt_init();
     $stmt->prepare($query);
@@ -34,7 +37,7 @@ echo "<div class='container'>
     $imgPathInProject = "../public/".$img;
     ?>
 
-
+    <!--Form that lets the admin provide changes from the artist's information-->
     <div class="form-con">
         <h4>Please provide changes for the artist:</h4>
         <form id='artistform' method="post" enctype="multipart/form-data" action="">
@@ -81,6 +84,7 @@ echo "<div class='container'>
         </form>
 
 <?php
+// Saves changes in updating artist's information
     if (isset($_POST['save'])) {
         include '../includes/database.php';
         $artistid = $_POST['artistid'];
