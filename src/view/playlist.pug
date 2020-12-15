@@ -1,3 +1,5 @@
+// Created by Kilrone Yance B. Del-ong
+
 doctype html
 
 head
@@ -53,6 +55,7 @@ header
             input#search-fld(type='text' placeholder='Type something..' name='searchTracks')
             button#search-btn(type='submit')
                 img.search-icon(src='images/search-icon.png' alt='search icon')
+// Author: Kilrone Yance B. Del-ong
 .aligned-con.filter-con
     p Artists:
     #filters.aligned-con
@@ -67,18 +70,12 @@ header
 br
 .column
     #result-items-con
-        .all-video-con(style='display: none;')
-            h3 Videos
-            hr
-            #videos
-                #videoContainer
-                ul#video-list
-
         .all-song-con
             h3 Songs
             hr
             .song-det-con
                 ul#song-list.list-con
+                    // Author: Kilrone Yance B. Del-ong
                     each track in tracks
                         li
                         .spotify-song-con(id = track.artistname)
@@ -103,8 +100,8 @@ br
                                             button.see-vid(id = track.trackname type='submit' name='seeVid' value=`${track.trackid}`) See Music Video
                         br
 
+                // Author: Kilrone Yance B. Del-ong
                 .spotify-player
-
                     .spotify-playlist-con
                         each img in albumImg
                             p.album-name
@@ -112,8 +109,6 @@ br
                             .row
                                 .player.col
                                     img(src=`${img.albumimg}`)
-
-
                                 .track-playlist-con.col
                                     ul#playList
                                         each track in albums
@@ -126,6 +121,7 @@ footer
     p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 script#main-css(type='text/javascript' src='../app.js')
+// Author: Kilrone Yance B. Del-ong
 script(type='text/javascript').
     function play(file) {
         $(`#audio`)[0].src = "http://bighitmusic.com:8001/" + file;

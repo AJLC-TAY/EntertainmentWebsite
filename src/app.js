@@ -83,8 +83,7 @@ function getTracks(query) {
 }
 
 /**
- * Redirects the user to the music page if the user entered bighitmusic.com:8001/about or
- * when the user clicks music on the navigation bar.
+ * Redirects the user to the playlist page if the user clicks play album on the songs page under a track
  *
  * @author Leslie Joy J. Palma
  */
@@ -110,7 +109,7 @@ app.get('/albums', (request, response) => {
     });
 });
 /**
- * Fetches the albums from our database to be parsed on the songs page
+ * Fetches the tracks under an album from our database to be parsed on the playlist on the playlist page
  *
  * @author Leslie Joy Palma
  */
@@ -226,7 +225,7 @@ app.get('/search', (request, response) => {
 });
 
 /**
- * Redirects the user to the artist page if the user entered bighitmusic.com:8001/about or
+ * Redirects the user to the artist page if the user entered bighitmusic.com:8001/artist or
  * when the user clicks artists on the navigation bar.
  *
  * @author Leslie Joy J. Palma
