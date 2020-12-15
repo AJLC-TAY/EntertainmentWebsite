@@ -215,10 +215,10 @@ app.get('/search', (request, response) => {
     });
 });
 
-app.get('/artists', (request, response) => {
+app.get('/artist', (request, response) => {
     var query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
     getArtists(query).then(function(artists) {
-        response.render('artists', {artists: artists});
+        response.render('artist', {artists: artists});
     });
 });
 
