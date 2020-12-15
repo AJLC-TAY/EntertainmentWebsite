@@ -1,8 +1,10 @@
-<!--
-This deletes an artist record in the artist admin page
-@author: Calica, Gwyneth
--->
+
 <?php
+/**
+ * A page that allows the admin to delete an artist's information.
+ *
+ * @author Gwyneth Calica
+ */
     include ("../includes/sessionHandling.php");
     include "../includes/database.php";
     $artistid = $_GET['id'];

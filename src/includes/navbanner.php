@@ -1,3 +1,5 @@
+<!--@author Hudson Kit Natividad-->
+
 <!--Contains the logo and banner elements shown at the top of administrative page-->
 <link rel="stylesheet" type="text/css" href="../admin/navbennerStyle.css">
 <div id='banner' class="container">

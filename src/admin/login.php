@@ -1,10 +1,15 @@
+<!--
+A page that allows the admin to login to the administration page of bighitmusic
+
+@author Hudson Kit Natividad
+-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="style2.css">
-      <title>Login Page | Big Hit Music</title> 
+      <title>Login Page | Big Hit Music</title>
   </head>
   <body>
     <div id="loginForm" align="center">

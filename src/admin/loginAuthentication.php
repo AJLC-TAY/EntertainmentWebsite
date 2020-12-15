@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @author Hudson Kit Natividad
+ */
+ 
 // Contains the constructor for Accounts
 include("AccountClass.php");
 // Contains the login page
@@ -12,14 +15,14 @@ $accounts = [];
 
 $query = "SELECT username, password FROM useradmin";
 $result = $database->query($query);
-   
+
 while($row = $result->fetch_assoc()) {
     $accounts[] = new Account($row['username'], $row['password']);
 }
 if(isset($_POST['buttonLogin'])){
     $username = $_POST['user'];
     $password = $_POST['Password'];
-    
+
     foreach($accounts as $cred){
         $credUser = $cred->getUser();
         $credPass = $cred->getPassword();
@@ -34,6 +37,6 @@ if(isset($_POST['buttonLogin'])){
     echo "<script>location.href='login.php'</script>";
 
 }
-    
+
 
 ?>
