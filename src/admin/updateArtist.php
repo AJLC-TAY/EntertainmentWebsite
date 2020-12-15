@@ -3,6 +3,11 @@ This page updates an artist record in the artist admin page
 @author: Calica, Gwyneth
 -->
 <?php
+/**
+ * A page that allows the admin to update an artist's information.
+ *
+ * @author
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
 <title>Update Artist | Admin</title>

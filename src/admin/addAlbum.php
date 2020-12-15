@@ -1,4 +1,8 @@
 <?php
+/**
+ * A page that lets the admin add new album to the system.
+ * @author Alvin John Cutay
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
     <title>Add Album | Admin</title>

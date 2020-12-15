@@ -1,4 +1,9 @@
 <?php
+
+    /**
+     * Class Album
+     * @author Alvin John Cutay.
+     */
     class Album implements JsonSerializable {
         private $albumid;
         private $albumname;
@@ -7,11 +12,11 @@
         private $albumimg;
 
         /**
-        *Track constructor
-        *@param $albumName
-        *@param $artistname
-        *@param $releaseddate
-        *@param $albumimg
+        * Track constructor.
+        * @param $albumName
+        * @param $artistname
+        * @param $releaseddate
+        * @param $albumimg
         */
         public function __construct($albumname, $artistname, $releaseddate, $albumimg) {
             $this->albumname = $albumname;
@@ -60,6 +65,10 @@
 
     }
 
+    /**
+     * Class Artist
+     * @author Alvin John Cutay.
+     */
     class Artist implements JsonSerializable {
         private $artistid;
         public $artistname;
@@ -88,7 +97,10 @@
             ];
         }
     }
-
+    /**
+     * Class ArtistDetail, a subclass of Artist
+     * @author Alvin John Cutay.
+     */
     class ArtistDetail extends Artist implements JsonSerializable {
         private $artistimage;
         private $debutyear;

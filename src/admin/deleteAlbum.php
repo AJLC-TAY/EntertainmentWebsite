@@ -1,4 +1,9 @@
 <?php
+/**
+ * Php file that deletes the album with the given album ID in the database.
+ *
+ * @author Alvin John Cutay
+ */
 $albumid = $_GET['id'];
 include "../includes/database.php";
 $query = "DELETE FROM albums WHERE albumid='$albumid'";

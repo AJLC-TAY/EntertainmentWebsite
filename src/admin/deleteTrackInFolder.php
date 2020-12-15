@@ -1,5 +1,9 @@
 <?php
-//include ("../includes/sessionHandling.php");
+/**
+ * Php file that deletes the track file with the given track ID in the project.
+ *
+ * @author Alvin John Cutay
+ */
 // delete file from folder
 function deleteTrackInFolder ($trackid) {
     include '../includes/database.php';

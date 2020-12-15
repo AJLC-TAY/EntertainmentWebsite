@@ -1,4 +1,9 @@
 <?php
+/**
+ * Php file that gets all the albums from the database.
+ *
+ * @author Alvin John Cutay
+ */
 include ("../includes/database.php");
 include ('../includes/dataclass.php');
 $query = 'SELECT albumid, albumimg, albumname, artists.artistname, releaseddate FROM albums JOIN artists USING(artistid)';

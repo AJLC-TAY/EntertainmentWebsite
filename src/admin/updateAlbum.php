@@ -1,4 +1,9 @@
 <?php
+/**
+ * A page that allows the admin to update an album's information.
+ *
+ * @author Alvin John Cutay
+ */
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
     <title>Update Album | Admin</title>
