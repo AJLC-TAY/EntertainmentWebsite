@@ -125,18 +125,9 @@ footer
     hr
     p(align='center') Copyright&copy; 2020 AlphaGroup. All rights reserved.
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-
 script#main-css(type='text/javascript' src='../app.js')
-script()
 script(type='text/javascript').
     function play(file) {
         $(`#audio`)[0].src = "http://bighitmusic.com:8001/" + file;
         $(`#audio`)[0].play();
-        $("#audio")[0].addEventListener("ended", function() {
-
-        })
-    }
-
-    function addImage() {
-
     }

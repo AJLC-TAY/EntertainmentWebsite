@@ -47,22 +47,22 @@ head
   #artist-list
     // Content
     // Author: Natividad, Hudson Kit P.
-    h1 Bighit Artist
+    h1  BigHit Artists
     each artist in artists
       .artistContainer
         a(href='https://kprofiles.com/big-hit-entertainment-profile-history-artists-facts/')
           img(src=`${artist.artistimage}` alt=`${artist.nickname}`)
         br
         p
-            em
-                strong #{artist.artistname}
+          em
+            strong #{artist.artistname}
         p
-            | Debut Year: #{artist.debutyear}
-            br
-            | No of Artists: #{artist.membernum}
+          | Debut Year: #{artist.debutyear}
+          br
+          | No of Artists: #{artist.membernum}
 
   footer
     hr
     p(align='center') Copyright &copy; 2020 Alpha Group. All rights reserved.
   script(src='https://apis.google.com/js/client.js?onload=handleClientLoad')
-  script(type='text/javascript' src='app.js')
+  script(type='text/javascript' src='../app.js')
