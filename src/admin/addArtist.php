@@ -1,3 +1,7 @@
+<!--
+This page adds an artist record in the artist admin page
+@author: Calica, Gwyneth
+-->
 <?php
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html');?>

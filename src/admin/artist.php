@@ -1,3 +1,7 @@
+<!--
+This page displays the artists table from the database
+@author: Calica, Gwyneth
+-->
 <?php
 include ("../includes/sessionHandling.php");
 include ('../includes/head.html'); ?>
