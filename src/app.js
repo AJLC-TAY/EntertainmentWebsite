@@ -51,7 +51,7 @@ app.get('/songs', (request, response) => {
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
             tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
 
-    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
     getTracks(query1).then(function(tracks) {
         tracks.forEach(track => {
             track.albumimg = "data:image;base64," + btoa(track.albumimg);
@@ -91,7 +91,7 @@ app.get('/albums', (request, response) => {
     var albumid = request.query.playlist;
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
             tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid)`;
-    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
     getAlbums(albumid).then(function(albums) {
         getImage(albumid).then(function (albumImage) {
             albumImage.forEach(album => {
@@ -170,7 +170,7 @@ app.get('/filter', (request, response) => {
     var artistid = request.query.filterArtist;
     var query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
         tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE artistid = ${artistid}`;
-    var query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    var query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
     getTracks(query1).then(function(tracks) {
         tracks.forEach(track => {
             track.albumimg = "data:image;base64," + btoa(track.albumimg);
@@ -212,7 +212,7 @@ app.get('/search', (request, response) => {
     const query1 = `SELECT albumid, albumimg, albumname, artists.artistname, releaseddate, tracks.name AS trackname,
         tracks.trackid, tracks.musicfile, tracks.musicvideo FROM albums JOIN artists USING(artistid) JOIN tracks USING(albumid) WHERE upper(tracks.name) LIKE '%${keyword}%'
         OR lower(tracks.name) LIKE '%${keyword}%'`;
-    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    const query2 = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
 
     getTracks(query1).then(function(tracks) {
         tracks.forEach(track => {
@@ -231,7 +231,7 @@ app.get('/search', (request, response) => {
  * @author Leslie Joy J. Palma
  */
 app.get('/artist', (request, response) => {
-    var query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists WHERE artistid != 61`;
+    var query = `SELECT artistid, artistname, nickname, artistimage, debutyear, membernum FROM artists`;
     getArtists(query).then(function(artists) {
         response.render('artist', {artists: artists});
     });
