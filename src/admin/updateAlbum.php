@@ -113,7 +113,7 @@ include ('../includes/head.html'); ?>
                    </script>";
             }
             else {
-                if ($filesize <= 70000) {
+                if ($filesize <= 64000) {
                     if ($filesize > 0) {
                         $query = "UPDATE albums SET albumname='$albumname', albums.artistid='$artistid', releaseddate='$releaseddate', albumimg='$file' WHERE albumid='$albumid'";
                     } else {
@@ -122,7 +122,7 @@ include ('../includes/head.html'); ?>
                     $database->query($query);
                     echo "<script> window.location.href = 'albums.php'; </script>";
                 } else {
-                    echo "<script>alert('Image size is larger than 70KB')</script>";
+                    echo "<script>alert('Image size is larger than 64KB')</script>";
                 }
             }
         }

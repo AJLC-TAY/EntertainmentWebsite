@@ -42,7 +42,7 @@ include ('../includes/head.html'); ?>
                             </div>
                             <div class='col'>
                                 <audio controls>
-                                    <source id='{$trackid}audio' src='$trackFile' type='audio/mpeg'>
+                                    <source id='{$trackid}audio' src='../public/$trackFile' type='audio/mpeg'>
                                         Your browser does not support the audio tag.
                                 </audio>
                             </div>
