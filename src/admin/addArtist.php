@@ -62,10 +62,11 @@ include ('../includes/head.html');?>
                 $filename = $_FILES['file']['name'];
                 $dir = "artists/";
                 $filepath = $dir.basename($filename);
+                $filepathToProject = "../public/".$filepath;
                 $file = addslashes(@file_get_contents($_FILES['file']['tmp_name']));
                 //The image file size to be uploaded is less than or 5 mb
                 if ($filesize <= 5000000) {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $filepathToProject)) {
                         if ($filesize > 0) {
                             $query = "INSERT INTO artists (artistname, nickname, debutyear, membernum, artistimage)  VALUE ('$artistname', '$nickname', '$debutyear', '$membernum', '$filepath');";
                         } else {
@@ -80,8 +81,6 @@ include ('../includes/head.html');?>
                 }
             }
             ?>
-
-
         </div>
     </div>
 
